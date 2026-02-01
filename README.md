@@ -1,30 +1,66 @@
-# TelegramAnimatedEmojismain2
+# ✨ Telegram Animated Emojis for React
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+A high-performance, lightweight React library that brings Telegram's famous animated emojis to your web app. 
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/ayushs-projects-f36ecde0/v0-animated-emoji)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/ml95D7BVQzB)
+Unlike other libraries that use heavy JSON Lottie files, this library uses **optimized Animated WebP** format, making it incredibly fast and efficient.
 
-## Overview
+## 🌟 Features
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+*   **🚀 Ultra Lightweight:** Uses `<img>` tags with WebP assets (fetched from CDN). No heavy Lottie player required.
+*   **🦄 Unicode Support:** Automatically converts standard emojis (😭, 😂, 🔥) into animated ones.
+*   **⌨️ Shortcode Support:** Supports Slack/Discord style shortcodes (e.g., `:rocket:`, `:tada:`).
+*   **⚡ Lazy Loading:** Built-in Intersection Observer ensures emojis only load when visible.
+*   **🎨 Customizable:** Easily adjust size and styling via props.
 
-## Deployment
+---
 
-Your project is live at:
+## 🛠️ How to Use
 
-**[https://vercel.com/ayushs-projects-f36ecde0/v0-animated-emoji](https://vercel.com/ayushs-projects-f36ecde0/v0-animated-emoji)**
+Since this is a custom library, the easiest way to use it is to **copy the source code** into your project.
 
-## Build your app
+### 1. Installation
+Copy the `lib` folder from this repository into your project (e.g., to `src/components/telegram-emojis`).
 
-Continue building your app on:
+### 2. Using the Component
+Use `AnimatedEmoji` to render a specific emoji by its shortcode.
 
-**[https://v0.app/chat/ml95D7BVQzB](https://v0.app/chat/ml95D7BVQzB)**
+```tsx
+import { AnimatedEmoji } from './lib/src';
 
-## How It Works
+const MyComponent = () => (
+  <div>
+    <h1>Hello World! <AnimatedEmoji id="wave" size={50} /></h1>
+  </div>
+);
+```
 
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+### 3. Rendering Text with Emojis
+Use `EmojiRenderer` to automatically find and replace emojis in a text string. It supports both **Unicode** and **Shortcodes**.
+
+```tsx
+import { EmojiRenderer } from './lib/src';
+
+const ChatMessage = () => (
+  <p className="message">
+    {/* This will animate the rocket and the crying face! */}
+    <EmojiRenderer text="Launching in 3... 2... 1... :rocket: 😭" />
+  </p>
+);
+```
+
+---
+
+## 🧩 directory Structure
+
+*   `lib/` - The core library code.
+    *   `src/components/AnimatedEmoji.tsx` - The main image component.
+    *   `src/utils/EmojiRenderer.tsx` - The parser for converting text to emojis.
+    *   `src/data/emoji-map.json` - The database mapping emojis to file paths.
+*   `demo/` - A working Vite+React example app showing the library in action.
+
+## 🤝 Contributing
+Feel free to fork this repository and submit Pull Requests!
+
+## 📄 License
+MIT
+"# animated-emoji" 
