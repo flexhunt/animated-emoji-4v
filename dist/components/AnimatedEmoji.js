@@ -75,6 +75,10 @@ export const AnimatedEmoji = ({ id, size = 50, className }) => {
         const hex = toEmojiHex(id);
         const appleUrl = `https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.0.0/img/apple/64/${hex}.png`;
         return (_jsxs("div", { ref: containerRef, className: `emoji-skeleton ${className || ''}`, style: { width: size, height: size, display: 'inline-block', verticalAlign: 'middle', lineHeight: 0, position: 'relative' }, children: [_jsx("div", { style: skeletonStyle }), isVisible && (_jsx("img", { src: appleUrl, alt: id, style: imgStyle, loading: "lazy", onLoad: () => setIsLoaded(true), onError: (e) => {
+                        // Debug logging as requested
+                        console.error(`Fallback failed for id: "${id}"`);
+                        console.error(`Generated URL: ${appleUrl}`);
+                        console.error(`Hex used: ${hex}`);
                         // If fallback fails, just show text, hide image container specific tweaks
                         e.currentTarget.style.display = 'none';
                         setIsLoaded(true); // Stop skeleton

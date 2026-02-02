@@ -114,6 +114,11 @@ export const AnimatedEmoji: React.FC<AnimatedEmojiProps> = ({
                         loading="lazy"
                         onLoad={() => setIsLoaded(true)}
                         onError={(e) => {
+                            // Debug logging as requested
+                            console.error(`Fallback failed for id: "${id}"`);
+                            console.error(`Generated URL: ${appleUrl}`);
+                            console.error(`Hex used: ${hex}`);
+
                             // If fallback fails, just show text, hide image container specific tweaks
                             e.currentTarget.style.display = 'none';
                             setIsLoaded(true); // Stop skeleton
