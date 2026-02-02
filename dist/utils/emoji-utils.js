@@ -8,6 +8,9 @@ export function toEmojiHex(emoji) {
     return Array.from(emoji)
         .map(c => c.codePointAt(0)?.toString(16))
         .filter(Boolean)
+        // emoji-datasource-apple strips VS16 (fe0f) unless it's the only char (unlikely for proper emojis)
+        // We filter out 'fe0f'
+        .filter(hex => hex !== 'fe0f')
         .join('-');
 }
 export function isShortcode(text) {

@@ -46,17 +46,42 @@ export const AnimatedEmoji: React.FC<AnimatedEmojiProps> = ({
     // --------------------------------------------------------
     // STYLES
     // --------------------------------------------------------
+    // --------------------------------------------------------
+    // STYLES & ANIMATION
+    // --------------------------------------------------------
+    // Inject keyframes for shimmer effect
+    useEffect(() => {
+        if (typeof document === 'undefined') return;
+        const styleId = 'animated-emoji-styles';
+        if (!document.getElementById(styleId)) {
+            const style = document.createElement('style');
+            style.id = styleId;
+            style.innerHTML = `
+                @keyframes telegramEmojiShimmer {
+                    0% { background-position: -200px 0; }
+                    100% { background-position: calc(200px + 100%) 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }, []);
+
     const skeletonStyle: React.CSSProperties = {
         position: 'absolute',
         top: 0,
         left: 0,
         width: '100%',
         height: '100%',
-        backgroundColor: '#E0E0E0',
+        backgroundColor: '#f6f7f8',
+        backgroundImage: 'linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%)',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: '200% 100%', // Larger than container for movement
+        animation: 'telegramEmojiShimmer 1.5s infinite linear',
         borderRadius: '5px',
         opacity: isVisible && !isLoaded ? 1 : 0,
-        transition: 'opacity 0.3s ease-out',
+        transition: 'opacity 0.2s ease-out',
         pointerEvents: 'none',
+        zIndex: 0 // Behind image
     };
 
     const imgStyle: React.CSSProperties = {
@@ -64,7 +89,9 @@ export const AnimatedEmoji: React.FC<AnimatedEmojiProps> = ({
         height: '100%',
         objectFit: 'contain',
         opacity: isLoaded ? 1 : 0,
-        transition: 'opacity 0.3s ease-in',
+        transition: 'opacity 0.2s ease-in',
+        position: 'relative', // Ensure Z-index works if needed
+        zIndex: 1
     };
 
     // --------------------------------------------------------
