@@ -43,6 +43,12 @@ export const EmojiRenderer = ({ text, size = 24, className }) => {
                     return (_jsx(AnimatedEmoji, { id: shortcode, size: size, className: className }, `${shortcode}-${index}`));
                 }
             }
+            // 3. New: Is it a generic unicode emoji (that wasn't in the map)?
+            // We use the same regex source but anchored to matching the whole string.
+            const isEmojiMatch = new RegExp(`^${emojiRegexPattern}$`).test(part);
+            if (isEmojiMatch) {
+                return (_jsx(AnimatedEmoji, { id: part, size: size, className: className }, `fallback-${index}`));
+            }
             // Otherwise render text
             return _jsx("span", { children: part }, index);
         }) }));
