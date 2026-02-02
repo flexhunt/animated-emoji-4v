@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Emoji HTML Example</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .container { border: 1px solid #ccc; padding: 20px; border-radius: 8px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>Standard HTML Example 🚀</h1>
+    
+    <div id="app"></div>
+
+    <!-- 1. Load React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- 2. Load our Library (pointing to local dist for testing, or use unpkg in production) -->
+    <script src="./dist/animated-emoji.umd.js"></script>
+
+    <!-- 3. Render Component -->
+    <script>
+        console.log('Library loaded:', window.AnimatedEmoji);
+
+        const { AnimatedEmoji } = window.AnimatedEmoji;
+        const root = ReactDOM.createRoot(document.getElementById('app'));
+
+        root.render(
+            React.createElement('div', { className: 'container' },
+                React.createElement('h2', null, 'It works!'),
+                React.createElement('p', null, 'Here represents a native React component running in plain HTML:'),
+                
+                // Render the emoji: <AnimatedEmoji id="fire" size={100} />
+                React.createElement(AnimatedEmoji, { id: 'fire', size: 100 }),
+                React.createElement(AnimatedEmoji, { id: 'party_popper', size: 100 }),
+                React.createElement(AnimatedEmoji, { id: 'rocket', size: 100 })
+            )
+        );
+    </script>
+</body>
+</html>
