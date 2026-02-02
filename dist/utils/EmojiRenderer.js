@@ -1,6 +1,7 @@
 import { jsx as _jsx, Fragment as _Fragment } from "react/jsx-runtime";
 import { AnimatedEmoji } from '../components/AnimatedEmoji';
 import emojiMapRaw from '../data/emoji-map.json';
+import emojiRegex from 'emoji-regex';
 const emojiMap = emojiMapRaw;
 // Escape regex characters
 const escapeRegExp = (string) => {
@@ -8,20 +9,11 @@ const escapeRegExp = (string) => {
 };
 // Generate regex pattern dynamically
 // 1. Match shortcodes: :[a-zA-Z0-9_+-]+:
-// 2. Match unicode characters corresponding to map keys
-const keys = Object.keys(emojiMap);
-// Filter for unicode keys (assuming anything not strictly alphanumeric+special chars used in shortcodes is unicode, 
-// or simply anything that doesn't look like a shortcode key? Actually we only need to look for keys that are NOT shortcodes.
-// Shortcodes in map DO NOT have colons. 
-const unicodeKeys = keys.filter(k => !/^[a-zA-Z0-9_+-]+$/.test(k));
-const sortedUnicodeKeys = unicodeKeys.sort((a, b) => b.length - a.length);
-const unicodePattern = sortedUnicodeKeys.length > 0 ? sortedUnicodeKeys.map(escapeRegExp).join('|') : '';
+// 2. Match ALL unicode emojis using emoji-regex
+const emojiRegexPattern = emojiRegex().source;
 // Combined regex: 
 // Group 1: Whole match (Shortcode OR Unicode)
-// Note: We wrap the whole alternation in a capturing group so split() includes it.
-const patternString = unicodePattern
-    ? `(:[a-zA-Z0-9_+-]+:|${unicodePattern})`
-    : `(:[a-zA-Z0-9_+-]+:)`;
+const patternString = `(:[a-zA-Z0-9_+-]+:|${emojiRegexPattern})`;
 const COMBINED_REGEX = new RegExp(patternString, 'g');
 export const EmojiRenderer = ({ text, size = 24, className }) => {
     if (!text)

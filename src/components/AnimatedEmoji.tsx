@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import emojiMapRaw from '../data/emoji-map.json';
+import { toEmojiHex } from '../utils/emoji-utils';
 
 const emojiMap = emojiMapRaw as Record<string, string>;
 
@@ -41,31 +42,71 @@ export const AnimatedEmoji: React.FC<AnimatedEmojiProps> = ({
         };
     }, []);
 
-    if (!emojiMap[id]) {
-        return <span title={`Unknown emoji: ${id}`}>:{id}:</span>;
+    // --------------------------------------------------------
+    // RENDER LOGIC
+    // --------------------------------------------------------
+
+    // 1. If it's a known animated emoji
+    if (emojiMap[id]) {
+        const filename = emojiMap[id];
+        const url = `${BASE_URL}/${filename}`;
+
+        return (
+            <div
+                ref={containerRef}
+                className={className}
+                style={{ width: size, height: size, display: 'inline-block', verticalAlign: 'middle', lineHeight: 0 }}
+            >
+                {isVisible ? (
+                    <img
+                        src={url}
+                        alt={id}
+                        width="100%"
+                        height="100%"
+                        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                        loading="lazy"
+                    />
+                ) : (
+                    <div style={{ width: '100%', height: '100%' }} />
+                )}
+            </div>
+        );
     }
 
-    const filename = emojiMap[id];
-    const url = `${BASE_URL}/${filename}`;
+    // 2. Fallback: If it's NOT in the map, but it IS a unicode character (not a shortcode)
+    // We render the iOS version from CDN.
+    // Note: 'id' here might be the raw unicode char if passed from EmojiRenderer.
+    const isRawEmoji = !id.startsWith(':');
 
-    return (
-        <div
-            ref={containerRef}
-            className={className}
-            style={{ width: size, height: size, display: 'inline-block', verticalAlign: 'middle', lineHeight: 0 }}
-        >
-            {isVisible ? (
-                <img
-                    src={url}
-                    alt={id}
-                    width="100%"
-                    height="100%"
-                    style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                    loading="lazy"
-                />
-            ) : (
-                <div style={{ width: '100%', height: '100%' }} />
-            )}
-        </div>
-    );
+    if (isRawEmoji) {
+        const hex = toEmojiHex(id);
+        const fallbackUrl = `https://cdn.jsdelivr.net/npm/emoji-datasource-apple/img/apple/64/${hex}.png`;
+
+        return (
+            <div
+                ref={containerRef}
+                className={className}
+                style={{ width: size, height: size, display: 'inline-block', verticalAlign: 'middle', lineHeight: 0 }}
+            >
+                {isVisible ? (
+                    <img
+                        src={fallbackUrl}
+                        alt={id}
+                        width="100%"
+                        height="100%"
+                        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                        loading="lazy"
+                        onError={(e) => {
+                            // If even fallback fails, hide image and show native char
+                            e.currentTarget.style.display = 'none';
+                            e.currentTarget.parentElement!.innerText = id;
+                        }}
+                    />
+                ) : <div style={{ width: '100%', height: '100%' }} />}
+            </div>
+        );
+    }
+
+    // 3. Unknown shortcode
+    return <span title={`Unknown emoji: ${id}`}>:{id}:</span>;
 };

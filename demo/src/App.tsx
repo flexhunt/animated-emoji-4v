@@ -1,63 +1,56 @@
-import { useState } from 'react'
+import { EmojiRenderer } from 'animated-emoji-4v'
 import './App.css'
-import { AnimatedEmoji } from './lib/src/components/AnimatedEmoji'
-import { EmojiRenderer } from './lib/src/utils/EmojiRenderer'
 
-function App() {
-  const [input, setInput] = useState("Hello :joy: world! :rocket: 😭")
+// Comprehensive emoji list organized by category
+const EMOJI_CATEGORIES = {
+  Smileys: ['😀', '😁', '😂', '😃', '😄', '😅', '😆', '😇', '😉', '😊', '😌', '😍', '😘', '😗', '😚', '😙', '🙂', '🤗', '🤩', '🤔'],
+  Hearts: ['❤️', '🧡', '💛', '💚', '💙', '💜', '🖤', '🤍', '🤎', '💔', '💕', '💞', '💓', '💗', '💖', '💘', '💝', '💟'],
+  Hands: ['👋', '🤚', '🖐️', '✋', '🖖', '👌', '🤌', '🤏', '✌️', '🤞', '🫰', '🤟', '🤘', '🤙', '👍', '👎', '👊', '👏', '🙌', '👐'],
+  Animals: ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '🐨', '🐯', '🦁', '🐮', '🐷', '🐽', '🐸', '🐵', '🙈', '🙉', '🙊', '🐒'],
+  Food: ['🍎', '🍊', '🍋', '🍌', '🍉', '🍇', '🍓', '🍒', '🍑', '🍍', '🥥', '🥑', '🍅', '🍆', '🥒', '🥬', '🌽', '🌶️', '🍕', '🍔'],
+  Travel: ['🚗', '🚕', '🚙', '🚌', '🚎', '🏎️', '🚓', '🚑', '🚒', '🚐', '✈️', '🛫', '🛬', '🚁', '🛶', '⛵', '🚤', '🛳️', '⛴️', '🛥️'],
+  Objects: ['💻', '⌨️', '🖱️', '🖨️', '🖥️', '📱', '📲', '💽', '💾', '💿', '🎮', '🎯', '🎲', '🎳', '🎪', '🎨', '🎭', '🎬', '🎤', '🎧'],
+  Nature: ['🌍', '🌎', '🌏', '⭐', '🌟', '✨', '⚡', '☄️', '💥', '🔥', '🌪️', '🌈', '☀️', '🌤️', '⛅', '🌥️', '☁️', '🌦️', '🌧️', '⛈️']
+}
 
+export default function App() {
   return (
-    <div style={{ padding: 40, fontFamily: 'sans-serif' }}>
-      <h1>Telegram Animated Emojis Demo</h1>
-
-      <div style={{ marginBottom: 40, padding: 20, border: '1px solid #ddd', borderRadius: 8 }}>
-        <h2>Core Component</h2>
-        <p>Direct usage of <code>&lt;AnimatedEmoji /&gt;</code></p>
-        <div style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
-          <div>
-            <AnimatedEmoji id="joy" size={60} />
-            <p>:joy:</p>
-          </div>
-          <div>
-            <AnimatedEmoji id="rocket" size={60} />
-            <p>:rocket:</p>
-          </div>
-          <div>
-            <AnimatedEmoji id="heart" size={60} />
-            <p>:heart:</p>
-          </div>
-          <div>
-            <AnimatedEmoji id="unknown_emoji_xyz" size={60} />
-            <p>Invalid</p>
-          </div>
+    <div className="min-h-screen bg-background">
+      <div className="py-12 px-4 md:px-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            Animated Emojis Gallery
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Explore a delightful collection of beautifully animated emojis
+          </p>
         </div>
-      </div>
 
-      <div style={{ marginBottom: 40, padding: 20, border: '1px solid #ddd', borderRadius: 8 }}>
-        <h2>Parser Utility</h2>
-        <p>Type below to see emojis render automatically!</p>
-        <p>Try: <code>:fire: :100: :ghost: :cat:</code></p>
-
-        <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          style={{ width: '100%', padding: 10, fontSize: 16, marginBottom: 20 }}
-        />
-
-        <div style={{ fontSize: 24, minHeight: 40 }}>
-          <EmojiRenderer text={input} size={40} />
-        </div>
-      </div>
-
-      <div style={{ height: '150vh', background: '#f5f5f5', padding: 20, textAlign: 'center' }}>
-        <h2>Scroll down for lazy load test...</h2>
-        <div style={{ marginTop: '100vh' }}>
-          <AnimatedEmoji id="alien" size={100} />
-          <p>I just loaded!</p>
+        {/* Emoji Grid */}
+        <div className="max-w-7xl mx-auto">
+          {Object.entries(EMOJI_CATEGORIES).map(([category, emojis]) => (
+            <div key={category} className="mb-16">
+              <h2 className="text-2xl font-semibold text-foreground mb-6 pb-2 border-b-2 border-accent">
+                {category}
+              </h2>
+              <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
+                {emojis.map((emoji, idx) => (
+                  <div
+                    key={`${category}-${idx}`}
+                    className="flex items-center justify-center p-4 rounded-lg bg-card hover:bg-accent/10 transition-all duration-200 cursor-pointer hover:shadow-lg hover:scale-105"
+                  >
+                    {/* Directly render the renderer with the unicode emoji */}
+                    <div className="text-5xl inline-block h-[50px] w-[50px] flex items-center justify-center">
+                      <EmojiRenderer text={emoji} size={48} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   )
 }
-
-export default App
