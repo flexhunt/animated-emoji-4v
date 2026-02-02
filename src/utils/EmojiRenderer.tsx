@@ -74,24 +74,19 @@ export const EmojiRenderer: React.FC<EmojiRendererProps> = ({ text, size = 24, c
                             />
                         );
                     }
+                    return <span key={index}>{part}</span>;
                 }
 
-                // 3. New: Is it a generic unicode emoji (that wasn't in the map)?
-                // We use the same regex source but anchored to matching the whole string.
-                const isEmojiMatch = new RegExp(`^${emojiRegexPattern}$`).test(part);
-                if (isEmojiMatch) {
-                    return (
-                        <AnimatedEmoji
-                            key={`fallback-${index}`}
-                            id={part} // Pass the raw unicode
-                            size={size}
-                            className={className}
-                        />
-                    );
-                }
-
-                // Otherwise render text
-                return <span key={index}>{part}</span>;
+                // 3. It's a match but not in map and not a shortcode. 
+                // Since it came from COMBINED_REGEX split, it MUST be an emoji.
+                return (
+                    <AnimatedEmoji
+                        key={`unicode-${index}`}
+                        id={part}
+                        size={size}
+                        className={className}
+                    />
+                );
             })}
         </>
     );

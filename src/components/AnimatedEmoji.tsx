@@ -96,7 +96,9 @@ export const AnimatedEmoji: React.FC<AnimatedEmojiProps> = ({
     // 1. Fallback / Raw Emoji
     if (!emojiMap[id]) {
         const hex = toEmojiHex(id);
-        const appleUrl = `https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.0.0/img/apple/64/${hex}.png`;
+        // Try a more modern version of the datasource
+        const [currentUrl, setCurrentUrl] = useState(`https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.1.1/img/apple/64/${hex}.png`);
+        const [hasRetried, setHasRetried] = useState(false);
 
         return (
             <div
@@ -108,25 +110,34 @@ export const AnimatedEmoji: React.FC<AnimatedEmojiProps> = ({
 
                 {isVisible && (
                     <img
-                        src={appleUrl}
+                        src={currentUrl}
                         alt={id}
                         style={imgStyle}
                         loading="lazy"
                         onLoad={() => setIsLoaded(true)}
                         onError={(e) => {
-                            // Debug logging as requested
-                            console.error(`Fallback failed for id: "${id}"`);
-                            console.error(`Generated URL: ${appleUrl}`);
-                            console.error(`Hex used: ${hex}`);
+                            // If it failed and we haven't retried without fe0f, try that
+                            if (!hasRetried && hex.includes('fe0f')) {
+                                const minimalHex = hex.replace(/-fe0f/g, '');
+                                console.log(`Retrying minimalist hex for ${id}: ${minimalHex}`);
+                                setHasRetried(true);
+                                setCurrentUrl(`https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.1.1/img/apple/64/${minimalHex}.png`);
+                                return;
+                            }
 
-                            // If fallback fails, just show text, hide image container specific tweaks
+                            // Debug logging as requested
+                            console.error(`Final fallback failed for id: "${id}" at ${currentUrl}`);
+
+                            // Total failure: show native character
                             e.currentTarget.style.display = 'none';
                             setIsLoaded(true); // Stop skeleton
                             const parent = e.currentTarget.parentElement;
                             if (parent) {
                                 parent.innerText = id;
-                                parent.style.lineHeight = 'normal';
+                                parent.style.lineHeight = '1';
                                 parent.style.fontSize = typeof size === 'number' ? `${size}px` : size;
+                                parent.style.display = 'inline-block';
+                                parent.style.verticalAlign = 'middle';
                             }
                         }}
                     />

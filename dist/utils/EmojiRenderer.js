@@ -42,15 +42,11 @@ export const EmojiRenderer = ({ text, size = 24, className }) => {
                 if (emojiMap[shortcode]) {
                     return (_jsx(AnimatedEmoji, { id: shortcode, size: size, className: className }, `${shortcode}-${index}`));
                 }
+                return _jsx("span", { children: part }, index);
             }
-            // 3. New: Is it a generic unicode emoji (that wasn't in the map)?
-            // We use the same regex source but anchored to matching the whole string.
-            const isEmojiMatch = new RegExp(`^${emojiRegexPattern}$`).test(part);
-            if (isEmojiMatch) {
-                return (_jsx(AnimatedEmoji, { id: part, size: size, className: className }, `fallback-${index}`));
-            }
-            // Otherwise render text
-            return _jsx("span", { children: part }, index);
+            // 3. It's a match but not in map and not a shortcode. 
+            // Since it came from COMBINED_REGEX split, it MUST be an emoji.
+            return (_jsx(AnimatedEmoji, { id: part, size: size, className: className }, `unicode-${index}`));
         }) }));
 };
 // Also export a functional utility if someone wants raw replacement (though React nodes are better)
