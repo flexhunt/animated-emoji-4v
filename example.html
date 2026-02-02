@@ -1,44 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animated Emoji HTML Example</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
-        .container { border: 1px solid #ccc; padding: 20px; border-radius: 8px; text-align: center; }
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
     </style>
 </head>
+
 <body>
     <h1>Standard HTML Example 🚀</h1>
-    
+
     <div id="app"></div>
+
+    <!-- Error Logging Display -->
+    <div id="error-log"
+        style="color: red; background: #ffe6e6; padding: 10px; border: 1px solid red; display: none; margin-top: 20px; text-align: left; white-space: pre-wrap;">
+    </div>
+
+    <script>
+        // Global Error Handler
+        window.onerror = function (msg, url, line, col, error) {
+            const log = document.getElementById('error-log');
+            log.style.display = 'block';
+            log.innerHTML += `❌ Error: ${msg}\n   at ${url}:${line}:${col}\n`;
+            return false;
+        };
+    </script>
 
     <!-- 1. Load React & ReactDOM -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 
-    <!-- 2. Load our Library (pointing to local dist for testing, or use unpkg in production) -->
+    <!-- 2. Load our Library (pointing to local dist for testing) -->
     <script src="./dist/animated-emoji.umd.js"></script>
 
     <!-- 3. Render Component -->
     <script>
-        console.log('Library loaded:', window.AnimatedEmoji);
+        try {
+            console.log('Checking Global:', window.AnimatedEmoji);
 
-        const { AnimatedEmoji } = window.AnimatedEmoji;
-        const root = ReactDOM.createRoot(document.getElementById('app'));
+            if (!window.AnimatedEmoji) {
+                throw new Error("window.AnimatedEmoji is undefined! The library failed to load.");
+            }
 
-        root.render(
-            React.createElement('div', { className: 'container' },
-                React.createElement('h2', null, 'It works!'),
-                React.createElement('p', null, 'Here represents a native React component running in plain HTML:'),
-                
-                // Render the emoji: <AnimatedEmoji id="fire" size={100} />
-                React.createElement(AnimatedEmoji, { id: 'fire', size: 100 }),
-                React.createElement(AnimatedEmoji, { id: 'party_popper', size: 100 }),
-                React.createElement(AnimatedEmoji, { id: 'rocket', size: 100 })
-            )
-        );
+            const { AnimatedEmoji } = window.AnimatedEmoji;
+
+            if (!AnimatedEmoji) {
+                throw new Error("AnimatedEmoji export not found in library! Keys: " + Object.keys(window.AnimatedEmoji).join(', '));
+            }
+
+            const root = ReactDOM.createRoot(document.getElementById('app'));
+
+            root.render(
+                React.createElement('div', { className: 'container' },
+                    React.createElement('h2', null, 'It works! 🎉'),
+                    React.createElement('p', null, 'Interactive Demo:'),
+
+                    React.createElement('div', { style: { display: 'flex', gap: '20px', justifyContent: 'center' } },
+                        React.createElement(AnimatedEmoji, { id: 'fire', size: 80 }),
+                        React.createElement(AnimatedEmoji, { id: 'joy', size: 80 }),
+                        React.createElement(AnimatedEmoji, { id: 'rocket', size: 80 })
+                    )
+                )
+            );
+        } catch (e) {
+            console.error(e);
+            document.getElementById('error-log').style.display = 'block';
+            document.getElementById('error-log').innerHTML += `❌ Setup Error: ${e.message}\n`;
+        }
     </script>
 </body>
+
 </html>
