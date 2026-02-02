@@ -18,6 +18,7 @@ export const AnimatedEmoji: React.FC<AnimatedEmojiProps> = ({
     size = 50,
     className
 }) => {
+    const [isLoaded, setIsLoaded] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -43,6 +44,30 @@ export const AnimatedEmoji: React.FC<AnimatedEmojiProps> = ({
     }, []);
 
     // --------------------------------------------------------
+    // STYLES
+    // --------------------------------------------------------
+    const skeletonStyle: React.CSSProperties = {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: '#E0E0E0',
+        borderRadius: '5px',
+        opacity: isVisible && !isLoaded ? 1 : 0,
+        transition: 'opacity 0.3s ease-out',
+        pointerEvents: 'none',
+    };
+
+    const imgStyle: React.CSSProperties = {
+        width: '100%',
+        height: '100%',
+        objectFit: 'contain',
+        opacity: isLoaded ? 1 : 0,
+        transition: 'opacity 0.3s ease-in',
+    };
+
+    // --------------------------------------------------------
     // RENDER LOGIC
     // --------------------------------------------------------
 
@@ -55,19 +80,21 @@ export const AnimatedEmoji: React.FC<AnimatedEmojiProps> = ({
             <div
                 ref={containerRef}
                 className={className}
-                style={{ width: size, height: size, display: 'inline-block', verticalAlign: 'middle', lineHeight: 0 }}
+                style={{ width: size, height: size, display: 'inline-block', verticalAlign: 'middle', lineHeight: 0, position: 'relative' }}
             >
-                {isVisible ? (
+                {/* Skeleton Overlay */}
+                <div style={skeletonStyle} />
+
+                {isVisible && (
                     <img
                         src={url}
                         alt={id}
                         width="100%"
                         height="100%"
-                        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                        style={imgStyle}
                         loading="lazy"
+                        onLoad={() => setIsLoaded(true)}
                     />
-                ) : (
-                    <div style={{ width: '100%', height: '100%' }} />
                 )}
             </div>
         );
@@ -86,23 +113,28 @@ export const AnimatedEmoji: React.FC<AnimatedEmojiProps> = ({
             <div
                 ref={containerRef}
                 className={className}
-                style={{ width: size, height: size, display: 'inline-block', verticalAlign: 'middle', lineHeight: 0 }}
+                style={{ width: size, height: size, display: 'inline-block', verticalAlign: 'middle', lineHeight: 0, position: 'relative' }}
             >
-                {isVisible ? (
+                {/* Skeleton Overlay */}
+                <div style={skeletonStyle} />
+
+                {isVisible && (
                     <img
                         src={fallbackUrl}
                         alt={id}
                         width="100%"
                         height="100%"
-                        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                        style={imgStyle}
                         loading="lazy"
+                        onLoad={() => setIsLoaded(true)}
                         onError={(e) => {
                             // If even fallback fails, hide image and show native char
                             e.currentTarget.style.display = 'none';
+                            setIsLoaded(true); // Hide skeleton so we see text
                             e.currentTarget.parentElement!.innerText = id;
                         }}
                     />
-                ) : <div style={{ width: '100%', height: '100%' }} />}
+                )}
             </div>
         );
     }
