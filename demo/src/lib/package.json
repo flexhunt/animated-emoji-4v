@@ -1,0 +1,19 @@
+{
+    "name": "telegram-animated-emojis-react",
+    "version": "1.0.0",
+    "description": "A lightweight React library to render Telegram animated emojis using Lottie.",
+    "main": "src/index.ts",
+    "scripts": {
+        "generate-map": "node scripts/generate-map.js"
+    },
+    "peerDependencies": {
+        "react": ">=16.8.0",
+        "lottie-react": "^2.0.0"
+    },
+    "devDependencies": {
+        "@types/react": "^18.0.0",
+        "typescript": "^4.0.0"
+    },
+    "author": "",
+    "license": "MIT"
+}

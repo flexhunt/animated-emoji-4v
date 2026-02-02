@@ -1,0 +1,25 @@
+{
+    "name": "telegram-animated-emojis-react",
+    "version": "1.0.1",
+    "description": "A lightweight React library to render Telegram animated emojis using high-performance WebP assets.",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist",
+        "README.md"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "prepare": "npm run build",
+        "generate-map": "node scripts/generate-map.js"
+    },
+    "peerDependencies": {
+        "react": ">=16.8.0"
+    },
+    "devDependencies": {
+        "@types/react": "^18.0.0",
+        "typescript": "^4.9.0"
+    },
+    "author": "",
+    "license": "MIT"
+}
