@@ -22,20 +22,15 @@ Since this is a custom library, the easiest way to use it is to **copy the sourc
 You can install this library directly from your GitHub repository:
 
 ```bash
-npm install github:YOUR_USERNAME/YOUR_REPO_NAME
+npm install github:flexhunt/animated-emoji-4v
 ```
-*(Replace `YOUR_USERNAME` and `YOUR_REPO_NAME` with your actual GitHub details)*
 
-or if you haven't pushed it yet, you can install from the local folder for testing:
-```bash
-npm install ./path/to/lib
-```
 
 ### 2. Using the Component
 Use `AnimatedEmoji` to render a specific emoji by its shortcode.
 
 ```tsx
-import { AnimatedEmoji } from './lib/src';
+import { AnimatedEmoji } from 'telegram-animated-emojis-react';
 
 const MyComponent = () => (
   <div>
@@ -48,7 +43,7 @@ const MyComponent = () => (
 Use `EmojiRenderer` to automatically find and replace emojis in a text string. It supports both **Unicode** and **Shortcodes**.
 
 ```tsx
-import { EmojiRenderer } from './lib/src';
+import { EmojiRenderer } from 'telegram-animated-emojis-react';
 
 const ChatMessage = () => (
   <p className="message">
