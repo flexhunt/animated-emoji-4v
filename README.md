@@ -1,55 +1,70 @@
 # ✨ Telegram Animated Emojis for React
 
-A high-performance, lightweight React library that brings Telegram's famous animated emojis to your web app. 
+Hey there! 👋 This library helps you easily add those awesome **Telegram Animated Emojis** to your React apps.
 
-Unlike other libraries that use heavy JSON Lottie files, this library uses **optimized Animated WebP** format, making it incredibly fast and efficient.
+It uses highly optimized WebP files (no heavy Lottie players needed!) so your app stays blazing fast. Plus, we've added some premium touches to make sure it looks great in every state.
 
-## 🌟 Features
+## 👀 Preview
 
-*   **🚀 Ultra Lightweight:** Uses `<img>` tags with WebP assets (fetched from CDN). No heavy Lottie player required.
-*   **🦄 Unicode Support:** Automatically converts standard emojis (😭, 😂, 🔥) into animated ones.
-*   **⌨️ Shortcode Support:** Supports Slack/Discord style shortcodes (e.g., `:rocket:`, `:tada:`).
-*   **⚡ Lazy Loading:** Built-in Intersection Observer ensures emojis only load when visible.
-*   **🎨 Customizable:** Easily adjust size and styling via props.
+Here are some actual examples straight from the library:
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Smileys/Face With Tears Of Joy.webp" alt="Joy" width="48" height="48" />
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Smileys/Smiling Face With Hearts.webp" alt="Love" width="48" height="48" />
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Smileys/Face Blowing A Kiss.webp" alt="Kiss" width="48" height="48" />
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Smileys/Face Vomiting.webp" alt="Vomit" width="48" height="48" />
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Smileys/Zany Face.webp" alt="Zany" width="48" height="48" />
+</p>
+
+## 🌟 Why use this?
+
+*   **🚀 Super Light:** Uses simple `<img>` tags. No bloated JS bundles.
+*   **🍎 Premium Fallback:** If an animation is missing or fails to load, we automatically show the **Apple Emoji** version (via emoji-mart). No more ugly native text fallbacks!
+*   **✨ Beautiful Loading:** While the animation loads, you get a **shimmering metallic skeleton** of the emoji shape. Zero layout shift, zero ugly gray blocks.
+*   **🦄 Smart Rendering:** Automatically turns normal emojis (like 😭, 😂, 🔥) in your text into animated ones.
+
 
 ---
 
-## 🛠️ How to Use
-
-Since this is a custom library, the easiest way to use it is to **copy the source code** into your project.
-
 ### 1. Installation
-You can install this library directly from your GitHub repository:
+
+Right now, you can install it directly from GitHub:
 
 ```bash
 npm install github:flexhunt/animated-emoji-4v
 ```
 
+### 2. Basic Usage
 
-### 2. Using the Component
-Use `AnimatedEmoji` to render a specific emoji by its shortcode.
+Using a single emoji is super simple:
 
 ```tsx
 import { AnimatedEmoji } from 'animated-emoji-4v';
 
-const MyComponent = () => (
+const App = () => (
   <div>
-    <h1>Hello World! <AnimatedEmoji id="wave" size={50} /></h1>
+    <h1>
+      Hello! <AnimatedEmoji id="wave" size={40} />
+    </h1>
   </div>
 );
 ```
 
-### 3. Rendering Text with Emojis
-Use `EmojiRenderer` to automatically find and replace emojis in a text string. It supports both **Unicode** and **Shortcodes**.
+### 3. Magic Text Replacer ✨
+
+Want to turn all emojis in a sentence into animated ones? Use the `EmojiRenderer`:
 
 ```tsx
 import { EmojiRenderer } from 'animated-emoji-4v';
 
-const ChatMessage = () => (
-  <p className="message">
-    {/* This will animate the rocket and the crying face! */}
-    <EmojiRenderer text="Launching in 3... 2... 1... :rocket: 😭" />
-  </p>
+const ChatBubble = () => (
+  <div className="chat">
+    <EmojiRenderer text="Omg this is fiery! 🔥🚀 :scream:" />
+  </div>
 );
 ```
 
