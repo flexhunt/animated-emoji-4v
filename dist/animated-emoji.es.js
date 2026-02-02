@@ -1,5 +1,5 @@
-import Gi, { useState as je, useRef as aa, useEffect as pi } from "react";
-var Oe = { exports: {} }, se = {};
+import bi, { useState as Q, useRef as pi, useEffect as ce } from "react";
+var Te = { exports: {} }, J = {};
 /**
  * @license React
  * react-jsx-runtime.production.min.js
@@ -9,639 +9,23 @@ var Oe = { exports: {} }, se = {};
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-var wi;
-function sa() {
-  if (wi)
-    return se;
-  wi = 1;
-  var i = Gi, e = Symbol.for("react.element"), n = Symbol.for("react.fragment"), a = Object.prototype.hasOwnProperty, o = i.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner, s = { key: !0, ref: !0, __self: !0, __source: !0 };
-  function t(u, d, c) {
-    var r, g = {}, v = null, b = null;
-    c !== void 0 && (v = "" + c), d.key !== void 0 && (v = "" + d.key), d.ref !== void 0 && (b = d.ref);
-    for (r in d)
-      a.call(d, r) && !s.hasOwnProperty(r) && (g[r] = d[r]);
-    if (u && u.defaultProps)
-      for (r in d = u.defaultProps, d)
-        g[r] === void 0 && (g[r] = d[r]);
-    return { $$typeof: e, type: u, key: v, ref: b, props: g, _owner: o.current };
-  }
-  return se.Fragment = n, se.jsx = t, se.jsxs = t, se;
+var wi = bi, hi = Symbol.for("react.element"), _i = Symbol.for("react.fragment"), yi = Object.prototype.hasOwnProperty, Di = wi.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner, Fi = { key: !0, ref: !0, __self: !0, __source: !0 };
+function He(i, e, n) {
+  var a, f = {}, s = null, o = null;
+  n !== void 0 && (s = "" + n), e.key !== void 0 && (s = "" + e.key), e.ref !== void 0 && (o = e.ref);
+  for (a in e)
+    yi.call(e, a) && !Fi.hasOwnProperty(a) && (f[a] = e[a]);
+  if (i && i.defaultProps)
+    for (a in e = i.defaultProps, e)
+      f[a] === void 0 && (f[a] = e[a]);
+  return { $$typeof: hi, type: i, key: s, ref: o, props: f, _owner: Di.current };
 }
-var fe = {};
-/**
- * @license React
- * react-jsx-runtime.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-var hi;
-function fa() {
-  return hi || (hi = 1, process.env.NODE_ENV !== "production" && function() {
-    var i = Gi, e = Symbol.for("react.element"), n = Symbol.for("react.portal"), a = Symbol.for("react.fragment"), o = Symbol.for("react.strict_mode"), s = Symbol.for("react.profiler"), t = Symbol.for("react.provider"), u = Symbol.for("react.context"), d = Symbol.for("react.forward_ref"), c = Symbol.for("react.suspense"), r = Symbol.for("react.suspense_list"), g = Symbol.for("react.memo"), v = Symbol.for("react.lazy"), b = Symbol.for("react.offscreen"), p = Symbol.iterator, _ = "@@iterator";
-    function y(f) {
-      if (f === null || typeof f != "object")
-        return null;
-      var m = p && f[p] || f[_];
-      return typeof m == "function" ? m : null;
-    }
-    var C = i.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-    function E(f) {
-      {
-        for (var m = arguments.length, k = new Array(m > 1 ? m - 1 : 0), h = 1; h < m; h++)
-          k[h - 1] = arguments[h];
-        K("error", f, k);
-      }
-    }
-    function K(f, m, k) {
-      {
-        var h = C.ReactDebugCurrentFrame, B = h.getStackAddendum();
-        B !== "" && (m += "%s", k = k.concat([B]));
-        var x = k.map(function(S) {
-          return String(S);
-        });
-        x.unshift("Warning: " + m), Function.prototype.apply.call(console[f], console, x);
-      }
-    }
-    var z = !1, J = !1, Cn = !1, Sn = !1, Bn = !1, Ke;
-    Ke = Symbol.for("react.module.reference");
-    function En(f) {
-      return !!(typeof f == "string" || typeof f == "function" || f === a || f === s || Bn || f === o || f === c || f === r || Sn || f === b || z || J || Cn || typeof f == "object" && f !== null && (f.$$typeof === v || f.$$typeof === g || f.$$typeof === t || f.$$typeof === u || f.$$typeof === d || // This needs to include all possible module reference object
-      // types supported by any Flight configuration anywhere since
-      // we don't know which Flight build this will end up being used
-      // with.
-      f.$$typeof === Ke || f.getModuleId !== void 0));
-    }
-    function xn(f, m, k) {
-      var h = f.displayName;
-      if (h)
-        return h;
-      var B = m.displayName || m.name || "";
-      return B !== "" ? k + "(" + B + ")" : k;
-    }
-    function Je(f) {
-      return f.displayName || "Context";
-    }
-    function O(f) {
-      if (f == null)
-        return null;
-      if (typeof f.tag == "number" && E("Received an unexpected object in getComponentNameFromType(). This is likely a bug in React. Please file an issue."), typeof f == "function")
-        return f.displayName || f.name || null;
-      if (typeof f == "string")
-        return f;
-      switch (f) {
-        case a:
-          return "Fragment";
-        case n:
-          return "Portal";
-        case s:
-          return "Profiler";
-        case o:
-          return "StrictMode";
-        case c:
-          return "Suspense";
-        case r:
-          return "SuspenseList";
-      }
-      if (typeof f == "object")
-        switch (f.$$typeof) {
-          case u:
-            var m = f;
-            return Je(m) + ".Consumer";
-          case t:
-            var k = f;
-            return Je(k._context) + ".Provider";
-          case d:
-            return xn(f, f.render, "ForwardRef");
-          case g:
-            var h = f.displayName || null;
-            return h !== null ? h : O(f.type) || "Memo";
-          case v: {
-            var B = f, x = B._payload, S = B._init;
-            try {
-              return O(S(x));
-            } catch {
-              return null;
-            }
-          }
-        }
-      return null;
-    }
-    var V = Object.assign, ie = 0, Ye, Ze, Qe, Xe, ei, ii, ni;
-    function ai() {
-    }
-    ai.__reactDisabledLog = !0;
-    function An() {
-      {
-        if (ie === 0) {
-          Ye = console.log, Ze = console.info, Qe = console.warn, Xe = console.error, ei = console.group, ii = console.groupCollapsed, ni = console.groupEnd;
-          var f = {
-            configurable: !0,
-            enumerable: !0,
-            value: ai,
-            writable: !0
-          };
-          Object.defineProperties(console, {
-            info: f,
-            log: f,
-            warn: f,
-            error: f,
-            group: f,
-            groupCollapsed: f,
-            groupEnd: f
-          });
-        }
-        ie++;
-      }
-    }
-    function Pn() {
-      {
-        if (ie--, ie === 0) {
-          var f = {
-            configurable: !0,
-            enumerable: !0,
-            writable: !0
-          };
-          Object.defineProperties(console, {
-            log: V({}, f, {
-              value: Ye
-            }),
-            info: V({}, f, {
-              value: Ze
-            }),
-            warn: V({}, f, {
-              value: Qe
-            }),
-            error: V({}, f, {
-              value: Xe
-            }),
-            group: V({}, f, {
-              value: ei
-            }),
-            groupCollapsed: V({}, f, {
-              value: ii
-            }),
-            groupEnd: V({}, f, {
-              value: ni
-            })
-          });
-        }
-        ie < 0 && E("disabledDepth fell below zero. This is a bug in React. Please file an issue.");
-      }
-    }
-    var De = C.ReactCurrentDispatcher, Fe;
-    function te(f, m, k) {
-      {
-        if (Fe === void 0)
-          try {
-            throw Error();
-          } catch (B) {
-            var h = B.stack.trim().match(/\n( *(at )?)/);
-            Fe = h && h[1] || "";
-          }
-        return `
-` + Fe + f;
-      }
-    }
-    var Ce = !1, de;
-    {
-      var jn = typeof WeakMap == "function" ? WeakMap : Map;
-      de = new jn();
-    }
-    function si(f, m) {
-      if (!f || Ce)
-        return "";
-      {
-        var k = de.get(f);
-        if (k !== void 0)
-          return k;
-      }
-      var h;
-      Ce = !0;
-      var B = Error.prepareStackTrace;
-      Error.prepareStackTrace = void 0;
-      var x;
-      x = De.current, De.current = null, An();
-      try {
-        if (m) {
-          var S = function() {
-            throw Error();
-          };
-          if (Object.defineProperty(S.prototype, "props", {
-            set: function() {
-              throw Error();
-            }
-          }), typeof Reflect == "object" && Reflect.construct) {
-            try {
-              Reflect.construct(S, []);
-            } catch ($) {
-              h = $;
-            }
-            Reflect.construct(f, [], S);
-          } else {
-            try {
-              S.call();
-            } catch ($) {
-              h = $;
-            }
-            f.call(S.prototype);
-          }
-        } else {
-          try {
-            throw Error();
-          } catch ($) {
-            h = $;
-          }
-          f();
-        }
-      } catch ($) {
-        if ($ && h && typeof $.stack == "string") {
-          for (var F = $.stack.split(`
-`), T = h.stack.split(`
-`), A = F.length - 1, P = T.length - 1; A >= 1 && P >= 0 && F[A] !== T[P]; )
-            P--;
-          for (; A >= 1 && P >= 0; A--, P--)
-            if (F[A] !== T[P]) {
-              if (A !== 1 || P !== 1)
-                do
-                  if (A--, P--, P < 0 || F[A] !== T[P]) {
-                    var W = `
-` + F[A].replace(" at new ", " at ");
-                    return f.displayName && W.includes("<anonymous>") && (W = W.replace("<anonymous>", f.displayName)), typeof f == "function" && de.set(f, W), W;
-                  }
-                while (A >= 1 && P >= 0);
-              break;
-            }
-        }
-      } finally {
-        Ce = !1, De.current = x, Pn(), Error.prepareStackTrace = B;
-      }
-      var Z = f ? f.displayName || f.name : "", U = Z ? te(Z) : "";
-      return typeof f == "function" && de.set(f, U), U;
-    }
-    function Mn(f, m, k) {
-      return si(f, !1);
-    }
-    function Tn(f) {
-      var m = f.prototype;
-      return !!(m && m.isReactComponent);
-    }
-    function ue(f, m, k) {
-      if (f == null)
-        return "";
-      if (typeof f == "function")
-        return si(f, Tn(f));
-      if (typeof f == "string")
-        return te(f);
-      switch (f) {
-        case c:
-          return te("Suspense");
-        case r:
-          return te("SuspenseList");
-      }
-      if (typeof f == "object")
-        switch (f.$$typeof) {
-          case d:
-            return Mn(f.render);
-          case g:
-            return ue(f.type, m, k);
-          case v: {
-            var h = f, B = h._payload, x = h._init;
-            try {
-              return ue(x(B), m, k);
-            } catch {
-            }
-          }
-        }
-      return "";
-    }
-    var ne = Object.prototype.hasOwnProperty, fi = {}, oi = C.ReactDebugCurrentFrame;
-    function le(f) {
-      if (f) {
-        var m = f._owner, k = ue(f.type, f._source, m ? m.type : null);
-        oi.setExtraStackFrame(k);
-      } else
-        oi.setExtraStackFrame(null);
-    }
-    function $n(f, m, k, h, B) {
-      {
-        var x = Function.call.bind(ne);
-        for (var S in f)
-          if (x(f, S)) {
-            var F = void 0;
-            try {
-              if (typeof f[S] != "function") {
-                var T = Error((h || "React class") + ": " + k + " type `" + S + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof f[S] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
-                throw T.name = "Invariant Violation", T;
-              }
-              F = f[S](m, S, h, k, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
-            } catch (A) {
-              F = A;
-            }
-            F && !(F instanceof Error) && (le(B), E("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", h || "React class", k, S, typeof F), le(null)), F instanceof Error && !(F.message in fi) && (fi[F.message] = !0, le(B), E("Failed %s type: %s", k, F.message), le(null));
-          }
-      }
-    }
-    var zn = Array.isArray;
-    function Se(f) {
-      return zn(f);
-    }
-    function Wn(f) {
-      {
-        var m = typeof Symbol == "function" && Symbol.toStringTag, k = m && f[Symbol.toStringTag] || f.constructor.name || "Object";
-        return k;
-      }
-    }
-    function Rn(f) {
-      try {
-        return ri(f), !1;
-      } catch {
-        return !0;
-      }
-    }
-    function ri(f) {
-      return "" + f;
-    }
-    function ti(f) {
-      if (Rn(f))
-        return E("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", Wn(f)), ri(f);
-    }
-    var ae = C.ReactCurrentOwner, On = {
-      key: !0,
-      ref: !0,
-      __self: !0,
-      __source: !0
-    }, di, ui, Be;
-    Be = {};
-    function Hn(f) {
-      if (ne.call(f, "ref")) {
-        var m = Object.getOwnPropertyDescriptor(f, "ref").get;
-        if (m && m.isReactWarning)
-          return !1;
-      }
-      return f.ref !== void 0;
-    }
-    function qn(f) {
-      if (ne.call(f, "key")) {
-        var m = Object.getOwnPropertyDescriptor(f, "key").get;
-        if (m && m.isReactWarning)
-          return !1;
-      }
-      return f.key !== void 0;
-    }
-    function Nn(f, m) {
-      if (typeof f.ref == "string" && ae.current && m && ae.current.stateNode !== m) {
-        var k = O(ae.current.type);
-        Be[k] || (E('Component "%s" contains the string ref "%s". Support for string refs will be removed in a future major release. This case cannot be automatically converted to an arrow function. We ask you to manually fix this case by using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', O(ae.current.type), f.ref), Be[k] = !0);
-      }
-    }
-    function Ln(f, m) {
-      {
-        var k = function() {
-          di || (di = !0, E("%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", m));
-        };
-        k.isReactWarning = !0, Object.defineProperty(f, "key", {
-          get: k,
-          configurable: !0
-        });
-      }
-    }
-    function In(f, m) {
-      {
-        var k = function() {
-          ui || (ui = !0, E("%s: `ref` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", m));
-        };
-        k.isReactWarning = !0, Object.defineProperty(f, "ref", {
-          get: k,
-          configurable: !0
-        });
-      }
-    }
-    var Gn = function(f, m, k, h, B, x, S) {
-      var F = {
-        // This tag allows us to uniquely identify this as a React Element
-        $$typeof: e,
-        // Built-in properties that belong on the element
-        type: f,
-        key: m,
-        ref: k,
-        props: S,
-        // Record the component responsible for creating this element.
-        _owner: x
-      };
-      return F._store = {}, Object.defineProperty(F._store, "validated", {
-        configurable: !1,
-        enumerable: !1,
-        writable: !0,
-        value: !1
-      }), Object.defineProperty(F, "_self", {
-        configurable: !1,
-        enumerable: !1,
-        writable: !1,
-        value: h
-      }), Object.defineProperty(F, "_source", {
-        configurable: !1,
-        enumerable: !1,
-        writable: !1,
-        value: B
-      }), Object.freeze && (Object.freeze(F.props), Object.freeze(F)), F;
-    };
-    function Vn(f, m, k, h, B) {
-      {
-        var x, S = {}, F = null, T = null;
-        k !== void 0 && (ti(k), F = "" + k), qn(m) && (ti(m.key), F = "" + m.key), Hn(m) && (T = m.ref, Nn(m, B));
-        for (x in m)
-          ne.call(m, x) && !On.hasOwnProperty(x) && (S[x] = m[x]);
-        if (f && f.defaultProps) {
-          var A = f.defaultProps;
-          for (x in A)
-            S[x] === void 0 && (S[x] = A[x]);
-        }
-        if (F || T) {
-          var P = typeof f == "function" ? f.displayName || f.name || "Unknown" : f;
-          F && Ln(S, P), T && In(S, P);
-        }
-        return Gn(f, F, T, B, h, ae.current, S);
-      }
-    }
-    var Ee = C.ReactCurrentOwner, li = C.ReactDebugCurrentFrame;
-    function Y(f) {
-      if (f) {
-        var m = f._owner, k = ue(f.type, f._source, m ? m.type : null);
-        li.setExtraStackFrame(k);
-      } else
-        li.setExtraStackFrame(null);
-    }
-    var xe;
-    xe = !1;
-    function Ae(f) {
-      return typeof f == "object" && f !== null && f.$$typeof === e;
-    }
-    function ci() {
-      {
-        if (Ee.current) {
-          var f = O(Ee.current.type);
-          if (f)
-            return `
-
-Check the render method of \`` + f + "`.";
-        }
-        return "";
-      }
-    }
-    function Un(f) {
-      {
-        if (f !== void 0) {
-          var m = f.fileName.replace(/^.*[\\\/]/, ""), k = f.lineNumber;
-          return `
-
-Check your code at ` + m + ":" + k + ".";
-        }
-        return "";
-      }
-    }
-    var mi = {};
-    function Kn(f) {
-      {
-        var m = ci();
-        if (!m) {
-          var k = typeof f == "string" ? f : f.displayName || f.name;
-          k && (m = `
-
-Check the top-level render call using <` + k + ">.");
-        }
-        return m;
-      }
-    }
-    function vi(f, m) {
-      {
-        if (!f._store || f._store.validated || f.key != null)
-          return;
-        f._store.validated = !0;
-        var k = Kn(m);
-        if (mi[k])
-          return;
-        mi[k] = !0;
-        var h = "";
-        f && f._owner && f._owner !== Ee.current && (h = " It was passed a child from " + O(f._owner.type) + "."), Y(f), E('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', k, h), Y(null);
-      }
-    }
-    function ki(f, m) {
-      {
-        if (typeof f != "object")
-          return;
-        if (Se(f))
-          for (var k = 0; k < f.length; k++) {
-            var h = f[k];
-            Ae(h) && vi(h, m);
-          }
-        else if (Ae(f))
-          f._store && (f._store.validated = !0);
-        else if (f) {
-          var B = y(f);
-          if (typeof B == "function" && B !== f.entries)
-            for (var x = B.call(f), S; !(S = x.next()).done; )
-              Ae(S.value) && vi(S.value, m);
-        }
-      }
-    }
-    function Jn(f) {
-      {
-        var m = f.type;
-        if (m == null || typeof m == "string")
-          return;
-        var k;
-        if (typeof m == "function")
-          k = m.propTypes;
-        else if (typeof m == "object" && (m.$$typeof === d || // Note: Memo only checks outer props here.
-        // Inner props are checked in the reconciler.
-        m.$$typeof === g))
-          k = m.propTypes;
-        else
-          return;
-        if (k) {
-          var h = O(m);
-          $n(k, f.props, "prop", h, f);
-        } else if (m.PropTypes !== void 0 && !xe) {
-          xe = !0;
-          var B = O(m);
-          E("Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?", B || "Unknown");
-        }
-        typeof m.getDefaultProps == "function" && !m.getDefaultProps.isReactClassApproved && E("getDefaultProps is only used on classic React.createClass definitions. Use a static property named `defaultProps` instead.");
-      }
-    }
-    function Yn(f) {
-      {
-        for (var m = Object.keys(f.props), k = 0; k < m.length; k++) {
-          var h = m[k];
-          if (h !== "children" && h !== "key") {
-            Y(f), E("Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.", h), Y(null);
-            break;
-          }
-        }
-        f.ref !== null && (Y(f), E("Invalid attribute `ref` supplied to `React.Fragment`."), Y(null));
-      }
-    }
-    var gi = {};
-    function bi(f, m, k, h, B, x) {
-      {
-        var S = En(f);
-        if (!S) {
-          var F = "";
-          (f === void 0 || typeof f == "object" && f !== null && Object.keys(f).length === 0) && (F += " You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.");
-          var T = Un(B);
-          T ? F += T : F += ci();
-          var A;
-          f === null ? A = "null" : Se(f) ? A = "array" : f !== void 0 && f.$$typeof === e ? (A = "<" + (O(f.type) || "Unknown") + " />", F = " Did you accidentally export a JSX literal instead of a component?") : A = typeof f, E("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", A, F);
-        }
-        var P = Vn(f, m, k, B, x);
-        if (P == null)
-          return P;
-        if (S) {
-          var W = m.children;
-          if (W !== void 0)
-            if (h)
-              if (Se(W)) {
-                for (var Z = 0; Z < W.length; Z++)
-                  ki(W[Z], f);
-                Object.freeze && Object.freeze(W);
-              } else
-                E("React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead.");
-            else
-              ki(W, f);
-        }
-        if (ne.call(m, "key")) {
-          var U = O(f), $ = Object.keys(m).filter(function(na) {
-            return na !== "key";
-          }), Pe = $.length > 0 ? "{key: someKey, " + $.join(": ..., ") + ": ...}" : "{key: someKey}";
-          if (!gi[U + Pe]) {
-            var ia = $.length > 0 ? "{" + $.join(": ..., ") + ": ...}" : "{}";
-            E(`A props object containing a "key" prop is being spread into JSX:
-  let props = %s;
-  <%s {...props} />
-React keys must be passed directly to JSX without using spread:
-  let props = %s;
-  <%s key={someKey} {...props} />`, Pe, U, ia, U), gi[U + Pe] = !0;
-          }
-        }
-        return f === a ? Yn(P) : Jn(P), P;
-      }
-    }
-    function Zn(f, m, k) {
-      return bi(f, m, k, !0);
-    }
-    function Qn(f, m, k) {
-      return bi(f, m, k, !1);
-    }
-    var Xn = Qn, ea = Zn;
-    fe.Fragment = a, fe.jsx = Xn, fe.jsxs = ea;
-  }()), fe;
-}
-process.env.NODE_ENV === "production" ? Oe.exports = sa() : Oe.exports = fa();
-var Ve = Oe.exports;
-const oa = Ve.Fragment, N = Ve.jsx, _i = Ve.jsxs, Vi = [
+J.Fragment = _i;
+J.jsx = He;
+J.jsxs = He;
+Te.exports = J;
+var ue = Te.exports;
+const Ci = ue.Fragment, E = ue.jsx, me = ue.jsxs, qe = [
   {
     id: "people",
     emojis: [
@@ -2552,7 +1936,7 @@ const oa = Ve.Fragment, N = Ve.jsx, _i = Ve.jsxs, Vi = [
       "waving_white_flag"
     ]
   }
-], Ui = {
+], Ne = {
   100: {
     id: "100",
     name: "Hundred Points",
@@ -40703,7 +40087,7 @@ const oa = Ve.Fragment, N = Ve.jsx, _i = Ve.jsxs, Vi = [
     ],
     version: 5
   }
-}, Ki = {
+}, Oe = {
   satisfied: "laughing",
   grinning_face_with_star_eyes: "star-struck",
   grinning_face_with_one_large_and_one_small_eye: "zany_face",
@@ -40765,26 +40149,26 @@ const oa = Ve.Fragment, N = Ve.jsx, _i = Ve.jsxs, Vi = [
   "flag-kr": "kr",
   "flag-ru": "ru",
   "flag-us": "us"
-}, Ji = {
+}, Re = {
   cols: 61,
   rows: 61
-}, Yi = {
-  categories: Vi,
-  emojis: Ui,
-  aliases: Ki,
-  sheet: Ji
-}, ra = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, Le = {
+  categories: qe,
+  emojis: Ne,
+  aliases: Oe,
+  sheet: Re
+}, Si = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  aliases: Ki,
-  categories: Vi,
-  default: Yi,
-  emojis: Ui,
-  sheet: Ji
+  aliases: Oe,
+  categories: qe,
+  default: Le,
+  emojis: Ne,
+  sheet: Re
 }, Symbol.toStringTag, { value: "Module" }));
-function Zi(i) {
+function Ge(i) {
   return i && i.__esModule ? i.default : i;
 }
-function R(i, e, n) {
+function F(i, e, n) {
   return e in i ? Object.defineProperty(i, e, {
     value: n,
     enumerable: !0,
@@ -40792,26 +40176,26 @@ function R(i, e, n) {
     writable: !0
   }) : i[e] = n, i;
 }
-var ye, w, Qi, oe, Xi, yi, ge = {}, en = [], ta = /acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|itera/i;
-function I(i, e) {
+var Z, k, Ie, z, Ve, ve, L = {}, Ue = [], Bi = /acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|itera/i;
+function A(i, e) {
   for (var n in e)
     i[n] = e[n];
   return i;
 }
-function nn(i) {
+function Ke(i) {
   var e = i.parentNode;
   e && e.removeChild(i);
 }
-function He(i, e, n) {
-  var a, o, s, t = {};
+function se(i, e, n) {
+  var a, f, s, o = {};
   for (s in e)
-    s == "key" ? a = e[s] : s == "ref" ? o = e[s] : t[s] = e[s];
-  if (arguments.length > 2 && (t.children = arguments.length > 3 ? ye.call(arguments, 2) : n), typeof i == "function" && i.defaultProps != null)
+    s == "key" ? a = e[s] : s == "ref" ? f = e[s] : o[s] = e[s];
+  if (arguments.length > 2 && (o.children = arguments.length > 3 ? Z.call(arguments, 2) : n), typeof i == "function" && i.defaultProps != null)
     for (s in i.defaultProps)
-      t[s] === void 0 && (t[s] = i.defaultProps[s]);
-  return ve(i, t, a, o, null);
+      o[s] === void 0 && (o[s] = i.defaultProps[s]);
+  return O(i, o, a, f, null);
 }
-function ve(i, e, n, a, o) {
+function O(i, e, n, a, f) {
   var s = {
     type: i,
     props: e,
@@ -40825,30 +40209,30 @@ function ve(i, e, n, a, o) {
     __c: null,
     __h: null,
     constructor: void 0,
-    __v: o ?? ++Qi
+    __v: f ?? ++Ie
   };
-  return o == null && w.vnode != null && w.vnode(s), s;
+  return f == null && k.vnode != null && k.vnode(s), s;
 }
-function q() {
+function B() {
   return {
     current: null
   };
 }
-function X(i) {
+function j(i) {
   return i.children;
 }
-function H(i, e) {
+function S(i, e) {
   this.props = i, this.context = e;
 }
-function ee(i, e) {
+function $(i, e) {
   if (e == null)
-    return i.__ ? ee(i.__, i.__.__k.indexOf(i) + 1) : null;
+    return i.__ ? $(i.__, i.__.__k.indexOf(i) + 1) : null;
   for (var n; e < i.__k.length; e++)
     if ((n = i.__k[e]) != null && n.__e != null)
       return n.__e;
-  return typeof i.type == "function" ? ee(i) : null;
+  return typeof i.type == "function" ? $(i) : null;
 }
-function an(i) {
+function Je(i) {
   var e, n;
   if ((i = i.__) != null && i.__c != null) {
     for (i.__e = i.__c.base = null, e = 0; e < i.__k.length; e++)
@@ -40856,84 +40240,84 @@ function an(i) {
         i.__e = i.__c.base = n.__e;
         break;
       }
-    return an(i);
+    return Je(i);
   }
 }
-function Di(i) {
-  (!i.__d && (i.__d = !0) && oe.push(i) && !be.__r++ || yi !== w.debounceRendering) && ((yi = w.debounceRendering) || Xi)(be);
+function ke(i) {
+  (!i.__d && (i.__d = !0) && z.push(i) && !G.__r++ || ve !== k.debounceRendering) && ((ve = k.debounceRendering) || Ve)(G);
 }
-function be() {
-  for (var i; be.__r = oe.length; )
-    i = oe.sort(function(e, n) {
+function G() {
+  for (var i; G.__r = z.length; )
+    i = z.sort(function(e, n) {
       return e.__v.__b - n.__v.__b;
-    }), oe = [], i.some(function(e) {
-      var n, a, o, s, t, u;
-      e.__d && (t = (s = (n = e).__v).__e, (u = n.__P) && (a = [], (o = I({}, s)).__v = s.__v + 1, Ue(u, s, o, n.__n, u.ownerSVGElement !== void 0, s.__h != null ? [
-        t
-      ] : null, a, t ?? ee(s), s.__h), rn(a, s), s.__e != t && an(s)));
+    }), z = [], i.some(function(e) {
+      var n, a, f, s, o, d;
+      e.__d && (o = (s = (n = e).__v).__e, (d = n.__P) && (a = [], (f = A({}, s)).__v = s.__v + 1, le(d, s, f, n.__n, d.ownerSVGElement !== void 0, s.__h != null ? [
+        o
+      ] : null, a, o ?? $(s), s.__h), Xe(a, s), s.__e != o && Je(s)));
     });
 }
-function sn(i, e, n, a, o, s, t, u, d, c) {
-  var r, g, v, b, p, _, y, C = a && a.__k || en, E = C.length;
-  for (n.__k = [], r = 0; r < e.length; r++)
-    if ((b = n.__k[r] = (b = e[r]) == null || typeof b == "boolean" ? null : typeof b == "string" || typeof b == "number" || typeof b == "bigint" ? ve(null, b, null, null, b) : Array.isArray(b) ? ve(X, {
-      children: b
-    }, null, null, null) : b.__b > 0 ? ve(b.type, b.props, b.key, null, b.__v) : b) != null) {
-      if (b.__ = n, b.__b = n.__b + 1, (v = C[r]) === null || v && b.key == v.key && b.type === v.type)
-        C[r] = void 0;
+function Ze(i, e, n, a, f, s, o, d, r, l) {
+  var t, v, c, m, g, b, w, h = a && a.__k || Ue, D = h.length;
+  for (n.__k = [], t = 0; t < e.length; t++)
+    if ((m = n.__k[t] = (m = e[t]) == null || typeof m == "boolean" ? null : typeof m == "string" || typeof m == "number" || typeof m == "bigint" ? O(null, m, null, null, m) : Array.isArray(m) ? O(j, {
+      children: m
+    }, null, null, null) : m.__b > 0 ? O(m.type, m.props, m.key, null, m.__v) : m) != null) {
+      if (m.__ = n, m.__b = n.__b + 1, (c = h[t]) === null || c && m.key == c.key && m.type === c.type)
+        h[t] = void 0;
       else
-        for (g = 0; g < E; g++) {
-          if ((v = C[g]) && b.key == v.key && b.type === v.type) {
-            C[g] = void 0;
+        for (v = 0; v < D; v++) {
+          if ((c = h[v]) && m.key == c.key && m.type === c.type) {
+            h[v] = void 0;
             break;
           }
-          v = null;
+          c = null;
         }
-      Ue(i, b, v = v || ge, o, s, t, u, d, c), p = b.__e, (g = b.ref) && v.ref != g && (y || (y = []), v.ref && y.push(v.ref, null, b), y.push(g, b.__c || p, b)), p != null ? (_ == null && (_ = p), typeof b.type == "function" && b.__k === v.__k ? b.__d = d = fn(b, d, i) : d = on(i, b, v, C, p, d), typeof n.type == "function" && (n.__d = d)) : d && v.__e == d && d.parentNode != i && (d = ee(v));
+      le(i, m, c = c || L, f, s, o, d, r, l), g = m.__e, (v = m.ref) && c.ref != v && (w || (w = []), c.ref && w.push(c.ref, null, m), w.push(v, m.__c || g, m)), g != null ? (b == null && (b = g), typeof m.type == "function" && m.__k === c.__k ? m.__d = r = Qe(m, r, i) : r = Ye(i, m, c, h, g, r), typeof n.type == "function" && (n.__d = r)) : r && c.__e == r && r.parentNode != i && (r = $(c));
     }
-  for (n.__e = _, r = E; r--; )
-    C[r] != null && (typeof n.type == "function" && C[r].__e != null && C[r].__e == n.__d && (n.__d = ee(a, r + 1)), dn(C[r], C[r]));
-  if (y)
-    for (r = 0; r < y.length; r++)
-      tn(y[r], y[++r], y[++r]);
+  for (n.__e = b, t = D; t--; )
+    h[t] != null && (typeof n.type == "function" && h[t].__e != null && h[t].__e == n.__d && (n.__d = $(a, t + 1)), ii(h[t], h[t]));
+  if (w)
+    for (t = 0; t < w.length; t++)
+      ei(w[t], w[++t], w[++t]);
 }
-function fn(i, e, n) {
-  for (var a, o = i.__k, s = 0; o && s < o.length; s++)
-    (a = o[s]) && (a.__ = i, e = typeof a.type == "function" ? fn(a, e, n) : on(n, a, a, o, a.__e, e));
+function Qe(i, e, n) {
+  for (var a, f = i.__k, s = 0; f && s < f.length; s++)
+    (a = f[s]) && (a.__ = i, e = typeof a.type == "function" ? Qe(a, e, n) : Ye(n, a, a, f, a.__e, e));
   return e;
 }
-function pe(i, e) {
+function I(i, e) {
   return e = e || [], i == null || typeof i == "boolean" || (Array.isArray(i) ? i.some(function(n) {
-    pe(n, e);
+    I(n, e);
   }) : e.push(i)), e;
 }
-function on(i, e, n, a, o, s) {
-  var t, u, d;
+function Ye(i, e, n, a, f, s) {
+  var o, d, r;
   if (e.__d !== void 0)
-    t = e.__d, e.__d = void 0;
-  else if (n == null || o != s || o.parentNode == null)
+    o = e.__d, e.__d = void 0;
+  else if (n == null || f != s || f.parentNode == null)
     e:
       if (s == null || s.parentNode !== i)
-        i.appendChild(o), t = null;
+        i.appendChild(f), o = null;
       else {
-        for (u = s, d = 0; (u = u.nextSibling) && d < a.length; d += 2)
-          if (u == o)
+        for (d = s, r = 0; (d = d.nextSibling) && r < a.length; r += 2)
+          if (d == f)
             break e;
-        i.insertBefore(o, s), t = s;
+        i.insertBefore(f, s), o = s;
       }
-  return t !== void 0 ? t : o.nextSibling;
+  return o !== void 0 ? o : f.nextSibling;
 }
-function da(i, e, n, a, o) {
+function Ei(i, e, n, a, f) {
   var s;
   for (s in n)
-    s === "children" || s === "key" || s in e || we(i, s, null, n[s], a);
+    s === "children" || s === "key" || s in e || V(i, s, null, n[s], a);
   for (s in e)
-    o && typeof e[s] != "function" || s === "children" || s === "key" || s === "value" || s === "checked" || n[s] === e[s] || we(i, s, e[s], n[s], a);
+    f && typeof e[s] != "function" || s === "children" || s === "key" || s === "value" || s === "checked" || n[s] === e[s] || V(i, s, e[s], n[s], a);
 }
-function Fi(i, e, n) {
-  e[0] === "-" ? i.setProperty(e, n) : i[e] = n == null ? "" : typeof n != "number" || ta.test(e) ? n : n + "px";
+function ge(i, e, n) {
+  e[0] === "-" ? i.setProperty(e, n) : i[e] = n == null ? "" : typeof n != "number" || Bi.test(e) ? n : n + "px";
 }
-function we(i, e, n, a, o) {
+function V(i, e, n, a, f) {
   var s;
   e:
     if (e === "style")
@@ -40942,15 +40326,15 @@ function we(i, e, n, a, o) {
       else {
         if (typeof a == "string" && (i.style.cssText = a = ""), a)
           for (e in a)
-            n && e in n || Fi(i.style, e, "");
+            n && e in n || ge(i.style, e, "");
         if (n)
           for (e in n)
-            a && n[e] === a[e] || Fi(i.style, e, n[e]);
+            a && n[e] === a[e] || ge(i.style, e, n[e]);
       }
     else if (e[0] === "o" && e[1] === "n")
-      s = e !== (e = e.replace(/Capture$/, "")), e = e.toLowerCase() in i ? e.toLowerCase().slice(2) : e.slice(2), i.l || (i.l = {}), i.l[e + s] = n, n ? a || i.addEventListener(e, s ? Si : Ci, s) : i.removeEventListener(e, s ? Si : Ci, s);
+      s = e !== (e = e.replace(/Capture$/, "")), e = e.toLowerCase() in i ? e.toLowerCase().slice(2) : e.slice(2), i.l || (i.l = {}), i.l[e + s] = n, n ? a || i.addEventListener(e, s ? pe : be, s) : i.removeEventListener(e, s ? pe : be, s);
     else if (e !== "dangerouslySetInnerHTML") {
-      if (o)
+      if (f)
         e = e.replace(/xlink[H:h]/, "h").replace(/sName$/, "s");
       else if (e !== "href" && e !== "list" && e !== "form" && e !== "tabIndex" && e !== "download" && e in i)
         try {
@@ -40961,150 +40345,150 @@ function we(i, e, n, a, o) {
       typeof n == "function" || (n != null && (n !== !1 || e[0] === "a" && e[1] === "r") ? i.setAttribute(e, n) : i.removeAttribute(e));
     }
 }
-function Ci(i) {
-  this.l[i.type + !1](w.event ? w.event(i) : i);
+function be(i) {
+  this.l[i.type + !1](k.event ? k.event(i) : i);
 }
-function Si(i) {
-  this.l[i.type + !0](w.event ? w.event(i) : i);
+function pe(i) {
+  this.l[i.type + !0](k.event ? k.event(i) : i);
 }
-function Ue(i, e, n, a, o, s, t, u, d) {
-  var c, r, g, v, b, p, _, y, C, E, K, z = e.type;
+function le(i, e, n, a, f, s, o, d, r) {
+  var l, t, v, c, m, g, b, w, h, D, T, C = e.type;
   if (e.constructor !== void 0)
     return null;
-  n.__h != null && (d = n.__h, u = e.__e = n.__e, e.__h = null, s = [
-    u
-  ]), (c = w.__b) && c(e);
+  n.__h != null && (r = n.__h, d = e.__e = n.__e, e.__h = null, s = [
+    d
+  ]), (l = k.__b) && l(e);
   try {
     e:
-      if (typeof z == "function") {
-        if (y = e.props, C = (c = z.contextType) && a[c.__c], E = c ? C ? C.props.value : c.__ : a, n.__c ? _ = (r = e.__c = n.__c).__ = r.__E : ("prototype" in z && z.prototype.render ? e.__c = r = new z(y, E) : (e.__c = r = new H(y, E), r.constructor = z, r.render = la), C && C.sub(r), r.props = y, r.state || (r.state = {}), r.context = E, r.__n = a, g = r.__d = !0, r.__h = []), r.__s == null && (r.__s = r.state), z.getDerivedStateFromProps != null && (r.__s == r.state && (r.__s = I({}, r.__s)), I(r.__s, z.getDerivedStateFromProps(y, r.__s))), v = r.props, b = r.state, g)
-          z.getDerivedStateFromProps == null && r.componentWillMount != null && r.componentWillMount(), r.componentDidMount != null && r.__h.push(r.componentDidMount);
+      if (typeof C == "function") {
+        if (w = e.props, h = (l = C.contextType) && a[l.__c], D = l ? h ? h.props.value : l.__ : a, n.__c ? b = (t = e.__c = n.__c).__ = t.__E : ("prototype" in C && C.prototype.render ? e.__c = t = new C(w, D) : (e.__c = t = new S(w, D), t.constructor = C, t.render = Ai), h && h.sub(t), t.props = w, t.state || (t.state = {}), t.context = D, t.__n = a, v = t.__d = !0, t.__h = []), t.__s == null && (t.__s = t.state), C.getDerivedStateFromProps != null && (t.__s == t.state && (t.__s = A({}, t.__s)), A(t.__s, C.getDerivedStateFromProps(w, t.__s))), c = t.props, m = t.state, v)
+          C.getDerivedStateFromProps == null && t.componentWillMount != null && t.componentWillMount(), t.componentDidMount != null && t.__h.push(t.componentDidMount);
         else {
-          if (z.getDerivedStateFromProps == null && y !== v && r.componentWillReceiveProps != null && r.componentWillReceiveProps(y, E), !r.__e && r.shouldComponentUpdate != null && r.shouldComponentUpdate(y, r.__s, E) === !1 || e.__v === n.__v) {
-            r.props = y, r.state = r.__s, e.__v !== n.__v && (r.__d = !1), r.__v = e, e.__e = n.__e, e.__k = n.__k, e.__k.forEach(function(J) {
-              J && (J.__ = e);
-            }), r.__h.length && t.push(r);
+          if (C.getDerivedStateFromProps == null && w !== c && t.componentWillReceiveProps != null && t.componentWillReceiveProps(w, D), !t.__e && t.shouldComponentUpdate != null && t.shouldComponentUpdate(w, t.__s, D) === !1 || e.__v === n.__v) {
+            t.props = w, t.state = t.__s, e.__v !== n.__v && (t.__d = !1), t.__v = e, e.__e = n.__e, e.__k = n.__k, e.__k.forEach(function(H) {
+              H && (H.__ = e);
+            }), t.__h.length && o.push(t);
             break e;
           }
-          r.componentWillUpdate != null && r.componentWillUpdate(y, r.__s, E), r.componentDidUpdate != null && r.__h.push(function() {
-            r.componentDidUpdate(v, b, p);
+          t.componentWillUpdate != null && t.componentWillUpdate(w, t.__s, D), t.componentDidUpdate != null && t.__h.push(function() {
+            t.componentDidUpdate(c, m, g);
           });
         }
-        r.context = E, r.props = y, r.state = r.__s, (c = w.__r) && c(e), r.__d = !1, r.__v = e, r.__P = i, c = r.render(r.props, r.state, r.context), r.state = r.__s, r.getChildContext != null && (a = I(I({}, a), r.getChildContext())), g || r.getSnapshotBeforeUpdate == null || (p = r.getSnapshotBeforeUpdate(v, b)), K = c != null && c.type === X && c.key == null ? c.props.children : c, sn(i, Array.isArray(K) ? K : [
-          K
-        ], e, n, a, o, s, t, u, d), r.base = e.__e, e.__h = null, r.__h.length && t.push(r), _ && (r.__E = r.__ = null), r.__e = !1;
+        t.context = D, t.props = w, t.state = t.__s, (l = k.__r) && l(e), t.__d = !1, t.__v = e, t.__P = i, l = t.render(t.props, t.state, t.context), t.state = t.__s, t.getChildContext != null && (a = A(A({}, a), t.getChildContext())), v || t.getSnapshotBeforeUpdate == null || (g = t.getSnapshotBeforeUpdate(c, m)), T = l != null && l.type === j && l.key == null ? l.props.children : l, Ze(i, Array.isArray(T) ? T : [
+          T
+        ], e, n, a, f, s, o, d, r), t.base = e.__e, e.__h = null, t.__h.length && o.push(t), b && (t.__E = t.__ = null), t.__e = !1;
       } else
-        s == null && e.__v === n.__v ? (e.__k = n.__k, e.__e = n.__e) : e.__e = ua(n.__e, e, n, a, o, s, t, d);
-    (c = w.diffed) && c(e);
-  } catch (J) {
-    e.__v = null, (d || s != null) && (e.__e = u, e.__h = !!d, s[s.indexOf(u)] = null), w.__e(J, e, n);
+        s == null && e.__v === n.__v ? (e.__k = n.__k, e.__e = n.__e) : e.__e = xi(n.__e, e, n, a, f, s, o, r);
+    (l = k.diffed) && l(e);
+  } catch (H) {
+    e.__v = null, (r || s != null) && (e.__e = d, e.__h = !!r, s[s.indexOf(d)] = null), k.__e(H, e, n);
   }
 }
-function rn(i, e) {
-  w.__c && w.__c(e, i), i.some(function(n) {
+function Xe(i, e) {
+  k.__c && k.__c(e, i), i.some(function(n) {
     try {
       i = n.__h, n.__h = [], i.some(function(a) {
         a.call(n);
       });
     } catch (a) {
-      w.__e(a, n.__v);
+      k.__e(a, n.__v);
     }
   });
 }
-function ua(i, e, n, a, o, s, t, u) {
-  var d, c, r, g = n.props, v = e.props, b = e.type, p = 0;
-  if (b === "svg" && (o = !0), s != null) {
-    for (; p < s.length; p++)
-      if ((d = s[p]) && "setAttribute" in d == !!b && (b ? d.localName === b : d.nodeType === 3)) {
-        i = d, s[p] = null;
+function xi(i, e, n, a, f, s, o, d) {
+  var r, l, t, v = n.props, c = e.props, m = e.type, g = 0;
+  if (m === "svg" && (f = !0), s != null) {
+    for (; g < s.length; g++)
+      if ((r = s[g]) && "setAttribute" in r == !!m && (m ? r.localName === m : r.nodeType === 3)) {
+        i = r, s[g] = null;
         break;
       }
   }
   if (i == null) {
-    if (b === null)
-      return document.createTextNode(v);
-    i = o ? document.createElementNS("http://www.w3.org/2000/svg", b) : document.createElement(b, v.is && v), s = null, u = !1;
+    if (m === null)
+      return document.createTextNode(c);
+    i = f ? document.createElementNS("http://www.w3.org/2000/svg", m) : document.createElement(m, c.is && c), s = null, d = !1;
   }
-  if (b === null)
-    g === v || u && i.data === v || (i.data = v);
+  if (m === null)
+    v === c || d && i.data === c || (i.data = c);
   else {
-    if (s = s && ye.call(i.childNodes), c = (g = n.props || ge).dangerouslySetInnerHTML, r = v.dangerouslySetInnerHTML, !u) {
+    if (s = s && Z.call(i.childNodes), l = (v = n.props || L).dangerouslySetInnerHTML, t = c.dangerouslySetInnerHTML, !d) {
       if (s != null)
-        for (g = {}, p = 0; p < i.attributes.length; p++)
-          g[i.attributes[p].name] = i.attributes[p].value;
-      (r || c) && (r && (c && r.__html == c.__html || r.__html === i.innerHTML) || (i.innerHTML = r && r.__html || ""));
+        for (v = {}, g = 0; g < i.attributes.length; g++)
+          v[i.attributes[g].name] = i.attributes[g].value;
+      (t || l) && (t && (l && t.__html == l.__html || t.__html === i.innerHTML) || (i.innerHTML = t && t.__html || ""));
     }
-    if (da(i, v, g, o, u), r)
+    if (Ei(i, c, v, f, d), t)
       e.__k = [];
-    else if (p = e.props.children, sn(i, Array.isArray(p) ? p : [
-      p
-    ], e, n, a, o && b !== "foreignObject", s, t, s ? s[0] : n.__k && ee(n, 0), u), s != null)
-      for (p = s.length; p--; )
-        s[p] != null && nn(s[p]);
-    u || ("value" in v && (p = v.value) !== void 0 && (p !== g.value || p !== i.value || b === "progress" && !p) && we(i, "value", p, g.value, !1), "checked" in v && (p = v.checked) !== void 0 && p !== i.checked && we(i, "checked", p, g.checked, !1));
+    else if (g = e.props.children, Ze(i, Array.isArray(g) ? g : [
+      g
+    ], e, n, a, f && m !== "foreignObject", s, o, s ? s[0] : n.__k && $(n, 0), d), s != null)
+      for (g = s.length; g--; )
+        s[g] != null && Ke(s[g]);
+    d || ("value" in c && (g = c.value) !== void 0 && (g !== v.value || g !== i.value || m === "progress" && !g) && V(i, "value", g, v.value, !1), "checked" in c && (g = c.checked) !== void 0 && g !== i.checked && V(i, "checked", g, v.checked, !1));
   }
   return i;
 }
-function tn(i, e, n) {
+function ei(i, e, n) {
   try {
     typeof i == "function" ? i(e) : i.current = e;
   } catch (a) {
-    w.__e(a, n);
+    k.__e(a, n);
   }
 }
-function dn(i, e, n) {
-  var a, o;
-  if (w.unmount && w.unmount(i), (a = i.ref) && (a.current && a.current !== i.__e || tn(a, null, e)), (a = i.__c) != null) {
+function ii(i, e, n) {
+  var a, f;
+  if (k.unmount && k.unmount(i), (a = i.ref) && (a.current && a.current !== i.__e || ei(a, null, e)), (a = i.__c) != null) {
     if (a.componentWillUnmount)
       try {
         a.componentWillUnmount();
       } catch (s) {
-        w.__e(s, e);
+        k.__e(s, e);
       }
     a.base = a.__P = null;
   }
   if (a = i.__k)
-    for (o = 0; o < a.length; o++)
-      a[o] && dn(a[o], e, typeof i.type != "function");
-  n || i.__e == null || nn(i.__e), i.__e = i.__d = void 0;
+    for (f = 0; f < a.length; f++)
+      a[f] && ii(a[f], e, typeof i.type != "function");
+  n || i.__e == null || Ke(i.__e), i.__e = i.__d = void 0;
 }
-function la(i, e, n) {
+function Ai(i, e, n) {
   return this.constructor(i, n);
 }
-function un(i, e, n) {
-  var a, o, s;
-  w.__ && w.__(i, e), o = (a = typeof n == "function") ? null : n && n.__k || e.__k, s = [], Ue(e, i = (!a && n || e).__k = He(X, null, [
+function ni(i, e, n) {
+  var a, f, s;
+  k.__ && k.__(i, e), f = (a = typeof n == "function") ? null : n && n.__k || e.__k, s = [], le(e, i = (!a && n || e).__k = se(j, null, [
     i
-  ]), o || ge, ge, e.ownerSVGElement !== void 0, !a && n ? [
+  ]), f || L, L, e.ownerSVGElement !== void 0, !a && n ? [
     n
-  ] : o ? null : e.firstChild ? ye.call(e.childNodes) : null, s, !a && n ? n : o ? o.__e : e.firstChild, a), rn(s, i);
+  ] : f ? null : e.firstChild ? Z.call(e.childNodes) : null, s, !a && n ? n : f ? f.__e : e.firstChild, a), Xe(s, i);
 }
-ye = en.slice, w = {
+Z = Ue.slice, k = {
   __e: function(i, e) {
-    for (var n, a, o; e = e.__; )
+    for (var n, a, f; e = e.__; )
       if ((n = e.__c) && !n.__)
         try {
-          if ((a = n.constructor) && a.getDerivedStateFromError != null && (n.setState(a.getDerivedStateFromError(i)), o = n.__d), n.componentDidCatch != null && (n.componentDidCatch(i), o = n.__d), o)
+          if ((a = n.constructor) && a.getDerivedStateFromError != null && (n.setState(a.getDerivedStateFromError(i)), f = n.__d), n.componentDidCatch != null && (n.componentDidCatch(i), f = n.__d), f)
             return n.__E = n;
         } catch (s) {
           i = s;
         }
     throw i;
   }
-}, Qi = 0, H.prototype.setState = function(i, e) {
+}, Ie = 0, S.prototype.setState = function(i, e) {
   var n;
-  n = this.__s != null && this.__s !== this.state ? this.__s : this.__s = I({}, this.state), typeof i == "function" && (i = i(I({}, n), this.props)), i && I(n, i), i != null && this.__v && (e && this.__h.push(e), Di(this));
-}, H.prototype.forceUpdate = function(i) {
-  this.__v && (this.__e = !0, i && this.__h.push(i), Di(this));
-}, H.prototype.render = X, oe = [], Xi = typeof Promise == "function" ? Promise.prototype.then.bind(Promise.resolve()) : setTimeout, be.__r = 0;
-var ca = 0;
-function l(i, e, n, a, o) {
-  var s, t, u = {};
-  for (t in e)
-    t == "ref" ? s = e[t] : u[t] = e[t];
-  var d = {
+  n = this.__s != null && this.__s !== this.state ? this.__s : this.__s = A({}, this.state), typeof i == "function" && (i = i(A({}, n), this.props)), i && A(n, i), i != null && this.__v && (e && this.__h.push(e), ke(this));
+}, S.prototype.forceUpdate = function(i) {
+  this.__v && (this.__e = !0, i && this.__h.push(i), ke(this));
+}, S.prototype.render = j, z = [], Ve = typeof Promise == "function" ? Promise.prototype.then.bind(Promise.resolve()) : setTimeout, G.__r = 0;
+var Pi = 0;
+function u(i, e, n, a, f) {
+  var s, o, d = {};
+  for (o in e)
+    o == "ref" ? s = e[o] : d[o] = e[o];
+  var r = {
     type: i,
-    props: u,
+    props: d,
     key: n,
     ref: s,
     __k: null,
@@ -41115,22 +40499,22 @@ function l(i, e, n, a, o) {
     __c: null,
     __h: null,
     constructor: void 0,
-    __v: --ca,
+    __v: --Pi,
     __source: a,
-    __self: o
+    __self: f
   };
   if (typeof i == "function" && (s = i.defaultProps))
-    for (t in s)
-      u[t] === void 0 && (u[t] = s[t]);
-  return w.vnode && w.vnode(d), d;
+    for (o in s)
+      d[o] === void 0 && (d[o] = s[o]);
+  return k.vnode && k.vnode(r), r;
 }
-function ma(i, e) {
+function Mi(i, e) {
   try {
     window.localStorage[`emoji-mart.${i}`] = JSON.stringify(e);
   } catch {
   }
 }
-function va(i) {
+function ji(i) {
   try {
     const e = window.localStorage[`emoji-mart.${i}`];
     if (e)
@@ -41138,11 +40522,11 @@ function va(i) {
   } catch {
   }
 }
-var G = {
-  set: ma,
-  get: va
+var P = {
+  set: Mi,
+  get: ji
 };
-const Me = /* @__PURE__ */ new Map(), ka = [
+const Y = /* @__PURE__ */ new Map(), $i = [
   {
     v: 15,
     emoji: "🫨"
@@ -41192,21 +40576,21 @@ const Me = /* @__PURE__ */ new Map(), ka = [
     emoji: "🙃"
   }
 ];
-function ga() {
-  for (const { v: i, emoji: e } of ka)
-    if (ln(e))
+function zi() {
+  for (const { v: i, emoji: e } of $i)
+    if (ai(e))
       return i;
 }
-function ba() {
-  return !ln("🇨🇦");
+function Wi() {
+  return !ai("🇨🇦");
 }
-function ln(i) {
-  if (Me.has(i))
-    return Me.get(i);
-  const e = pa(i);
-  return Me.set(i, e), e;
+function ai(i) {
+  if (Y.has(i))
+    return Y.get(i);
+  const e = Ti(i);
+  return Y.set(i, e), e;
 }
-const pa = (() => {
+const Ti = (() => {
   let i = null;
   try {
     navigator.userAgent.includes("jsdom") || (i = document.createElement("canvas").getContext("2d", {
@@ -41217,23 +40601,23 @@ const pa = (() => {
   if (!i)
     return () => !1;
   const e = 25, n = 20, a = Math.floor(e / 2);
-  return i.font = a + "px Arial, Sans-Serif", i.textBaseline = "top", i.canvas.width = n * 2, i.canvas.height = e, (o) => {
-    i.clearRect(0, 0, n * 2, e), i.fillStyle = "#FF0000", i.fillText(o, 0, 22), i.fillStyle = "#0000FF", i.fillText(o, n, 22);
-    const s = i.getImageData(0, 0, n, e).data, t = s.length;
-    let u = 0;
-    for (; u < t && !s[u + 3]; u += 4)
+  return i.font = a + "px Arial, Sans-Serif", i.textBaseline = "top", i.canvas.width = n * 2, i.canvas.height = e, (f) => {
+    i.clearRect(0, 0, n * 2, e), i.fillStyle = "#FF0000", i.fillText(f, 0, 22), i.fillStyle = "#0000FF", i.fillText(f, n, 22);
+    const s = i.getImageData(0, 0, n, e).data, o = s.length;
+    let d = 0;
+    for (; d < o && !s[d + 3]; d += 4)
       ;
-    if (u >= t)
+    if (d >= o)
       return !1;
-    const d = n + u / 4 % n, c = Math.floor(u / 4 / n), r = i.getImageData(d, c, 1, 1).data;
-    return !(s[u] !== r[0] || s[u + 2] !== r[2] || i.measureText(o).width >= n);
+    const r = n + d / 4 % n, l = Math.floor(d / 4 / n), t = i.getImageData(r, l, 1, 1).data;
+    return !(s[d] !== t[0] || s[d + 2] !== t[2] || i.measureText(f).width >= n);
   };
 })();
-var Bi = {
-  latestVersion: ga,
-  noCountryFlags: ba
+var we = {
+  latestVersion: zi,
+  noCountryFlags: Wi
 };
-const qe = [
+const fe = [
   "+1",
   "grinning",
   "kissing_heart",
@@ -41250,47 +40634,47 @@ const qe = [
   "sunglasses",
   "heart"
 ];
-let j = null;
-function wa(i) {
-  j || (j = G.get("frequently") || {});
+let _ = null;
+function Hi(i) {
+  _ || (_ = P.get("frequently") || {});
   const e = i.id || i;
-  e && (j[e] || (j[e] = 0), j[e] += 1, G.set("last", e), G.set("frequently", j));
+  e && (_[e] || (_[e] = 0), _[e] += 1, P.set("last", e), P.set("frequently", _));
 }
-function ha({ maxFrequentRows: i, perLine: e }) {
+function qi({ maxFrequentRows: i, perLine: e }) {
   if (!i)
     return [];
-  j || (j = G.get("frequently"));
+  _ || (_ = P.get("frequently"));
   let n = [];
-  if (!j) {
-    j = {};
-    for (let s in qe.slice(0, e)) {
-      const t = qe[s];
-      j[t] = e - s, n.push(t);
+  if (!_) {
+    _ = {};
+    for (let s in fe.slice(0, e)) {
+      const o = fe[s];
+      _[o] = e - s, n.push(o);
     }
     return n;
   }
-  const a = i * e, o = G.get("last");
-  for (let s in j)
+  const a = i * e, f = P.get("last");
+  for (let s in _)
     n.push(s);
-  if (n.sort((s, t) => {
-    const u = j[t], d = j[s];
-    return u == d ? s.localeCompare(t) : u - d;
+  if (n.sort((s, o) => {
+    const d = _[o], r = _[s];
+    return d == r ? s.localeCompare(o) : d - r;
   }), n.length > a) {
     const s = n.slice(a);
     n = n.slice(0, a);
-    for (let t of s)
-      t != o && delete j[t];
-    o && n.indexOf(o) == -1 && (delete j[n[n.length - 1]], n.splice(-1, 1, o)), G.set("frequently", j);
+    for (let o of s)
+      o != f && delete _[o];
+    f && n.indexOf(f) == -1 && (delete _[n[n.length - 1]], n.splice(-1, 1, f)), P.set("frequently", _);
   }
   return n;
 }
-var cn = {
-  add: wa,
-  get: ha,
-  DEFAULTS: qe
-}, mn = {};
-mn = JSON.parse('{"search":"Search","search_no_results_1":"Oh no!","search_no_results_2":"That emoji couldn’t be found","pick":"Pick an emoji…","add_custom":"Add custom emoji","categories":{"activity":"Activity","custom":"Custom","flags":"Flags","foods":"Food & Drink","frequent":"Frequently used","nature":"Animals & Nature","objects":"Objects","people":"Smileys & People","places":"Travel & Places","search":"Search Results","symbols":"Symbols"},"skins":{"1":"Default","2":"Light","3":"Medium-Light","4":"Medium","5":"Medium-Dark","6":"Dark","choose":"Choose default skin tone"}}');
-var L = {
+var si = {
+  add: Hi,
+  get: qi,
+  DEFAULTS: fe
+}, fi = {};
+fi = JSON.parse('{"search":"Search","search_no_results_1":"Oh no!","search_no_results_2":"That emoji couldn’t be found","pick":"Pick an emoji…","add_custom":"Add custom emoji","categories":{"activity":"Activity","custom":"Custom","flags":"Flags","foods":"Food & Drink","frequent":"Frequently used","nature":"Animals & Nature","objects":"Objects","people":"Smileys & People","places":"Travel & Places","search":"Search Results","symbols":"Symbols"},"skins":{"1":"Default","2":"Light","3":"Medium-Light","4":"Medium","5":"Medium-Dark","6":"Dark","choose":"Choose default skin tone"}}');
+var x = {
   autoFocus: {
     value: !1
   },
@@ -41458,185 +40842,185 @@ var L = {
     value: !0
   }
 };
-let M = null, D = null;
-const Te = {};
-async function Ei(i) {
-  if (Te[i])
-    return Te[i];
+let y = null, p = null;
+const X = {};
+async function he(i) {
+  if (X[i])
+    return X[i];
   const n = await (await fetch(i)).json();
-  return Te[i] = n, n;
+  return X[i] = n, n;
 }
-let $e = null, vn = null, kn = !1;
-function re(i, { caller: e } = {}) {
-  return $e || ($e = new Promise((n) => {
-    vn = n;
-  })), i ? _a(i) : e && !kn && console.warn(`\`${e}\` requires data to be initialized first. Promise will be pending until \`init\` is called.`), $e;
+let ee = null, oi = null, ti = !1;
+function W(i, { caller: e } = {}) {
+  return ee || (ee = new Promise((n) => {
+    oi = n;
+  })), i ? Ni(i) : e && !ti && console.warn(`\`${e}\` requires data to be initialized first. Promise will be pending until \`init\` is called.`), ee;
 }
-async function _a(i) {
-  kn = !0;
+async function Ni(i) {
+  ti = !0;
   let { emojiVersion: e, set: n, locale: a } = i;
-  if (e || (e = L.emojiVersion.value), n || (n = L.set.value), a || (a = L.locale.value), D)
-    D.categories = D.categories.filter((d) => !d.name);
+  if (e || (e = x.emojiVersion.value), n || (n = x.set.value), a || (a = x.locale.value), p)
+    p.categories = p.categories.filter((r) => !r.name);
   else {
-    D = (typeof i.data == "function" ? await i.data() : i.data) || await Ei(`https://cdn.jsdelivr.net/npm/@emoji-mart/data@latest/sets/${e}/${n}.json`), D.emoticons = {}, D.natives = {}, D.categories.unshift({
+    p = (typeof i.data == "function" ? await i.data() : i.data) || await he(`https://cdn.jsdelivr.net/npm/@emoji-mart/data@latest/sets/${e}/${n}.json`), p.emoticons = {}, p.natives = {}, p.categories.unshift({
       id: "frequent",
       emojis: []
     });
-    for (const d in D.aliases) {
-      const c = D.aliases[d], r = D.emojis[c];
-      r && (r.aliases || (r.aliases = []), r.aliases.push(d));
+    for (const r in p.aliases) {
+      const l = p.aliases[r], t = p.emojis[l];
+      t && (t.aliases || (t.aliases = []), t.aliases.push(r));
     }
-    D.originalCategories = D.categories;
+    p.originalCategories = p.categories;
   }
-  if (M = (typeof i.i18n == "function" ? await i.i18n() : i.i18n) || (a == "en" ? /* @__PURE__ */ Zi(mn) : await Ei(`https://cdn.jsdelivr.net/npm/@emoji-mart/data@latest/i18n/${a}.json`)), i.custom)
-    for (let d in i.custom) {
-      d = parseInt(d);
-      const c = i.custom[d], r = i.custom[d - 1];
-      if (!(!c.emojis || !c.emojis.length)) {
-        c.id || (c.id = `custom_${d + 1}`), c.name || (c.name = M.categories.custom), r && !c.icon && (c.target = r.target || r), D.categories.push(c);
-        for (const g of c.emojis)
-          D.emojis[g.id] = g;
+  if (y = (typeof i.i18n == "function" ? await i.i18n() : i.i18n) || (a == "en" ? /* @__PURE__ */ Ge(fi) : await he(`https://cdn.jsdelivr.net/npm/@emoji-mart/data@latest/i18n/${a}.json`)), i.custom)
+    for (let r in i.custom) {
+      r = parseInt(r);
+      const l = i.custom[r], t = i.custom[r - 1];
+      if (!(!l.emojis || !l.emojis.length)) {
+        l.id || (l.id = `custom_${r + 1}`), l.name || (l.name = y.categories.custom), t && !l.icon && (l.target = t.target || t), p.categories.push(l);
+        for (const v of l.emojis)
+          p.emojis[v.id] = v;
       }
     }
-  i.categories && (D.categories = D.originalCategories.filter((d) => i.categories.indexOf(d.id) != -1).sort((d, c) => {
-    const r = i.categories.indexOf(d.id), g = i.categories.indexOf(c.id);
-    return r - g;
+  i.categories && (p.categories = p.originalCategories.filter((r) => i.categories.indexOf(r.id) != -1).sort((r, l) => {
+    const t = i.categories.indexOf(r.id), v = i.categories.indexOf(l.id);
+    return t - v;
   }));
-  let o = null, s = null;
-  n == "native" && (o = Bi.latestVersion(), s = i.noCountryFlags || Bi.noCountryFlags());
-  let t = D.categories.length, u = !1;
-  for (; t--; ) {
-    const d = D.categories[t];
-    if (d.id == "frequent") {
-      let { maxFrequentRows: g, perLine: v } = i;
-      g = g >= 0 ? g : L.maxFrequentRows.value, v || (v = L.perLine.value), d.emojis = cn.get({
-        maxFrequentRows: g,
-        perLine: v
+  let f = null, s = null;
+  n == "native" && (f = we.latestVersion(), s = i.noCountryFlags || we.noCountryFlags());
+  let o = p.categories.length, d = !1;
+  for (; o--; ) {
+    const r = p.categories[o];
+    if (r.id == "frequent") {
+      let { maxFrequentRows: v, perLine: c } = i;
+      v = v >= 0 ? v : x.maxFrequentRows.value, c || (c = x.perLine.value), r.emojis = si.get({
+        maxFrequentRows: v,
+        perLine: c
       });
     }
-    if (!d.emojis || !d.emojis.length) {
-      D.categories.splice(t, 1);
+    if (!r.emojis || !r.emojis.length) {
+      p.categories.splice(o, 1);
       continue;
     }
-    const { categoryIcons: c } = i;
-    if (c) {
-      const g = c[d.id];
-      g && !d.icon && (d.icon = g);
+    const { categoryIcons: l } = i;
+    if (l) {
+      const v = l[r.id];
+      v && !r.icon && (r.icon = v);
     }
-    let r = d.emojis.length;
-    for (; r--; ) {
-      const g = d.emojis[r], v = g.id ? g : D.emojis[g], b = () => {
-        d.emojis.splice(r, 1);
+    let t = r.emojis.length;
+    for (; t--; ) {
+      const v = r.emojis[t], c = v.id ? v : p.emojis[v], m = () => {
+        r.emojis.splice(t, 1);
       };
-      if (!v || i.exceptEmojis && i.exceptEmojis.includes(v.id)) {
-        b();
+      if (!c || i.exceptEmojis && i.exceptEmojis.includes(c.id)) {
+        m();
         continue;
       }
-      if (o && v.version > o) {
-        b();
+      if (f && c.version > f) {
+        m();
         continue;
       }
-      if (s && d.id == "flags" && !Sa.includes(v.id)) {
-        b();
+      if (s && r.id == "flags" && !Ii.includes(c.id)) {
+        m();
         continue;
       }
-      if (!v.search) {
-        if (u = !0, v.search = "," + [
+      if (!c.search) {
+        if (d = !0, c.search = "," + [
           [
-            v.id,
+            c.id,
             !1
           ],
           [
-            v.name,
+            c.name,
             !0
           ],
           [
-            v.keywords,
+            c.keywords,
             !1
           ],
           [
-            v.emoticons,
+            c.emoticons,
             !1
           ]
-        ].map(([_, y]) => {
-          if (_)
-            return (Array.isArray(_) ? _ : [
-              _
-            ]).map((C) => (y ? C.split(/[-|_|\s]+/) : [
-              C
-            ]).map((E) => E.toLowerCase())).flat();
-        }).flat().filter((_) => _ && _.trim()).join(","), v.emoticons)
-          for (const _ of v.emoticons)
-            D.emoticons[_] || (D.emoticons[_] = v.id);
-        let p = 0;
-        for (const _ of v.skins) {
-          if (!_)
+        ].map(([b, w]) => {
+          if (b)
+            return (Array.isArray(b) ? b : [
+              b
+            ]).map((h) => (w ? h.split(/[-|_|\s]+/) : [
+              h
+            ]).map((D) => D.toLowerCase())).flat();
+        }).flat().filter((b) => b && b.trim()).join(","), c.emoticons)
+          for (const b of c.emoticons)
+            p.emoticons[b] || (p.emoticons[b] = c.id);
+        let g = 0;
+        for (const b of c.skins) {
+          if (!b)
             continue;
-          p++;
-          const { native: y } = _;
-          y && (D.natives[y] = v.id, v.search += `,${y}`);
-          const C = p == 1 ? "" : `:skin-tone-${p}:`;
-          _.shortcodes = `:${v.id}:${C}`;
+          g++;
+          const { native: w } = b;
+          w && (p.natives[w] = c.id, c.search += `,${w}`);
+          const h = g == 1 ? "" : `:skin-tone-${g}:`;
+          b.shortcodes = `:${c.id}:${h}`;
         }
       }
     }
   }
-  u && Q.reset(), vn();
+  d && M.reset(), oi();
 }
-function gn(i, e, n) {
+function ri(i, e, n) {
   i || (i = {});
   const a = {};
-  for (let o in e)
-    a[o] = bn(o, i, e, n);
+  for (let f in e)
+    a[f] = di(f, i, e, n);
   return a;
 }
-function bn(i, e, n, a) {
-  const o = n[i];
+function di(i, e, n, a) {
+  const f = n[i];
   let s = a && a.getAttribute(i) || (e[i] != null && e[i] != null ? e[i] : null);
-  return o && (s != null && o.value && typeof o.value != typeof s && (typeof o.value == "boolean" ? s = s != "false" : s = o.value.constructor(s)), o.transform && s && (s = o.transform(s)), (s == null || o.choices && o.choices.indexOf(s) == -1) && (s = o.value)), s;
+  return f && (s != null && f.value && typeof f.value != typeof s && (typeof f.value == "boolean" ? s = s != "false" : s = f.value.constructor(s)), f.transform && s && (s = f.transform(s)), (s == null || f.choices && f.choices.indexOf(s) == -1) && (s = f.value)), s;
 }
-const ya = /^(?:\:([^\:]+)\:)(?:\:skin-tone-(\d)\:)?$/;
-let Ne = null;
-function Da(i) {
-  return i.id ? i : D.emojis[i] || D.emojis[D.aliases[i]] || D.emojis[D.natives[i]];
+const Oi = /^(?:\:([^\:]+)\:)(?:\:skin-tone-(\d)\:)?$/;
+let oe = null;
+function Ri(i) {
+  return i.id ? i : p.emojis[i] || p.emojis[p.aliases[i]] || p.emojis[p.natives[i]];
 }
-function Fa() {
-  Ne = null;
+function Li() {
+  oe = null;
 }
-async function Ca(i, { maxResults: e, caller: n } = {}) {
+async function Gi(i, { maxResults: e, caller: n } = {}) {
   if (!i || !i.trim().length)
     return null;
-  e || (e = 90), await re(null, {
+  e || (e = 90), await W(null, {
     caller: n || "SearchIndex.search"
   });
-  const a = i.toLowerCase().replace(/(\w)-/, "$1 ").split(/[\s|,]+/).filter((u, d, c) => u.trim() && c.indexOf(u) == d);
+  const a = i.toLowerCase().replace(/(\w)-/, "$1 ").split(/[\s|,]+/).filter((d, r, l) => d.trim() && l.indexOf(d) == r);
   if (!a.length)
     return;
-  let o = Ne || (Ne = Object.values(D.emojis)), s, t;
-  for (const u of a) {
-    if (!o.length)
+  let f = oe || (oe = Object.values(p.emojis)), s, o;
+  for (const d of a) {
+    if (!f.length)
       break;
-    s = [], t = {};
-    for (const d of o) {
-      if (!d.search)
+    s = [], o = {};
+    for (const r of f) {
+      if (!r.search)
         continue;
-      const c = d.search.indexOf(`,${u}`);
-      c != -1 && (s.push(d), t[d.id] || (t[d.id] = 0), t[d.id] += d.id == u ? 0 : c + 1);
+      const l = r.search.indexOf(`,${d}`);
+      l != -1 && (s.push(r), o[r.id] || (o[r.id] = 0), o[r.id] += r.id == d ? 0 : l + 1);
     }
-    o = s;
+    f = s;
   }
-  return s.length < 2 || (s.sort((u, d) => {
-    const c = t[u.id], r = t[d.id];
-    return c == r ? u.id.localeCompare(d.id) : c - r;
+  return s.length < 2 || (s.sort((d, r) => {
+    const l = o[d.id], t = o[r.id];
+    return l == t ? d.id.localeCompare(r.id) : l - t;
   }), s.length > e && (s = s.slice(0, e))), s;
 }
-var Q = {
-  search: Ca,
-  get: Da,
-  reset: Fa,
-  SHORTCODES_REGEX: ya
+var M = {
+  search: Gi,
+  get: Ri,
+  reset: Li,
+  SHORTCODES_REGEX: Oi
 };
-const Sa = [
+const Ii = [
   "checkered_flag",
   "crossed_flags",
   "pirate_flag",
@@ -41646,16 +41030,16 @@ const Sa = [
   "waving_black_flag",
   "waving_white_flag"
 ];
-function Ba(i, e) {
+function Vi(i, e) {
   return Array.isArray(i) && Array.isArray(e) && i.length === e.length && i.every((n, a) => n == e[a]);
 }
-async function Ea(i = 1) {
+async function Ui(i = 1) {
   for (let e in [
     ...Array(i).keys()
   ])
     await new Promise(requestAnimationFrame);
 }
-function xa(i, { skinIndex: e = 0 } = {}) {
+function Ki(i, { skinIndex: e = 0 } = {}) {
   const n = i.skins[e] || (() => (e = 0, i.skins[e]))(), a = {
     id: i.id,
     name: i.name,
@@ -41666,243 +41050,243 @@ function xa(i, { skinIndex: e = 0 } = {}) {
   };
   return i.skins.length > 1 && (a.skin = e + 1), n.src && (a.src = n.src), i.aliases && i.aliases.length && (a.aliases = i.aliases), i.emoticons && i.emoticons.length && (a.emoticons = i.emoticons), a;
 }
-const Aa = {
+const Ji = {
   activity: {
-    outline: /* @__PURE__ */ l("svg", {
+    outline: /* @__PURE__ */ u("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 24 24",
-      children: /* @__PURE__ */ l("path", {
+      children: /* @__PURE__ */ u("path", {
         d: "M12 0C5.373 0 0 5.372 0 12c0 6.627 5.373 12 12 12 6.628 0 12-5.373 12-12 0-6.628-5.372-12-12-12m9.949 11H17.05c.224-2.527 1.232-4.773 1.968-6.113A9.966 9.966 0 0 1 21.949 11M13 11V2.051a9.945 9.945 0 0 1 4.432 1.564c-.858 1.491-2.156 4.22-2.392 7.385H13zm-2 0H8.961c-.238-3.165-1.536-5.894-2.393-7.385A9.95 9.95 0 0 1 11 2.051V11zm0 2v8.949a9.937 9.937 0 0 1-4.432-1.564c.857-1.492 2.155-4.221 2.393-7.385H11zm4.04 0c.236 3.164 1.534 5.893 2.392 7.385A9.92 9.92 0 0 1 13 21.949V13h2.04zM4.982 4.887C5.718 6.227 6.726 8.473 6.951 11h-4.9a9.977 9.977 0 0 1 2.931-6.113M2.051 13h4.9c-.226 2.527-1.233 4.771-1.969 6.113A9.972 9.972 0 0 1 2.051 13m16.967 6.113c-.735-1.342-1.744-3.586-1.968-6.113h4.899a9.961 9.961 0 0 1-2.931 6.113"
       })
     }),
-    solid: /* @__PURE__ */ l("svg", {
+    solid: /* @__PURE__ */ u("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 512 512",
-      children: /* @__PURE__ */ l("path", {
+      children: /* @__PURE__ */ u("path", {
         d: "M16.17 337.5c0 44.98 7.565 83.54 13.98 107.9C35.22 464.3 50.46 496 174.9 496c9.566 0 19.59-.4707 29.84-1.271L17.33 307.3C16.53 317.6 16.17 327.7 16.17 337.5zM495.8 174.5c0-44.98-7.565-83.53-13.98-107.9c-4.688-17.54-18.34-31.23-36.04-35.95C435.5 27.91 392.9 16 337 16c-9.564 0-19.59 .4707-29.84 1.271l187.5 187.5C495.5 194.4 495.8 184.3 495.8 174.5zM26.77 248.8l236.3 236.3c142-36.1 203.9-150.4 222.2-221.1L248.9 26.87C106.9 62.96 45.07 177.2 26.77 248.8zM256 335.1c0 9.141-7.474 16-16 16c-4.094 0-8.188-1.564-11.31-4.689L164.7 283.3C161.6 280.2 160 276.1 160 271.1c0-8.529 6.865-16 16-16c4.095 0 8.189 1.562 11.31 4.688l64.01 64C254.4 327.8 256 331.9 256 335.1zM304 287.1c0 9.141-7.474 16-16 16c-4.094 0-8.188-1.564-11.31-4.689L212.7 235.3C209.6 232.2 208 228.1 208 223.1c0-9.141 7.473-16 16-16c4.094 0 8.188 1.562 11.31 4.688l64.01 64.01C302.5 279.8 304 283.9 304 287.1zM256 175.1c0-9.141 7.473-16 16-16c4.094 0 8.188 1.562 11.31 4.688l64.01 64.01c3.125 3.125 4.688 7.219 4.688 11.31c0 9.133-7.468 16-16 16c-4.094 0-8.189-1.562-11.31-4.688l-64.01-64.01C257.6 184.2 256 180.1 256 175.1z"
       })
     })
   },
-  custom: /* @__PURE__ */ l("svg", {
+  custom: /* @__PURE__ */ u("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 448 512",
-    children: /* @__PURE__ */ l("path", {
+    children: /* @__PURE__ */ u("path", {
       d: "M417.1 368c-5.937 10.27-16.69 16-27.75 16c-5.422 0-10.92-1.375-15.97-4.281L256 311.4V448c0 17.67-14.33 32-31.1 32S192 465.7 192 448V311.4l-118.3 68.29C68.67 382.6 63.17 384 57.75 384c-11.06 0-21.81-5.734-27.75-16c-8.828-15.31-3.594-34.88 11.72-43.72L159.1 256L41.72 187.7C26.41 178.9 21.17 159.3 29.1 144C36.63 132.5 49.26 126.7 61.65 128.2C65.78 128.7 69.88 130.1 73.72 132.3L192 200.6V64c0-17.67 14.33-32 32-32S256 46.33 256 64v136.6l118.3-68.29c3.838-2.213 7.939-3.539 12.07-4.051C398.7 126.7 411.4 132.5 417.1 144c8.828 15.31 3.594 34.88-11.72 43.72L288 256l118.3 68.28C421.6 333.1 426.8 352.7 417.1 368z"
     })
   }),
   flags: {
-    outline: /* @__PURE__ */ l("svg", {
+    outline: /* @__PURE__ */ u("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 24 24",
-      children: /* @__PURE__ */ l("path", {
+      children: /* @__PURE__ */ u("path", {
         d: "M0 0l6.084 24H8L1.916 0zM21 5h-4l-1-4H4l3 12h3l1 4h13L21 5zM6.563 3h7.875l2 8H8.563l-2-8zm8.832 10l-2.856 1.904L12.063 13h3.332zM19 13l-1.5-6h1.938l2 8H16l3-2z"
       })
     }),
-    solid: /* @__PURE__ */ l("svg", {
+    solid: /* @__PURE__ */ u("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 512 512",
-      children: /* @__PURE__ */ l("path", {
+      children: /* @__PURE__ */ u("path", {
         d: "M64 496C64 504.8 56.75 512 48 512h-32C7.25 512 0 504.8 0 496V32c0-17.75 14.25-32 32-32s32 14.25 32 32V496zM476.3 0c-6.365 0-13.01 1.35-19.34 4.233c-45.69 20.86-79.56 27.94-107.8 27.94c-59.96 0-94.81-31.86-163.9-31.87C160.9 .3055 131.6 4.867 96 15.75v350.5c32-9.984 59.87-14.1 84.85-14.1c73.63 0 124.9 31.78 198.6 31.78c31.91 0 68.02-5.971 111.1-23.09C504.1 355.9 512 344.4 512 332.1V30.73C512 11.1 495.3 0 476.3 0z"
       })
     })
   },
   foods: {
-    outline: /* @__PURE__ */ l("svg", {
+    outline: /* @__PURE__ */ u("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 24 24",
-      children: /* @__PURE__ */ l("path", {
+      children: /* @__PURE__ */ u("path", {
         d: "M17 4.978c-1.838 0-2.876.396-3.68.934.513-1.172 1.768-2.934 4.68-2.934a1 1 0 0 0 0-2c-2.921 0-4.629 1.365-5.547 2.512-.064.078-.119.162-.18.244C11.73 1.838 10.798.023 9.207.023 8.579.022 7.85.306 7 .978 5.027 2.54 5.329 3.902 6.492 4.999 3.609 5.222 0 7.352 0 12.969c0 4.582 4.961 11.009 9 11.009 1.975 0 2.371-.486 3-1 .629.514 1.025 1 3 1 4.039 0 9-6.418 9-11 0-5.953-4.055-8-7-8M8.242 2.546c.641-.508.943-.523.965-.523.426.169.975 1.405 1.357 3.055-1.527-.629-2.741-1.352-2.98-1.846.059-.112.241-.356.658-.686M15 21.978c-1.08 0-1.21-.109-1.559-.402l-.176-.146c-.367-.302-.816-.452-1.266-.452s-.898.15-1.266.452l-.176.146c-.347.292-.477.402-1.557.402-2.813 0-7-5.389-7-9.009 0-5.823 4.488-5.991 5-5.991 1.939 0 2.484.471 3.387 1.251l.323.276a1.995 1.995 0 0 0 2.58 0l.323-.276c.902-.78 1.447-1.251 3.387-1.251.512 0 5 .168 5 6 0 3.617-4.187 9-7 9"
       })
     }),
-    solid: /* @__PURE__ */ l("svg", {
+    solid: /* @__PURE__ */ u("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 512 512",
-      children: /* @__PURE__ */ l("path", {
+      children: /* @__PURE__ */ u("path", {
         d: "M481.9 270.1C490.9 279.1 496 291.3 496 304C496 316.7 490.9 328.9 481.9 337.9C472.9 346.9 460.7 352 448 352H64C51.27 352 39.06 346.9 30.06 337.9C21.06 328.9 16 316.7 16 304C16 291.3 21.06 279.1 30.06 270.1C39.06 261.1 51.27 256 64 256H448C460.7 256 472.9 261.1 481.9 270.1zM475.3 388.7C478.3 391.7 480 395.8 480 400V416C480 432.1 473.3 449.3 461.3 461.3C449.3 473.3 432.1 480 416 480H96C79.03 480 62.75 473.3 50.75 461.3C38.74 449.3 32 432.1 32 416V400C32 395.8 33.69 391.7 36.69 388.7C39.69 385.7 43.76 384 48 384H464C468.2 384 472.3 385.7 475.3 388.7zM50.39 220.8C45.93 218.6 42.03 215.5 38.97 211.6C35.91 207.7 33.79 203.2 32.75 198.4C31.71 193.5 31.8 188.5 32.99 183.7C54.98 97.02 146.5 32 256 32C365.5 32 457 97.02 479 183.7C480.2 188.5 480.3 193.5 479.2 198.4C478.2 203.2 476.1 207.7 473 211.6C469.1 215.5 466.1 218.6 461.6 220.8C457.2 222.9 452.3 224 447.3 224H64.67C59.73 224 54.84 222.9 50.39 220.8zM372.7 116.7C369.7 119.7 368 123.8 368 128C368 131.2 368.9 134.3 370.7 136.9C372.5 139.5 374.1 141.6 377.9 142.8C380.8 143.1 384 144.3 387.1 143.7C390.2 143.1 393.1 141.6 395.3 139.3C397.6 137.1 399.1 134.2 399.7 131.1C400.3 128 399.1 124.8 398.8 121.9C397.6 118.1 395.5 116.5 392.9 114.7C390.3 112.9 387.2 111.1 384 111.1C379.8 111.1 375.7 113.7 372.7 116.7V116.7zM244.7 84.69C241.7 87.69 240 91.76 240 96C240 99.16 240.9 102.3 242.7 104.9C244.5 107.5 246.1 109.6 249.9 110.8C252.8 111.1 256 112.3 259.1 111.7C262.2 111.1 265.1 109.6 267.3 107.3C269.6 105.1 271.1 102.2 271.7 99.12C272.3 96.02 271.1 92.8 270.8 89.88C269.6 86.95 267.5 84.45 264.9 82.7C262.3 80.94 259.2 79.1 256 79.1C251.8 79.1 247.7 81.69 244.7 84.69V84.69zM116.7 116.7C113.7 119.7 112 123.8 112 128C112 131.2 112.9 134.3 114.7 136.9C116.5 139.5 118.1 141.6 121.9 142.8C124.8 143.1 128 144.3 131.1 143.7C134.2 143.1 137.1 141.6 139.3 139.3C141.6 137.1 143.1 134.2 143.7 131.1C144.3 128 143.1 124.8 142.8 121.9C141.6 118.1 139.5 116.5 136.9 114.7C134.3 112.9 131.2 111.1 128 111.1C123.8 111.1 119.7 113.7 116.7 116.7L116.7 116.7z"
       })
     })
   },
   frequent: {
-    outline: /* @__PURE__ */ l("svg", {
+    outline: /* @__PURE__ */ u("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 24 24",
       children: [
-        /* @__PURE__ */ l("path", {
+        /* @__PURE__ */ u("path", {
           d: "M13 4h-2l-.001 7H9v2h2v2h2v-2h4v-2h-4z"
         }),
-        /* @__PURE__ */ l("path", {
+        /* @__PURE__ */ u("path", {
           d: "M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0m0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10"
         })
       ]
     }),
-    solid: /* @__PURE__ */ l("svg", {
+    solid: /* @__PURE__ */ u("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 512 512",
-      children: /* @__PURE__ */ l("path", {
+      children: /* @__PURE__ */ u("path", {
         d: "M256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512zM232 256C232 264 236 271.5 242.7 275.1L338.7 339.1C349.7 347.3 364.6 344.3 371.1 333.3C379.3 322.3 376.3 307.4 365.3 300L280 243.2V120C280 106.7 269.3 96 255.1 96C242.7 96 231.1 106.7 231.1 120L232 256z"
       })
     })
   },
   nature: {
-    outline: /* @__PURE__ */ l("svg", {
+    outline: /* @__PURE__ */ u("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 24 24",
       children: [
-        /* @__PURE__ */ l("path", {
+        /* @__PURE__ */ u("path", {
           d: "M15.5 8a1.5 1.5 0 1 0 .001 3.001A1.5 1.5 0 0 0 15.5 8M8.5 8a1.5 1.5 0 1 0 .001 3.001A1.5 1.5 0 0 0 8.5 8"
         }),
-        /* @__PURE__ */ l("path", {
+        /* @__PURE__ */ u("path", {
           d: "M18.933 0h-.027c-.97 0-2.138.787-3.018 1.497-1.274-.374-2.612-.51-3.887-.51-1.285 0-2.616.133-3.874.517C7.245.79 6.069 0 5.093 0h-.027C3.352 0 .07 2.67.002 7.026c-.039 2.479.276 4.238 1.04 5.013.254.258.882.677 1.295.882.191 3.177.922 5.238 2.536 6.38.897.637 2.187.949 3.2 1.102C8.04 20.6 8 20.795 8 21c0 1.773 2.35 3 4 3 1.648 0 4-1.227 4-3 0-.201-.038-.393-.072-.586 2.573-.385 5.435-1.877 5.925-7.587.396-.22.887-.568 1.104-.788.763-.774 1.079-2.534 1.04-5.013C23.929 2.67 20.646 0 18.933 0M3.223 9.135c-.237.281-.837 1.155-.884 1.238-.15-.41-.368-1.349-.337-3.291.051-3.281 2.478-4.972 3.091-5.031.256.015.731.27 1.265.646-1.11 1.171-2.275 2.915-2.352 5.125-.133.546-.398.858-.783 1.313M12 22c-.901 0-1.954-.693-2-1 0-.654.475-1.236 1-1.602V20a1 1 0 1 0 2 0v-.602c.524.365 1 .947 1 1.602-.046.307-1.099 1-2 1m3-3.48v.02a4.752 4.752 0 0 0-1.262-1.02c1.092-.516 2.239-1.334 2.239-2.217 0-1.842-1.781-2.195-3.977-2.195-2.196 0-3.978.354-3.978 2.195 0 .883 1.148 1.701 2.238 2.217A4.8 4.8 0 0 0 9 18.539v-.025c-1-.076-2.182-.281-2.973-.842-1.301-.92-1.838-3.045-1.853-6.478l.023-.041c.496-.826 1.49-1.45 1.804-3.102 0-2.047 1.357-3.631 2.362-4.522C9.37 3.178 10.555 3 11.948 3c1.447 0 2.685.192 3.733.57 1 .9 2.316 2.465 2.316 4.48.313 1.651 1.307 2.275 1.803 3.102.035.058.068.117.102.178-.059 5.967-1.949 7.01-4.902 7.19m6.628-8.202c-.037-.065-.074-.13-.113-.195a7.587 7.587 0 0 0-.739-.987c-.385-.455-.648-.768-.782-1.313-.076-2.209-1.241-3.954-2.353-5.124.531-.376 1.004-.63 1.261-.647.636.071 3.044 1.764 3.096 5.031.027 1.81-.347 3.218-.37 3.235"
         })
       ]
     }),
-    solid: /* @__PURE__ */ l("svg", {
+    solid: /* @__PURE__ */ u("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 576 512",
-      children: /* @__PURE__ */ l("path", {
+      children: /* @__PURE__ */ u("path", {
         d: "M332.7 19.85C334.6 8.395 344.5 0 356.1 0C363.6 0 370.6 3.52 375.1 9.502L392 32H444.1C456.8 32 469.1 37.06 478.1 46.06L496 64H552C565.3 64 576 74.75 576 88V112C576 156.2 540.2 192 496 192H426.7L421.6 222.5L309.6 158.5L332.7 19.85zM448 64C439.2 64 432 71.16 432 80C432 88.84 439.2 96 448 96C456.8 96 464 88.84 464 80C464 71.16 456.8 64 448 64zM416 256.1V480C416 497.7 401.7 512 384 512H352C334.3 512 320 497.7 320 480V364.8C295.1 377.1 268.8 384 240 384C211.2 384 184 377.1 160 364.8V480C160 497.7 145.7 512 128 512H96C78.33 512 64 497.7 64 480V249.8C35.23 238.9 12.64 214.5 4.836 183.3L.9558 167.8C-3.331 150.6 7.094 133.2 24.24 128.1C41.38 124.7 58.76 135.1 63.05 152.2L66.93 167.8C70.49 182 83.29 191.1 97.97 191.1H303.8L416 256.1z"
       })
     })
   },
   objects: {
-    outline: /* @__PURE__ */ l("svg", {
+    outline: /* @__PURE__ */ u("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 24 24",
       children: [
-        /* @__PURE__ */ l("path", {
+        /* @__PURE__ */ u("path", {
           d: "M12 0a9 9 0 0 0-5 16.482V21s2.035 3 5 3 5-3 5-3v-4.518A9 9 0 0 0 12 0zm0 2c3.86 0 7 3.141 7 7s-3.14 7-7 7-7-3.141-7-7 3.14-7 7-7zM9 17.477c.94.332 1.946.523 3 .523s2.06-.19 3-.523v.834c-.91.436-1.925.689-3 .689a6.924 6.924 0 0 1-3-.69v-.833zm.236 3.07A8.854 8.854 0 0 0 12 21c.965 0 1.888-.167 2.758-.451C14.155 21.173 13.153 22 12 22c-1.102 0-2.117-.789-2.764-1.453z"
         }),
-        /* @__PURE__ */ l("path", {
+        /* @__PURE__ */ u("path", {
           d: "M14.745 12.449h-.004c-.852-.024-1.188-.858-1.577-1.824-.421-1.061-.703-1.561-1.182-1.566h-.009c-.481 0-.783.497-1.235 1.537-.436.982-.801 1.811-1.636 1.791l-.276-.043c-.565-.171-.853-.691-1.284-1.794-.125-.313-.202-.632-.27-.913-.051-.213-.127-.53-.195-.634C7.067 9.004 7.039 9 6.99 9A1 1 0 0 1 7 7h.01c1.662.017 2.015 1.373 2.198 2.134.486-.981 1.304-2.058 2.797-2.075 1.531.018 2.28 1.153 2.731 2.141l.002-.008C14.944 8.424 15.327 7 16.979 7h.032A1 1 0 1 1 17 9h-.011c-.149.076-.256.474-.319.709a6.484 6.484 0 0 1-.311.951c-.429.973-.79 1.789-1.614 1.789"
         })
       ]
     }),
-    solid: /* @__PURE__ */ l("svg", {
+    solid: /* @__PURE__ */ u("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 384 512",
-      children: /* @__PURE__ */ l("path", {
+      children: /* @__PURE__ */ u("path", {
         d: "M112.1 454.3c0 6.297 1.816 12.44 5.284 17.69l17.14 25.69c5.25 7.875 17.17 14.28 26.64 14.28h61.67c9.438 0 21.36-6.401 26.61-14.28l17.08-25.68c2.938-4.438 5.348-12.37 5.348-17.7L272 415.1h-160L112.1 454.3zM191.4 .0132C89.44 .3257 16 82.97 16 175.1c0 44.38 16.44 84.84 43.56 115.8c16.53 18.84 42.34 58.23 52.22 91.45c.0313 .25 .0938 .5166 .125 .7823h160.2c.0313-.2656 .0938-.5166 .125-.7823c9.875-33.22 35.69-72.61 52.22-91.45C351.6 260.8 368 220.4 368 175.1C368 78.61 288.9-.2837 191.4 .0132zM192 96.01c-44.13 0-80 35.89-80 79.1C112 184.8 104.8 192 96 192S80 184.8 80 176c0-61.76 50.25-111.1 112-111.1c8.844 0 16 7.159 16 16S200.8 96.01 192 96.01z"
       })
     })
   },
   people: {
-    outline: /* @__PURE__ */ l("svg", {
+    outline: /* @__PURE__ */ u("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 24 24",
       children: [
-        /* @__PURE__ */ l("path", {
+        /* @__PURE__ */ u("path", {
           d: "M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0m0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10"
         }),
-        /* @__PURE__ */ l("path", {
+        /* @__PURE__ */ u("path", {
           d: "M8 7a2 2 0 1 0-.001 3.999A2 2 0 0 0 8 7M16 7a2 2 0 1 0-.001 3.999A2 2 0 0 0 16 7M15.232 15c-.693 1.195-1.87 2-3.349 2-1.477 0-2.655-.805-3.347-2H15m3-2H6a6 6 0 1 0 12 0"
         })
       ]
     }),
-    solid: /* @__PURE__ */ l("svg", {
+    solid: /* @__PURE__ */ u("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 512 512",
-      children: /* @__PURE__ */ l("path", {
+      children: /* @__PURE__ */ u("path", {
         d: "M0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256zM256 432C332.1 432 396.2 382 415.2 314.1C419.1 300.4 407.8 288 393.6 288H118.4C104.2 288 92.92 300.4 96.76 314.1C115.8 382 179.9 432 256 432V432zM176.4 160C158.7 160 144.4 174.3 144.4 192C144.4 209.7 158.7 224 176.4 224C194 224 208.4 209.7 208.4 192C208.4 174.3 194 160 176.4 160zM336.4 224C354 224 368.4 209.7 368.4 192C368.4 174.3 354 160 336.4 160C318.7 160 304.4 174.3 304.4 192C304.4 209.7 318.7 224 336.4 224z"
       })
     })
   },
   places: {
-    outline: /* @__PURE__ */ l("svg", {
+    outline: /* @__PURE__ */ u("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 24 24",
       children: [
-        /* @__PURE__ */ l("path", {
+        /* @__PURE__ */ u("path", {
           d: "M6.5 12C5.122 12 4 13.121 4 14.5S5.122 17 6.5 17 9 15.879 9 14.5 7.878 12 6.5 12m0 3c-.275 0-.5-.225-.5-.5s.225-.5.5-.5.5.225.5.5-.225.5-.5.5M17.5 12c-1.378 0-2.5 1.121-2.5 2.5s1.122 2.5 2.5 2.5 2.5-1.121 2.5-2.5-1.122-2.5-2.5-2.5m0 3c-.275 0-.5-.225-.5-.5s.225-.5.5-.5.5.225.5.5-.225.5-.5.5"
         }),
-        /* @__PURE__ */ l("path", {
+        /* @__PURE__ */ u("path", {
           d: "M22.482 9.494l-1.039-.346L21.4 9h.6c.552 0 1-.439 1-.992 0-.006-.003-.008-.003-.008H23c0-1-.889-2-1.984-2h-.642l-.731-1.717C19.262 3.012 18.091 2 16.764 2H7.236C5.909 2 4.738 3.012 4.357 4.283L3.626 6h-.642C1.889 6 1 7 1 8h.003S1 8.002 1 8.008C1 8.561 1.448 9 2 9h.6l-.043.148-1.039.346a2.001 2.001 0 0 0-1.359 2.097l.751 7.508a1 1 0 0 0 .994.901H3v1c0 1.103.896 2 2 2h2c1.104 0 2-.897 2-2v-1h6v1c0 1.103.896 2 2 2h2c1.104 0 2-.897 2-2v-1h1.096a.999.999 0 0 0 .994-.901l.751-7.508a2.001 2.001 0 0 0-1.359-2.097M6.273 4.857C6.402 4.43 6.788 4 7.236 4h9.527c.448 0 .834.43.963.857L19.313 9H4.688l1.585-4.143zM7 21H5v-1h2v1zm12 0h-2v-1h2v1zm2.189-3H2.811l-.662-6.607L3 11h18l.852.393L21.189 18z"
         })
       ]
     }),
-    solid: /* @__PURE__ */ l("svg", {
+    solid: /* @__PURE__ */ u("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 512 512",
-      children: /* @__PURE__ */ l("path", {
+      children: /* @__PURE__ */ u("path", {
         d: "M39.61 196.8L74.8 96.29C88.27 57.78 124.6 32 165.4 32H346.6C387.4 32 423.7 57.78 437.2 96.29L472.4 196.8C495.6 206.4 512 229.3 512 256V448C512 465.7 497.7 480 480 480H448C430.3 480 416 465.7 416 448V400H96V448C96 465.7 81.67 480 64 480H32C14.33 480 0 465.7 0 448V256C0 229.3 16.36 206.4 39.61 196.8V196.8zM109.1 192H402.9L376.8 117.4C372.3 104.6 360.2 96 346.6 96H165.4C151.8 96 139.7 104.6 135.2 117.4L109.1 192zM96 256C78.33 256 64 270.3 64 288C64 305.7 78.33 320 96 320C113.7 320 128 305.7 128 288C128 270.3 113.7 256 96 256zM416 320C433.7 320 448 305.7 448 288C448 270.3 433.7 256 416 256C398.3 256 384 270.3 384 288C384 305.7 398.3 320 416 320z"
       })
     })
   },
   symbols: {
-    outline: /* @__PURE__ */ l("svg", {
+    outline: /* @__PURE__ */ u("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 24 24",
-      children: /* @__PURE__ */ l("path", {
+      children: /* @__PURE__ */ u("path", {
         d: "M0 0h11v2H0zM4 11h3V6h4V4H0v2h4zM15.5 17c1.381 0 2.5-1.116 2.5-2.493s-1.119-2.493-2.5-2.493S13 13.13 13 14.507 14.119 17 15.5 17m0-2.986c.276 0 .5.222.5.493 0 .272-.224.493-.5.493s-.5-.221-.5-.493.224-.493.5-.493M21.5 19.014c-1.381 0-2.5 1.116-2.5 2.493S20.119 24 21.5 24s2.5-1.116 2.5-2.493-1.119-2.493-2.5-2.493m0 2.986a.497.497 0 0 1-.5-.493c0-.271.224-.493.5-.493s.5.222.5.493a.497.497 0 0 1-.5.493M22 13l-9 9 1.513 1.5 8.99-9.009zM17 11c2.209 0 4-1.119 4-2.5V2s.985-.161 1.498.949C23.01 4.055 23 6 23 6s1-1.119 1-3.135C24-.02 21 0 21 0h-2v6.347A5.853 5.853 0 0 0 17 6c-2.209 0-4 1.119-4 2.5s1.791 2.5 4 2.5M10.297 20.482l-1.475-1.585a47.54 47.54 0 0 1-1.442 1.129c-.307-.288-.989-1.016-2.045-2.183.902-.836 1.479-1.466 1.729-1.892s.376-.871.376-1.336c0-.592-.273-1.178-.818-1.759-.546-.581-1.329-.871-2.349-.871-1.008 0-1.79.293-2.344.879-.556.587-.832 1.181-.832 1.784 0 .813.419 1.748 1.256 2.805-.847.614-1.444 1.208-1.794 1.784a3.465 3.465 0 0 0-.523 1.833c0 .857.308 1.56.924 2.107.616.549 1.423.823 2.42.823 1.173 0 2.444-.379 3.813-1.137L8.235 24h2.819l-2.09-2.383 1.333-1.135zm-6.736-6.389a1.02 1.02 0 0 1 .73-.286c.31 0 .559.085.747.254a.849.849 0 0 1 .283.659c0 .518-.419 1.112-1.257 1.784-.536-.651-.805-1.231-.805-1.742a.901.901 0 0 1 .302-.669M3.74 22c-.427 0-.778-.116-1.057-.349-.279-.232-.418-.487-.418-.766 0-.594.509-1.288 1.527-2.083.968 1.134 1.717 1.946 2.248 2.438-.921.507-1.686.76-2.3.76"
       })
     }),
-    solid: /* @__PURE__ */ l("svg", {
+    solid: /* @__PURE__ */ u("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 512 512",
-      children: /* @__PURE__ */ l("path", {
+      children: /* @__PURE__ */ u("path", {
         d: "M500.3 7.251C507.7 13.33 512 22.41 512 31.1V175.1C512 202.5 483.3 223.1 447.1 223.1C412.7 223.1 383.1 202.5 383.1 175.1C383.1 149.5 412.7 127.1 447.1 127.1V71.03L351.1 90.23V207.1C351.1 234.5 323.3 255.1 287.1 255.1C252.7 255.1 223.1 234.5 223.1 207.1C223.1 181.5 252.7 159.1 287.1 159.1V63.1C287.1 48.74 298.8 35.61 313.7 32.62L473.7 .6198C483.1-1.261 492.9 1.173 500.3 7.251H500.3zM74.66 303.1L86.5 286.2C92.43 277.3 102.4 271.1 113.1 271.1H174.9C185.6 271.1 195.6 277.3 201.5 286.2L213.3 303.1H239.1C266.5 303.1 287.1 325.5 287.1 351.1V463.1C287.1 490.5 266.5 511.1 239.1 511.1H47.1C21.49 511.1-.0019 490.5-.0019 463.1V351.1C-.0019 325.5 21.49 303.1 47.1 303.1H74.66zM143.1 359.1C117.5 359.1 95.1 381.5 95.1 407.1C95.1 434.5 117.5 455.1 143.1 455.1C170.5 455.1 191.1 434.5 191.1 407.1C191.1 381.5 170.5 359.1 143.1 359.1zM440.3 367.1H496C502.7 367.1 508.6 372.1 510.1 378.4C513.3 384.6 511.6 391.7 506.5 396L378.5 508C372.9 512.1 364.6 513.3 358.6 508.9C352.6 504.6 350.3 496.6 353.3 489.7L391.7 399.1H336C329.3 399.1 323.4 395.9 321 389.6C318.7 383.4 320.4 376.3 325.5 371.1L453.5 259.1C459.1 255 467.4 254.7 473.4 259.1C479.4 263.4 481.6 271.4 478.7 278.3L440.3 367.1zM116.7 219.1L19.85 119.2C-8.112 90.26-6.614 42.31 24.85 15.34C51.82-8.137 93.26-3.642 118.2 21.83L128.2 32.32L137.7 21.83C162.7-3.642 203.6-8.137 231.6 15.34C262.6 42.31 264.1 90.26 236.1 119.2L139.7 219.1C133.2 225.6 122.7 225.6 116.7 219.1H116.7z"
       })
     })
   }
-}, Pa = {
-  loupe: /* @__PURE__ */ l("svg", {
+}, Zi = {
+  loupe: /* @__PURE__ */ u("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 20 20",
-    children: /* @__PURE__ */ l("path", {
+    children: /* @__PURE__ */ u("path", {
       d: "M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"
     })
   }),
-  delete: /* @__PURE__ */ l("svg", {
+  delete: /* @__PURE__ */ u("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 20 20",
-    children: /* @__PURE__ */ l("path", {
+    children: /* @__PURE__ */ u("path", {
       d: "M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"
     })
   })
 };
-var he = {
-  categories: Aa,
-  search: Pa
+var U = {
+  categories: Ji,
+  search: Zi
 };
-function Le(i) {
+function te(i) {
   let { id: e, skin: n, emoji: a } = i;
   if (i.shortcodes) {
-    const u = i.shortcodes.match(Q.SHORTCODES_REGEX);
-    u && (e = u[1], u[2] && (n = u[2]));
+    const d = i.shortcodes.match(M.SHORTCODES_REGEX);
+    d && (e = d[1], d[2] && (n = d[2]));
   }
-  if (a || (a = Q.get(e || i.native)), !a)
+  if (a || (a = M.get(e || i.native)), !a)
     return i.fallback;
-  const o = a.skins[n - 1] || a.skins[0], s = o.src || (i.set != "native" && !i.spritesheet ? typeof i.getImageURL == "function" ? i.getImageURL(i.set, o.unified) : `https://cdn.jsdelivr.net/npm/emoji-datasource-${i.set}@15.0.1/img/${i.set}/64/${o.unified}.png` : void 0), t = typeof i.getSpritesheetURL == "function" ? i.getSpritesheetURL(i.set) : `https://cdn.jsdelivr.net/npm/emoji-datasource-${i.set}@15.0.1/img/${i.set}/sheets-256/64.png`;
-  return /* @__PURE__ */ l("span", {
+  const f = a.skins[n - 1] || a.skins[0], s = f.src || (i.set != "native" && !i.spritesheet ? typeof i.getImageURL == "function" ? i.getImageURL(i.set, f.unified) : `https://cdn.jsdelivr.net/npm/emoji-datasource-${i.set}@15.0.1/img/${i.set}/64/${f.unified}.png` : void 0), o = typeof i.getSpritesheetURL == "function" ? i.getSpritesheetURL(i.set) : `https://cdn.jsdelivr.net/npm/emoji-datasource-${i.set}@15.0.1/img/${i.set}/sheets-256/64.png`;
+  return /* @__PURE__ */ u("span", {
     class: "emoji-mart-emoji",
     "data-emoji-set": i.set,
-    children: s ? /* @__PURE__ */ l("img", {
+    children: s ? /* @__PURE__ */ u("img", {
       style: {
         maxWidth: i.size || "1em",
         maxHeight: i.size || "1em",
         display: "inline-block"
       },
-      alt: o.native || o.shortcodes,
+      alt: f.native || f.shortcodes,
       src: s
-    }) : i.set == "native" ? /* @__PURE__ */ l("span", {
+    }) : i.set == "native" ? /* @__PURE__ */ u("span", {
       style: {
         fontSize: i.size,
         fontFamily: '"EmojiMart", "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", "Apple Color Emoji", "Twemoji Mozilla", "Noto Color Emoji", "Android Emoji"'
       },
-      children: o.native
-    }) : /* @__PURE__ */ l("span", {
+      children: f.native
+    }) : /* @__PURE__ */ u("span", {
       style: {
         display: "block",
         width: i.size,
         height: i.size,
-        backgroundImage: `url(${t})`,
-        backgroundSize: `${100 * D.sheet.cols}% ${100 * D.sheet.rows}%`,
-        backgroundPosition: `${100 / (D.sheet.cols - 1) * o.x}% ${100 / (D.sheet.rows - 1) * o.y}%`
+        backgroundImage: `url(${o})`,
+        backgroundSize: `${100 * p.sheet.cols}% ${100 * p.sheet.rows}%`,
+        backgroundPosition: `${100 / (p.sheet.cols - 1) * f.x}% ${100 / (p.sheet.rows - 1) * f.y}%`
       }
     })
   });
 }
-const ja = typeof window < "u" && window.HTMLElement ? window.HTMLElement : Object;
-class pn extends ja {
+const Qi = typeof window < "u" && window.HTMLElement ? window.HTMLElement : Object;
+class ui extends Qi {
   static get observedAttributes() {
     return Object.keys(this.Props);
   }
@@ -41913,12 +41297,12 @@ class pn extends ja {
   attributeChangedCallback(e, n, a) {
     if (!this.component)
       return;
-    const o = bn(e, {
+    const f = di(e, {
       [e]: a
     }, this.constructor.Props, this);
     this.component.componentWillReceiveProps ? this.component.componentWillReceiveProps({
-      [e]: o
-    }) : (this.component.props[e] = o, this.component.forceUpdate());
+      [e]: f
+    }) : (this.component.props[e] = f, this.component.forceUpdate());
   }
   disconnectedCallback() {
     this.disconnected = !0, this.component && this.component.unregister && this.component.unregister();
@@ -41931,7 +41315,7 @@ class pn extends ja {
     }
   }
 }
-class Ma extends pn {
+class Yi extends ui {
   setShadow() {
     this.attachShadow({
       mode: "open"
@@ -41947,7 +41331,7 @@ class Ma extends pn {
     super(e), this.setShadow(), this.injectStyles(n);
   }
 }
-var wn = {
+var li = {
   fallback: "",
   id: "",
   native: "",
@@ -41957,15 +41341,15 @@ var wn = {
     transform: (i) => /\D/.test(i) ? i : `${i}px`
   },
   // Shared
-  set: L.set,
-  skin: L.skin
+  set: x.set,
+  skin: x.skin
 };
-class hn extends pn {
+class ci extends ui {
   async connectedCallback() {
-    const e = gn(this.props, wn, this);
+    const e = ri(this.props, li, this);
     e.element = this, e.ref = (n) => {
       this.component = n;
-    }, await re(), !this.disconnected && un(/* @__PURE__ */ l(Le, {
+    }, await W(), !this.disconnected && ni(/* @__PURE__ */ u(te, {
       ...e
     }), this);
   }
@@ -41973,73 +41357,73 @@ class hn extends pn {
     super(e);
   }
 }
-R(hn, "Props", wn);
-typeof customElements < "u" && !customElements.get("em-emoji") && customElements.define("em-emoji", hn);
-var xi, Ie = [], Ai = w.__b, Pi = w.__r, ji = w.diffed, Mi = w.__c, Ti = w.unmount;
-function Ta() {
+F(ci, "Props", li);
+typeof customElements < "u" && !customElements.get("em-emoji") && customElements.define("em-emoji", ci);
+var _e, re = [], ye = k.__b, De = k.__r, Fe = k.diffed, Ce = k.__c, Se = k.unmount;
+function Xi() {
   var i;
-  for (Ie.sort(function(e, n) {
+  for (re.sort(function(e, n) {
     return e.__v.__b - n.__v.__b;
-  }); i = Ie.pop(); )
+  }); i = re.pop(); )
     if (i.__P)
       try {
-        i.__H.__h.forEach(ke), i.__H.__h.forEach(Ge), i.__H.__h = [];
+        i.__H.__h.forEach(R), i.__H.__h.forEach(de), i.__H.__h = [];
       } catch (e) {
-        i.__H.__h = [], w.__e(e, i.__v);
+        i.__H.__h = [], k.__e(e, i.__v);
       }
 }
-w.__b = function(i) {
-  Ai && Ai(i);
-}, w.__r = function(i) {
-  Pi && Pi(i);
+k.__b = function(i) {
+  ye && ye(i);
+}, k.__r = function(i) {
+  De && De(i);
   var e = i.__c.__H;
-  e && (e.__h.forEach(ke), e.__h.forEach(Ge), e.__h = []);
-}, w.diffed = function(i) {
-  ji && ji(i);
+  e && (e.__h.forEach(R), e.__h.forEach(de), e.__h = []);
+}, k.diffed = function(i) {
+  Fe && Fe(i);
   var e = i.__c;
-  e && e.__H && e.__H.__h.length && (Ie.push(e) !== 1 && xi === w.requestAnimationFrame || ((xi = w.requestAnimationFrame) || function(n) {
-    var a, o = function() {
-      clearTimeout(s), $i && cancelAnimationFrame(a), setTimeout(n);
-    }, s = setTimeout(o, 100);
-    $i && (a = requestAnimationFrame(o));
-  })(Ta));
-}, w.__c = function(i, e) {
+  e && e.__H && e.__H.__h.length && (re.push(e) !== 1 && _e === k.requestAnimationFrame || ((_e = k.requestAnimationFrame) || function(n) {
+    var a, f = function() {
+      clearTimeout(s), Be && cancelAnimationFrame(a), setTimeout(n);
+    }, s = setTimeout(f, 100);
+    Be && (a = requestAnimationFrame(f));
+  })(Xi));
+}, k.__c = function(i, e) {
   e.some(function(n) {
     try {
-      n.__h.forEach(ke), n.__h = n.__h.filter(function(a) {
-        return !a.__ || Ge(a);
+      n.__h.forEach(R), n.__h = n.__h.filter(function(a) {
+        return !a.__ || de(a);
       });
     } catch (a) {
-      e.some(function(o) {
-        o.__h && (o.__h = []);
-      }), e = [], w.__e(a, n.__v);
+      e.some(function(f) {
+        f.__h && (f.__h = []);
+      }), e = [], k.__e(a, n.__v);
     }
-  }), Mi && Mi(i, e);
-}, w.unmount = function(i) {
-  Ti && Ti(i);
+  }), Ce && Ce(i, e);
+}, k.unmount = function(i) {
+  Se && Se(i);
   var e, n = i.__c;
   n && n.__H && (n.__H.__.forEach(function(a) {
     try {
-      ke(a);
-    } catch (o) {
-      e = o;
+      R(a);
+    } catch (f) {
+      e = f;
     }
-  }), e && w.__e(e, n.__v));
+  }), e && k.__e(e, n.__v));
 };
-var $i = typeof requestAnimationFrame == "function";
-function ke(i) {
+var Be = typeof requestAnimationFrame == "function";
+function R(i) {
   var e = i.__c;
   typeof e == "function" && (i.__c = void 0, e());
 }
-function Ge(i) {
+function de(i) {
   i.__c = i.__();
 }
-function $a(i, e) {
+function en(i, e) {
   for (var n in e)
     i[n] = e[n];
   return i;
 }
-function zi(i, e) {
+function Ee(i, e) {
   for (var n in i)
     if (n !== "__source" && !(n in e))
       return !0;
@@ -42048,89 +41432,89 @@ function zi(i, e) {
       return !0;
   return !1;
 }
-function _e(i) {
+function K(i) {
   this.props = i;
 }
-(_e.prototype = new H()).isPureReactComponent = !0, _e.prototype.shouldComponentUpdate = function(i, e) {
-  return zi(this.props, i) || zi(this.state, e);
+(K.prototype = new S()).isPureReactComponent = !0, K.prototype.shouldComponentUpdate = function(i, e) {
+  return Ee(this.props, i) || Ee(this.state, e);
 };
-var Wi = w.__b;
-w.__b = function(i) {
-  i.type && i.type.__f && i.ref && (i.props.ref = i.ref, i.ref = null), Wi && Wi(i);
+var xe = k.__b;
+k.__b = function(i) {
+  i.type && i.type.__f && i.ref && (i.props.ref = i.ref, i.ref = null), xe && xe(i);
 };
-var za = w.__e;
-w.__e = function(i, e, n) {
+var nn = k.__e;
+k.__e = function(i, e, n) {
   if (i.then) {
-    for (var a, o = e; o = o.__; )
-      if ((a = o.__c) && a.__c)
+    for (var a, f = e; f = f.__; )
+      if ((a = f.__c) && a.__c)
         return e.__e == null && (e.__e = n.__e, e.__k = n.__k), a.__c(i, e);
   }
-  za(i, e, n);
+  nn(i, e, n);
 };
-var Ri = w.unmount;
-function ze() {
+var Ae = k.unmount;
+function ie() {
   this.__u = 0, this.t = null, this.__b = null;
 }
-function _n(i) {
+function mi(i) {
   var e = i.__.__c;
   return e && e.__e && e.__e(i);
 }
-function ce() {
+function q() {
   this.u = null, this.o = null;
 }
-w.unmount = function(i) {
+k.unmount = function(i) {
   var e = i.__c;
-  e && e.__R && e.__R(), e && i.__h === !0 && (i.type = null), Ri && Ri(i);
-}, (ze.prototype = new H()).__c = function(i, e) {
+  e && e.__R && e.__R(), e && i.__h === !0 && (i.type = null), Ae && Ae(i);
+}, (ie.prototype = new S()).__c = function(i, e) {
   var n = e.__c, a = this;
   a.t == null && (a.t = []), a.t.push(n);
-  var o = _n(a.__v), s = !1, t = function() {
-    s || (s = !0, n.__R = null, o ? o(u) : u());
+  var f = mi(a.__v), s = !1, o = function() {
+    s || (s = !0, n.__R = null, f ? f(d) : d());
   };
-  n.__R = t;
-  var u = function() {
+  n.__R = o;
+  var d = function() {
     if (!--a.__u) {
       if (a.state.__e) {
-        var c = a.state.__e;
-        a.__v.__k[0] = function g(v, b, p) {
-          return v && (v.__v = null, v.__k = v.__k && v.__k.map(function(_) {
-            return g(_, b, p);
-          }), v.__c && v.__c.__P === b && (v.__e && p.insertBefore(v.__e, v.__d), v.__c.__e = !0, v.__c.__P = p)), v;
-        }(c, c.__c.__P, c.__c.__O);
+        var l = a.state.__e;
+        a.__v.__k[0] = function v(c, m, g) {
+          return c && (c.__v = null, c.__k = c.__k && c.__k.map(function(b) {
+            return v(b, m, g);
+          }), c.__c && c.__c.__P === m && (c.__e && g.insertBefore(c.__e, c.__d), c.__c.__e = !0, c.__c.__P = g)), c;
+        }(l, l.__c.__P, l.__c.__O);
       }
-      var r;
+      var t;
       for (a.setState({
         __e: a.__b = null
-      }); r = a.t.pop(); )
-        r.forceUpdate();
+      }); t = a.t.pop(); )
+        t.forceUpdate();
     }
-  }, d = e.__h === !0;
-  a.__u++ || d || a.setState({
+  }, r = e.__h === !0;
+  a.__u++ || r || a.setState({
     __e: a.__b = a.__v.__k[0]
-  }), i.then(t, t);
-}, ze.prototype.componentWillUnmount = function() {
+  }), i.then(o, o);
+}, ie.prototype.componentWillUnmount = function() {
   this.t = [];
-}, ze.prototype.render = function(i, e) {
+}, ie.prototype.render = function(i, e) {
   if (this.__b) {
     if (this.__v.__k) {
       var n = document.createElement("div"), a = this.__v.__k[0].__c;
-      this.__v.__k[0] = function s(t, u, d) {
-        return t && (t.__c && t.__c.__H && (t.__c.__H.__.forEach(function(c) {
-          typeof c.__c == "function" && c.__c();
-        }), t.__c.__H = null), (t = $a({}, t)).__c != null && (t.__c.__P === d && (t.__c.__P = u), t.__c = null), t.__k = t.__k && t.__k.map(function(c) {
-          return s(c, u, d);
-        })), t;
+      this.__v.__k[0] = function s(o, d, r) {
+        return o && (o.__c && o.__c.__H && (o.__c.__H.__.forEach(function(l) {
+          typeof l.__c == "function" && l.__c();
+        }), o.__c.__H = null), (o = en({}, o)).__c != null && (o.__c.__P === r && (o.__c.__P = d), o.__c = null), o.__k = o.__k && o.__k.map(function(l) {
+          return s(l, d, r);
+        })), o;
       }(this.__b, n, a.__O = a.__P);
     }
     this.__b = null;
   }
-  var o = e.__e && He(X, null, i.fallback);
-  return o && (o.__h = null), [
-    He(X, null, e.__e ? null : i.children),
-    o
+  var f = e.__e && se(j, null, i.fallback);
+  return f && (f.__h = null), [
+    se(j, null, e.__e ? null : i.children),
+    f
   ];
 };
-var Oi = function(i, e, n) {
+var Pe = function(i, e, n) {
   if (++n[1] === n[0] && i.o.delete(e), i.props.revealOrder && (i.props.revealOrder[0] !== "t" || !i.o.size))
     for (n = i.u; n; ) {
       for (; n.length > 3; )
@@ -42140,17 +41524,17 @@ var Oi = function(i, e, n) {
       i.u = n = n[2];
     }
 };
-(ce.prototype = new H()).__e = function(i) {
-  var e = this, n = _n(e.__v), a = e.o.get(i);
-  return a[0]++, function(o) {
+(q.prototype = new S()).__e = function(i) {
+  var e = this, n = mi(e.__v), a = e.o.get(i);
+  return a[0]++, function(f) {
     var s = function() {
-      e.props.revealOrder ? (a.push(o), Oi(e, i, a)) : o();
+      e.props.revealOrder ? (a.push(f), Pe(e, i, a)) : f();
     };
     n ? n(s) : s();
   };
-}, ce.prototype.render = function(i) {
+}, q.prototype.render = function(i) {
   this.u = null, this.o = /* @__PURE__ */ new Map();
-  var e = pe(i.children);
+  var e = I(i.children);
   i.revealOrder && i.revealOrder[0] === "b" && e.reverse();
   for (var n = e.length; n--; )
     this.o.set(e[n], this.u = [
@@ -42159,21 +41543,21 @@ var Oi = function(i, e, n) {
       this.u
     ]);
   return i.children;
-}, ce.prototype.componentDidUpdate = ce.prototype.componentDidMount = function() {
+}, q.prototype.componentDidUpdate = q.prototype.componentDidMount = function() {
   var i = this;
   this.o.forEach(function(e, n) {
-    Oi(i, n, e);
+    Pe(i, n, e);
   });
 };
-var Wa = typeof Symbol < "u" && Symbol.for && Symbol.for("react.element") || 60103, Ra = /^(?:accent|alignment|arabic|baseline|cap|clip(?!PathU)|color|dominant|fill|flood|font|glyph(?!R)|horiz|marker(?!H|W|U)|overline|paint|stop|strikethrough|stroke|text(?!L)|underline|unicode|units|v|vector|vert|word|writing|x(?!C))[A-Z]/, Oa = typeof document < "u", Ha = function(i) {
+var an = typeof Symbol < "u" && Symbol.for && Symbol.for("react.element") || 60103, sn = /^(?:accent|alignment|arabic|baseline|cap|clip(?!PathU)|color|dominant|fill|flood|font|glyph(?!R)|horiz|marker(?!H|W|U)|overline|paint|stop|strikethrough|stroke|text(?!L)|underline|unicode|units|v|vector|vert|word|writing|x(?!C))[A-Z]/, fn = typeof document < "u", on = function(i) {
   return (typeof Symbol < "u" && typeof Symbol() == "symbol" ? /fil|che|rad/i : /fil|che|ra/i).test(i);
 };
-H.prototype.isReactComponent = {}, [
+S.prototype.isReactComponent = {}, [
   "componentWillMount",
   "componentWillReceiveProps",
   "componentWillUpdate"
 ].forEach(function(i) {
-  Object.defineProperty(H.prototype, i, {
+  Object.defineProperty(S.prototype, i, {
     configurable: !0,
     get: function() {
       return this["UNSAFE_" + i];
@@ -42187,86 +41571,86 @@ H.prototype.isReactComponent = {}, [
     }
   });
 });
-var Hi = w.event;
-function qa() {
+var Me = k.event;
+function tn() {
 }
-function Na() {
+function rn() {
   return this.cancelBubble;
 }
-function La() {
+function dn() {
   return this.defaultPrevented;
 }
-w.event = function(i) {
-  return Hi && (i = Hi(i)), i.persist = qa, i.isPropagationStopped = Na, i.isDefaultPrevented = La, i.nativeEvent = i;
+k.event = function(i) {
+  return Me && (i = Me(i)), i.persist = tn, i.isPropagationStopped = rn, i.isDefaultPrevented = dn, i.nativeEvent = i;
 };
-var qi = {
+var je = {
   configurable: !0,
   get: function() {
     return this.class;
   }
-}, Ni = w.vnode;
-w.vnode = function(i) {
+}, $e = k.vnode;
+k.vnode = function(i) {
   var e = i.type, n = i.props, a = n;
   if (typeof e == "string") {
-    var o = e.indexOf("-") === -1;
+    var f = e.indexOf("-") === -1;
     for (var s in a = {}, n) {
-      var t = n[s];
-      Oa && s === "children" && e === "noscript" || s === "value" && "defaultValue" in n && t == null || (s === "defaultValue" && "value" in n && n.value == null ? s = "value" : s === "download" && t === !0 ? t = "" : /ondoubleclick/i.test(s) ? s = "ondblclick" : /^onchange(textarea|input)/i.test(s + e) && !Ha(n.type) ? s = "oninput" : /^onfocus$/i.test(s) ? s = "onfocusin" : /^onblur$/i.test(s) ? s = "onfocusout" : /^on(Ani|Tra|Tou|BeforeInp)/.test(s) ? s = s.toLowerCase() : o && Ra.test(s) ? s = s.replace(/[A-Z0-9]/, "-$&").toLowerCase() : t === null && (t = void 0), a[s] = t);
+      var o = n[s];
+      fn && s === "children" && e === "noscript" || s === "value" && "defaultValue" in n && o == null || (s === "defaultValue" && "value" in n && n.value == null ? s = "value" : s === "download" && o === !0 ? o = "" : /ondoubleclick/i.test(s) ? s = "ondblclick" : /^onchange(textarea|input)/i.test(s + e) && !on(n.type) ? s = "oninput" : /^onfocus$/i.test(s) ? s = "onfocusin" : /^onblur$/i.test(s) ? s = "onfocusout" : /^on(Ani|Tra|Tou|BeforeInp)/.test(s) ? s = s.toLowerCase() : f && sn.test(s) ? s = s.replace(/[A-Z0-9]/, "-$&").toLowerCase() : o === null && (o = void 0), a[s] = o);
     }
-    e == "select" && a.multiple && Array.isArray(a.value) && (a.value = pe(n.children).forEach(function(u) {
-      u.props.selected = a.value.indexOf(u.props.value) != -1;
-    })), e == "select" && a.defaultValue != null && (a.value = pe(n.children).forEach(function(u) {
-      u.props.selected = a.multiple ? a.defaultValue.indexOf(u.props.value) != -1 : a.defaultValue == u.props.value;
-    })), i.props = a, n.class != n.className && (qi.enumerable = "className" in n, n.className != null && (a.class = n.className), Object.defineProperty(a, "className", qi));
+    e == "select" && a.multiple && Array.isArray(a.value) && (a.value = I(n.children).forEach(function(d) {
+      d.props.selected = a.value.indexOf(d.props.value) != -1;
+    })), e == "select" && a.defaultValue != null && (a.value = I(n.children).forEach(function(d) {
+      d.props.selected = a.multiple ? a.defaultValue.indexOf(d.props.value) != -1 : a.defaultValue == d.props.value;
+    })), i.props = a, n.class != n.className && (je.enumerable = "className" in n, n.className != null && (a.class = n.className), Object.defineProperty(a, "className", je));
   }
-  i.$$typeof = Wa, Ni && Ni(i);
+  i.$$typeof = an, $e && $e(i);
 };
-var Li = w.__r;
-w.__r = function(i) {
-  Li && Li(i), i.__c;
+var ze = k.__r;
+k.__r = function(i) {
+  ze && ze(i), i.__c;
 };
-const Ia = {
+const un = {
   light: "outline",
   dark: "solid"
 };
-class Ga extends _e {
+class ln extends K {
   renderIcon(e) {
     const { icon: n } = e;
     if (n) {
       if (n.svg)
-        return /* @__PURE__ */ l("span", {
+        return /* @__PURE__ */ u("span", {
           class: "flex",
           dangerouslySetInnerHTML: {
             __html: n.svg
           }
         });
       if (n.src)
-        return /* @__PURE__ */ l("img", {
+        return /* @__PURE__ */ u("img", {
           src: n.src
         });
     }
-    const a = he.categories[e.id] || he.categories.custom, o = this.props.icons == "auto" ? Ia[this.props.theme] : this.props.icons;
-    return a[o] || a;
+    const a = U.categories[e.id] || U.categories.custom, f = this.props.icons == "auto" ? un[this.props.theme] : this.props.icons;
+    return a[f] || a;
   }
   render() {
     let e = null;
-    return /* @__PURE__ */ l("nav", {
+    return /* @__PURE__ */ u("nav", {
       id: "nav",
       class: "padding",
       "data-position": this.props.position,
       dir: this.props.dir,
-      children: /* @__PURE__ */ l("div", {
+      children: /* @__PURE__ */ u("div", {
         class: "flex relative",
         children: [
           this.categories.map((n, a) => {
-            const o = n.name || M.categories[n.id], s = !this.props.unfocused && n.id == this.state.categoryId;
-            return s && (e = a), /* @__PURE__ */ l("button", {
-              "aria-label": o,
+            const f = n.name || y.categories[n.id], s = !this.props.unfocused && n.id == this.state.categoryId;
+            return s && (e = a), /* @__PURE__ */ u("button", {
+              "aria-label": f,
               "aria-selected": s || void 0,
-              title: o,
+              title: f,
               type: "button",
               class: "flex flex-grow flex-center",
-              onMouseDown: (t) => t.preventDefault(),
+              onMouseDown: (o) => o.preventDefault(),
               onClick: () => {
                 this.props.onClick({
                   category: n,
@@ -42276,7 +41660,7 @@ class Ga extends _e {
               children: this.renderIcon(n)
             });
           }),
-          /* @__PURE__ */ l("div", {
+          /* @__PURE__ */ u("div", {
             class: "bar",
             style: {
               width: `${100 / this.categories.length}%`,
@@ -42289,12 +41673,12 @@ class Ga extends _e {
     });
   }
   constructor() {
-    super(), this.categories = D.categories.filter((e) => !e.target), this.state = {
+    super(), this.categories = p.categories.filter((e) => !e.target), this.state = {
       categoryId: this.categories[0].id
     };
   }
 }
-class Va extends _e {
+class cn extends K {
   shouldComponentUpdate(e) {
     for (let n in e)
       if (n != "children" && e[n] != this.props[n])
@@ -42305,25 +41689,25 @@ class Va extends _e {
     return this.props.children;
   }
 }
-const me = {
+const N = {
   rowsPerRender: 10
 };
-class Ua extends H {
+class mn extends S {
   getInitialState(e = this.props) {
     return {
-      skin: G.get("skin") || e.skin,
+      skin: P.get("skin") || e.skin,
       theme: this.initTheme(e.theme)
     };
   }
   componentWillMount() {
-    this.dir = M.rtl ? "rtl" : "ltr", this.refs = {
-      menu: q(),
-      navigation: q(),
-      scroll: q(),
-      search: q(),
-      searchInput: q(),
-      skinToneButton: q(),
-      skinToneRadio: q()
+    this.dir = y.rtl ? "rtl" : "ltr", this.refs = {
+      menu: B(),
+      navigation: B(),
+      scroll: B(),
+      search: B(),
+      searchInput: B(),
+      skinToneButton: B(),
+      skinToneRadio: B()
     }, this.initGrid(), this.props.stickySearch == !1 && this.props.searchPosition == "sticky" && (console.warn("[EmojiMart] Deprecation warning: `stickySearch` has been renamed `searchPosition`."), this.props.searchPosition = "static");
   }
   componentDidMount() {
@@ -42338,8 +41722,8 @@ class Ua extends H {
       this.nextState[n] = e[n];
     clearTimeout(this.nextStateTimer), this.nextStateTimer = setTimeout(() => {
       let n = !1;
-      for (const o in this.nextState)
-        this.props[o] = this.nextState[o], (o === "custom" || o === "categories") && (n = !0);
+      for (const f in this.nextState)
+        this.props[f] = this.nextState[f], (f === "custom" || f === "categories") && (n = !0);
       delete this.nextState;
       const a = this.getInitialState();
       if (n)
@@ -42351,7 +41735,7 @@ class Ua extends H {
     this.unregister();
   }
   async reset(e = {}) {
-    await re(this.props), this.initGrid(), this.unobserve(), this.setState(e, () => {
+    await W(this.props), this.initGrid(), this.unobserve(), this.setState(e, () => {
       this.observeCategories(), this.observeRows();
     });
   }
@@ -42374,23 +41758,23 @@ class Ua extends H {
     this.observers = [].concat(e);
   }
   initGrid() {
-    const { categories: e } = D;
+    const { categories: e } = p;
     this.refs.categories = /* @__PURE__ */ new Map();
-    const n = D.categories.map((o) => o.id).join(",");
+    const n = p.categories.map((f) => f.id).join(",");
     this.navKey && this.navKey != n && this.refs.scroll.current && (this.refs.scroll.current.scrollTop = 0), this.navKey = n, this.grid = [], this.grid.setsize = 0;
-    const a = (o, s) => {
-      const t = [];
-      t.__categoryId = s.id, t.__index = o.length, this.grid.push(t);
-      const u = this.grid.length - 1, d = u % me.rowsPerRender ? {} : q();
-      return d.index = u, d.posinset = this.grid.setsize + 1, o.push(d), t;
+    const a = (f, s) => {
+      const o = [];
+      o.__categoryId = s.id, o.__index = f.length, this.grid.push(o);
+      const d = this.grid.length - 1, r = d % N.rowsPerRender ? {} : B();
+      return r.index = d, r.posinset = this.grid.setsize + 1, f.push(r), o;
     };
-    for (let o of e) {
+    for (let f of e) {
       const s = [];
-      let t = a(s, o);
-      for (let u of o.emojis)
-        t.length == this.getPerLine() && (t = a(s, o)), this.grid.setsize += 1, t.push(u);
-      this.refs.categories.set(o.id, {
-        root: q(),
+      let o = a(s, f);
+      for (let d of f.emojis)
+        o.length == this.getPerLine() && (o = a(s, f)), this.grid.setsize += 1, o.push(d);
+      this.refs.categories.set(f.id, {
+        root: B(),
         rows: s
       });
     }
@@ -42408,80 +41792,80 @@ class Ua extends H {
   initDynamicPerLine(e = this.props) {
     if (!e.dynamicWidth)
       return;
-    const { element: n, emojiButtonSize: a } = e, o = () => {
-      const { width: t } = n.getBoundingClientRect();
-      return Math.floor(t / a);
+    const { element: n, emojiButtonSize: a } = e, f = () => {
+      const { width: o } = n.getBoundingClientRect();
+      return Math.floor(o / a);
     }, s = new ResizeObserver(() => {
       this.unobserve({
         except: s
       }), this.setState({
-        perLine: o()
+        perLine: f()
       }, () => {
         this.initGrid(), this.forceUpdate(() => {
           this.observeCategories(), this.observeRows();
         });
       });
     });
-    return s.observe(n), this.observers.push(s), o();
+    return s.observe(n), this.observers.push(s), f();
   }
   getPerLine() {
     return this.state.perLine || this.props.perLine;
   }
   getEmojiByPos([e, n]) {
-    const a = this.state.searchResults || this.grid, o = a[e] && a[e][n];
-    if (o)
-      return Q.get(o);
+    const a = this.state.searchResults || this.grid, f = a[e] && a[e][n];
+    if (f)
+      return M.get(f);
   }
   observeCategories() {
     const e = this.refs.navigation.current;
     if (!e)
       return;
-    const n = /* @__PURE__ */ new Map(), a = (t) => {
-      t != e.state.categoryId && e.setState({
-        categoryId: t
+    const n = /* @__PURE__ */ new Map(), a = (o) => {
+      o != e.state.categoryId && e.setState({
+        categoryId: o
       });
-    }, o = {
+    }, f = {
       root: this.refs.scroll.current,
       threshold: [
         0,
         1
       ]
-    }, s = new IntersectionObserver((t) => {
-      for (const d of t) {
-        const c = d.target.dataset.id;
-        n.set(c, d.intersectionRatio);
+    }, s = new IntersectionObserver((o) => {
+      for (const r of o) {
+        const l = r.target.dataset.id;
+        n.set(l, r.intersectionRatio);
       }
-      const u = [
+      const d = [
         ...n
       ];
-      for (const [d, c] of u)
-        if (c) {
-          a(d);
+      for (const [r, l] of d)
+        if (l) {
+          a(r);
           break;
         }
-    }, o);
-    for (const { root: t } of this.refs.categories.values())
-      s.observe(t.current);
+    }, f);
+    for (const { root: o } of this.refs.categories.values())
+      s.observe(o.current);
     this.observers.push(s);
   }
   observeRows() {
     const e = {
       ...this.state.visibleRows
     }, n = new IntersectionObserver((a) => {
-      for (const o of a) {
-        const s = parseInt(o.target.dataset.index);
-        o.isIntersecting ? e[s] = !0 : delete e[s];
+      for (const f of a) {
+        const s = parseInt(f.target.dataset.index);
+        f.isIntersecting ? e[s] = !0 : delete e[s];
       }
       this.setState({
         visibleRows: e
       });
     }, {
       root: this.refs.scroll.current,
-      rootMargin: `${this.props.emojiButtonSize * (me.rowsPerRender + 5)}px 0px ${this.props.emojiButtonSize * me.rowsPerRender}px`
+      rootMargin: `${this.props.emojiButtonSize * (N.rowsPerRender + 5)}px 0px ${this.props.emojiButtonSize * N.rowsPerRender}px`
     });
     for (const { rows: a } of this.refs.categories.values())
-      for (const o of a)
-        o.current && n.observe(o.current);
+      for (const f of a)
+        f.current && n.observe(f.current);
     this.observers.push(n);
   }
   preventDefault(e) {
@@ -42491,48 +41875,48 @@ class Ua extends H {
     const e = this.refs.searchInput.current;
     e && e.blur();
   }
-  navigate({ e, input: n, left: a, right: o, up: s, down: t }) {
-    const u = this.state.searchResults || this.grid;
-    if (!u.length)
+  navigate({ e, input: n, left: a, right: f, up: s, down: o }) {
+    const d = this.state.searchResults || this.grid;
+    if (!d.length)
       return;
-    let [d, c] = this.state.pos;
-    const r = (() => {
-      if (d == 0 && c == 0 && !e.repeat && (a || s))
+    let [r, l] = this.state.pos;
+    const t = (() => {
+      if (r == 0 && l == 0 && !e.repeat && (a || s))
         return null;
-      if (d == -1)
-        return !e.repeat && (o || t) && n.selectionStart == n.value.length ? [
+      if (r == -1)
+        return !e.repeat && (f || o) && n.selectionStart == n.value.length ? [
           0,
           0
         ] : null;
-      if (a || o) {
-        let g = u[d];
-        const v = a ? -1 : 1;
-        if (c += v, !g[c]) {
-          if (d += v, g = u[d], !g)
-            return d = a ? 0 : u.length - 1, c = a ? 0 : u[d].length - 1, [
-              d,
-              c
+      if (a || f) {
+        let v = d[r];
+        const c = a ? -1 : 1;
+        if (l += c, !v[l]) {
+          if (r += c, v = d[r], !v)
+            return r = a ? 0 : d.length - 1, l = a ? 0 : d[r].length - 1, [
+              r,
+              l
             ];
-          c = a ? g.length - 1 : 0;
+          l = a ? v.length - 1 : 0;
         }
         return [
-          d,
-          c
+          r,
+          l
         ];
       }
-      if (s || t) {
-        d += s ? -1 : 1;
-        const g = u[d];
-        return g ? (g[c] || (c = g.length - 1), [
-          d,
-          c
-        ]) : (d = s ? 0 : u.length - 1, c = s ? 0 : u[d].length - 1, [
-          d,
-          c
+      if (s || o) {
+        r += s ? -1 : 1;
+        const v = d[r];
+        return v ? (v[l] || (l = v.length - 1), [
+          r,
+          l
+        ]) : (r = s ? 0 : d.length - 1, l = s ? 0 : d[r].length - 1, [
+          r,
+          l
         ]);
       }
     })();
-    if (r)
+    if (t)
       e.preventDefault();
     else {
       this.state.pos[0] > -1 && this.setState({
@@ -42544,11 +41928,11 @@ class Ua extends H {
       return;
     }
     this.setState({
-      pos: r,
+      pos: t,
       keyboard: !0
     }, () => {
       this.scrollTo({
-        row: r[0]
+        row: t[0]
       });
     });
   }
@@ -42556,21 +41940,21 @@ class Ua extends H {
     const a = this.state.searchResults || this.grid;
     if (!a.length)
       return;
-    const o = this.refs.scroll.current, s = o.getBoundingClientRect();
-    let t = 0;
-    if (n >= 0 && (e = a[n].__categoryId), e && (t = (this.refs[e] || this.refs.categories.get(e).root).current.getBoundingClientRect().top - (s.top - o.scrollTop) + 1), n >= 0)
+    const f = this.refs.scroll.current, s = f.getBoundingClientRect();
+    let o = 0;
+    if (n >= 0 && (e = a[n].__categoryId), e && (o = (this.refs[e] || this.refs.categories.get(e).root).current.getBoundingClientRect().top - (s.top - f.scrollTop) + 1), n >= 0)
       if (!n)
-        t = 0;
+        o = 0;
       else {
-        const u = a[n].__index, d = t + u * this.props.emojiButtonSize, c = d + this.props.emojiButtonSize + this.props.emojiButtonSize * 0.88;
-        if (d < o.scrollTop)
-          t = d;
-        else if (c > o.scrollTop + s.height)
-          t = c - s.height;
+        const d = a[n].__index, r = o + d * this.props.emojiButtonSize, l = r + this.props.emojiButtonSize + this.props.emojiButtonSize * 0.88;
+        if (r < f.scrollTop)
+          o = r;
+        else if (l > f.scrollTop + s.height)
+          o = l - s.height;
         else
           return;
       }
-    this.ignoreMouse(), o.scrollTop = t;
+    this.ignoreMouse(), f.scrollTop = o;
   }
   ignoreMouse() {
     this.mouseIsIgnored = !0, clearTimeout(this.ignoreMouseTimer), this.ignoreMouseTimer = setTimeout(() => {
@@ -42588,10 +41972,10 @@ class Ua extends H {
   }
   handleEmojiClick({ e, emoji: n, pos: a }) {
     if (this.props.onEmojiSelect && (!n && a && (n = this.getEmojiByPos(a)), n)) {
-      const o = xa(n, {
+      const f = Ki(n, {
         skinIndex: this.state.skin - 1
       });
-      this.props.maxFrequentRows && cn.add(o, this.props), this.props.onEmojiSelect(o, e);
+      this.props.maxFrequentRows && si.add(f, this.props), this.props.onEmojiSelect(f, e);
     }
   }
   closeSkins() {
@@ -42609,10 +41993,10 @@ class Ua extends H {
     this.ignoreMouse(), this.closeSkins(), this.setState({
       skin: e,
       tempSkin: null
-    }), G.set("skin", e);
+    }), P.set("skin", e);
   }
   renderNav() {
-    return /* @__PURE__ */ l(Ga, {
+    return /* @__PURE__ */ u(ln, {
       ref: this.refs.navigation,
       icons: this.props.icons,
       theme: this.state.theme,
@@ -42624,22 +42008,22 @@ class Ua extends H {
   }
   renderPreview() {
     const e = this.getEmojiByPos(this.state.pos), n = this.state.searchResults && !this.state.searchResults.length;
-    return /* @__PURE__ */ l("div", {
+    return /* @__PURE__ */ u("div", {
       id: "preview",
       class: "flex flex-middle",
       dir: this.dir,
       "data-position": this.props.previewPosition,
       children: [
-        /* @__PURE__ */ l("div", {
+        /* @__PURE__ */ u("div", {
           class: "flex flex-middle flex-grow",
           children: [
-            /* @__PURE__ */ l("div", {
+            /* @__PURE__ */ u("div", {
               class: "flex flex-auto flex-middle flex-center",
               style: {
                 height: this.props.emojiButtonSize,
                 fontSize: this.props.emojiButtonSize
               },
-              children: /* @__PURE__ */ l(Le, {
+              children: /* @__PURE__ */ u(te, {
                 emoji: e,
                 id: n ? this.props.noResultsEmoji || "cry" : this.props.previewEmoji || (this.props.previewPosition == "top" ? "point_down" : "point_up"),
                 set: this.props.set,
@@ -42649,23 +42033,23 @@ class Ua extends H {
                 getSpritesheetURL: this.props.getSpritesheetURL
               })
             }),
-            /* @__PURE__ */ l("div", {
+            /* @__PURE__ */ u("div", {
               class: `margin-${this.dir[0]}`,
-              children: e || n ? /* @__PURE__ */ l("div", {
+              children: e || n ? /* @__PURE__ */ u("div", {
                 class: `padding-${this.dir[2]} align-${this.dir[0]}`,
                 children: [
-                  /* @__PURE__ */ l("div", {
+                  /* @__PURE__ */ u("div", {
                     class: "preview-title ellipsis",
-                    children: e ? e.name : M.search_no_results_1
+                    children: e ? e.name : y.search_no_results_1
                   }),
-                  /* @__PURE__ */ l("div", {
+                  /* @__PURE__ */ u("div", {
                     class: "preview-subtitle ellipsis color-c",
-                    children: e ? e.skins[0].shortcodes : M.search_no_results_2
+                    children: e ? e.skins[0].shortcodes : y.search_no_results_2
                   })
                 ]
-              }) : /* @__PURE__ */ l("div", {
+              }) : /* @__PURE__ */ u("div", {
                 class: "preview-placeholder color-c",
-                children: M.pick
+                children: y.pick
               })
             })
           ]
@@ -42674,24 +42058,24 @@ class Ua extends H {
       ]
     });
   }
-  renderEmojiButton(e, { pos: n, posinset: a, grid: o }) {
-    const s = this.props.emojiButtonSize, t = this.state.tempSkin || this.state.skin, d = (e.skins[t - 1] || e.skins[0]).native, c = Ba(this.state.pos, n), r = n.concat(e.id).join("");
-    return /* @__PURE__ */ l(Va, {
-      selected: c,
-      skin: t,
+  renderEmojiButton(e, { pos: n, posinset: a, grid: f }) {
+    const s = this.props.emojiButtonSize, o = this.state.tempSkin || this.state.skin, r = (e.skins[o - 1] || e.skins[0]).native, l = Vi(this.state.pos, n), t = n.concat(e.id).join("");
+    return /* @__PURE__ */ u(cn, {
+      selected: l,
+      skin: o,
       size: s,
-      children: /* @__PURE__ */ l("button", {
-        "aria-label": d,
-        "aria-selected": c || void 0,
+      children: /* @__PURE__ */ u("button", {
+        "aria-label": r,
+        "aria-selected": l || void 0,
         "aria-posinset": a,
-        "aria-setsize": o.setsize,
+        "aria-setsize": f.setsize,
         "data-keyboard": this.state.keyboard,
         title: this.props.previewPosition == "none" ? e.name : void 0,
         type: "button",
         class: "flex flex-center flex-middle",
         tabindex: "-1",
-        onClick: (g) => this.handleEmojiClick({
-          e: g,
+        onClick: (v) => this.handleEmojiClick({
+          e: v,
           emoji: e
         }),
         onMouseEnter: () => this.handleEmojiOver(n),
@@ -42703,7 +42087,7 @@ class Ua extends H {
           lineHeight: 0
         },
         children: [
-          /* @__PURE__ */ l("div", {
+          /* @__PURE__ */ u("div", {
             "aria-hidden": "true",
             class: "background",
             style: {
@@ -42711,52 +42095,52 @@ class Ua extends H {
               backgroundColor: this.props.emojiButtonColors ? this.props.emojiButtonColors[(a - 1) % this.props.emojiButtonColors.length] : void 0
             }
           }),
-          /* @__PURE__ */ l(Le, {
+          /* @__PURE__ */ u(te, {
             emoji: e,
             set: this.props.set,
             size: this.props.emojiSize,
-            skin: t,
+            skin: o,
             spritesheet: !0,
             getSpritesheetURL: this.props.getSpritesheetURL
           })
         ]
       })
-    }, r);
+    }, t);
   }
   renderSearch() {
     const e = this.props.previewPosition == "none" || this.props.skinTonePosition == "search";
-    return /* @__PURE__ */ l("div", {
+    return /* @__PURE__ */ u("div", {
       children: [
-        /* @__PURE__ */ l("div", {
+        /* @__PURE__ */ u("div", {
           class: "spacer"
         }),
-        /* @__PURE__ */ l("div", {
+        /* @__PURE__ */ u("div", {
           class: "flex flex-middle",
           children: [
-            /* @__PURE__ */ l("div", {
+            /* @__PURE__ */ u("div", {
               class: "search relative flex-grow",
               children: [
-                /* @__PURE__ */ l("input", {
+                /* @__PURE__ */ u("input", {
                   type: "search",
                   ref: this.refs.searchInput,
-                  placeholder: M.search,
+                  placeholder: y.search,
                   onClick: this.handleSearchClick,
                   onInput: this.handleSearchInput,
                   onKeyDown: this.handleSearchKeyDown,
                   autoComplete: "off"
                 }),
-                /* @__PURE__ */ l("span", {
+                /* @__PURE__ */ u("span", {
                   class: "icon loupe flex",
-                  children: he.search.loupe
+                  children: U.search.loupe
                 }),
-                this.state.searchResults && /* @__PURE__ */ l("button", {
+                this.state.searchResults && /* @__PURE__ */ u("button", {
                   title: "Clear",
                   "aria-label": "Clear",
                   type: "button",
                   class: "icon delete flex",
                   onClick: this.clearSearch,
                   onMouseDown: this.preventDefault,
-                  children: he.search.delete
+                  children: U.search.delete
                 })
               ]
             }),
@@ -42768,18 +42152,18 @@ class Ua extends H {
   }
   renderSearchResults() {
     const { searchResults: e } = this.state;
-    return e ? /* @__PURE__ */ l("div", {
+    return e ? /* @__PURE__ */ u("div", {
       class: "category",
       ref: this.refs.search,
       children: [
-        /* @__PURE__ */ l("div", {
+        /* @__PURE__ */ u("div", {
           class: `sticky padding-small align-${this.dir[0]}`,
-          children: M.categories.search
+          children: y.categories.search
         }),
-        /* @__PURE__ */ l("div", {
-          children: e.length ? e.map((n, a) => /* @__PURE__ */ l("div", {
+        /* @__PURE__ */ u("div", {
+          children: e.length ? e.map((n, a) => /* @__PURE__ */ u("div", {
             class: "flex",
-            children: n.map((o, s) => this.renderEmojiButton(o, {
+            children: n.map((f, s) => this.renderEmojiButton(f, {
               pos: [
                 a,
                 s
@@ -42787,11 +42171,11 @@ class Ua extends H {
               posinset: a * this.props.perLine + s + 1,
               grid: e
             }))
-          })) : /* @__PURE__ */ l("div", {
+          })) : /* @__PURE__ */ u("div", {
             class: `padding-small align-${this.dir[0]}`,
-            children: this.props.onAddCustomEmoji && /* @__PURE__ */ l("a", {
+            children: this.props.onAddCustomEmoji && /* @__PURE__ */ u("a", {
               onClick: this.props.onAddCustomEmoji,
-              children: M.add_custom
+              children: y.add_custom
             })
           })
         })
@@ -42799,60 +42183,60 @@ class Ua extends H {
     }) : null;
   }
   renderCategories() {
-    const { categories: e } = D, n = !!this.state.searchResults, a = this.getPerLine();
-    return /* @__PURE__ */ l("div", {
+    const { categories: e } = p, n = !!this.state.searchResults, a = this.getPerLine();
+    return /* @__PURE__ */ u("div", {
       style: {
         visibility: n ? "hidden" : void 0,
         display: n ? "none" : void 0,
         height: "100%"
       },
-      children: e.map((o) => {
-        const { root: s, rows: t } = this.refs.categories.get(o.id);
-        return /* @__PURE__ */ l("div", {
-          "data-id": o.target ? o.target.id : o.id,
+      children: e.map((f) => {
+        const { root: s, rows: o } = this.refs.categories.get(f.id);
+        return /* @__PURE__ */ u("div", {
+          "data-id": f.target ? f.target.id : f.id,
           class: "category",
           ref: s,
           children: [
-            /* @__PURE__ */ l("div", {
+            /* @__PURE__ */ u("div", {
               class: `sticky padding-small align-${this.dir[0]}`,
-              children: o.name || M.categories[o.id]
+              children: f.name || y.categories[f.id]
             }),
-            /* @__PURE__ */ l("div", {
+            /* @__PURE__ */ u("div", {
               class: "relative",
               style: {
-                height: t.length * this.props.emojiButtonSize
+                height: o.length * this.props.emojiButtonSize
               },
-              children: t.map((u, d) => {
-                const c = u.index - u.index % me.rowsPerRender, r = this.state.visibleRows[c], g = "current" in u ? u : void 0;
-                if (!r && !g)
+              children: o.map((d, r) => {
+                const l = d.index - d.index % N.rowsPerRender, t = this.state.visibleRows[l], v = "current" in d ? d : void 0;
+                if (!t && !v)
                   return null;
-                const v = d * a, b = v + a, p = o.emojis.slice(v, b);
-                return p.length < a && p.push(...new Array(a - p.length)), /* @__PURE__ */ l("div", {
-                  "data-index": u.index,
-                  ref: g,
+                const c = r * a, m = c + a, g = f.emojis.slice(c, m);
+                return g.length < a && g.push(...new Array(a - g.length)), /* @__PURE__ */ u("div", {
+                  "data-index": d.index,
+                  ref: v,
                   class: "flex row",
                   style: {
-                    top: d * this.props.emojiButtonSize
+                    top: r * this.props.emojiButtonSize
                   },
-                  children: r && p.map((_, y) => {
-                    if (!_)
-                      return /* @__PURE__ */ l("div", {
+                  children: t && g.map((b, w) => {
+                    if (!b)
+                      return /* @__PURE__ */ u("div", {
                         style: {
                           width: this.props.emojiButtonSize,
                           height: this.props.emojiButtonSize
                         }
                       });
-                    const C = Q.get(_);
-                    return this.renderEmojiButton(C, {
+                    const h = M.get(b);
+                    return this.renderEmojiButton(h, {
                       pos: [
-                        u.index,
-                        y
+                        d.index,
+                        w
                       ],
-                      posinset: u.posinset + y,
+                      posinset: d.posinset + w,
                       grid: this.grid
                     });
                   })
-                }, u.index);
+                }, d.index);
               })
             })
           ]
@@ -42861,26 +42245,26 @@ class Ua extends H {
     });
   }
   renderSkinToneButton() {
-    return this.props.skinTonePosition == "none" ? null : /* @__PURE__ */ l("div", {
+    return this.props.skinTonePosition == "none" ? null : /* @__PURE__ */ u("div", {
       class: "flex flex-auto flex-center flex-middle",
       style: {
         position: "relative",
         width: this.props.emojiButtonSize,
         height: this.props.emojiButtonSize
       },
-      children: /* @__PURE__ */ l("button", {
+      children: /* @__PURE__ */ u("button", {
         type: "button",
         ref: this.refs.skinToneButton,
         class: "skin-tone-button flex flex-auto flex-center flex-middle",
         "aria-selected": this.state.showSkins ? "" : void 0,
-        "aria-label": M.skins.choose,
-        title: M.skins.choose,
+        "aria-label": y.skins.choose,
+        title: y.skins.choose,
         onClick: this.openSkins,
         style: {
           width: this.props.emojiSize,
           height: this.props.emojiSize
         },
-        children: /* @__PURE__ */ l("span", {
+        children: /* @__PURE__ */ u("span", {
           class: `skin-tone skin-tone-${this.state.skin}`
         })
       })
@@ -42888,54 +42272,54 @@ class Ua extends H {
   }
   renderLiveRegion() {
     const e = this.getEmojiByPos(this.state.pos), n = e ? e.name : "";
-    return /* @__PURE__ */ l("div", {
+    return /* @__PURE__ */ u("div", {
       "aria-live": "polite",
       class: "sr-only",
       children: n
     });
   }
   renderSkins() {
-    const n = this.refs.skinToneButton.current.getBoundingClientRect(), a = this.base.getBoundingClientRect(), o = {};
-    return this.dir == "ltr" ? o.right = a.right - n.right - 3 : o.left = n.left - a.left - 3, this.props.previewPosition == "bottom" && this.props.skinTonePosition == "preview" ? o.bottom = a.bottom - n.top + 6 : (o.top = n.bottom - a.top + 3, o.bottom = "auto"), /* @__PURE__ */ l("div", {
+    const n = this.refs.skinToneButton.current.getBoundingClientRect(), a = this.base.getBoundingClientRect(), f = {};
+    return this.dir == "ltr" ? f.right = a.right - n.right - 3 : f.left = n.left - a.left - 3, this.props.previewPosition == "bottom" && this.props.skinTonePosition == "preview" ? f.bottom = a.bottom - n.top + 6 : (f.top = n.bottom - a.top + 3, f.bottom = "auto"), /* @__PURE__ */ u("div", {
       ref: this.refs.menu,
       role: "radiogroup",
       dir: this.dir,
-      "aria-label": M.skins.choose,
+      "aria-label": y.skins.choose,
       class: "menu hidden",
-      "data-position": o.top ? "top" : "bottom",
-      style: o,
+      "data-position": f.top ? "top" : "bottom",
+      style: f,
       children: [
         ...Array(6).keys()
       ].map((s) => {
-        const t = s + 1, u = this.state.skin == t;
-        return /* @__PURE__ */ l("div", {
+        const o = s + 1, d = this.state.skin == o;
+        return /* @__PURE__ */ u("div", {
           children: [
-            /* @__PURE__ */ l("input", {
+            /* @__PURE__ */ u("input", {
               type: "radio",
               name: "skin-tone",
-              value: t,
-              "aria-label": M.skins[t],
-              ref: u ? this.refs.skinToneRadio : null,
-              defaultChecked: u,
-              onChange: () => this.handleSkinMouseOver(t),
-              onKeyDown: (d) => {
-                (d.code == "Enter" || d.code == "Space" || d.code == "Tab") && (d.preventDefault(), this.handleSkinClick(t));
+              value: o,
+              "aria-label": y.skins[o],
+              ref: d ? this.refs.skinToneRadio : null,
+              defaultChecked: d,
+              onChange: () => this.handleSkinMouseOver(o),
+              onKeyDown: (r) => {
+                (r.code == "Enter" || r.code == "Space" || r.code == "Tab") && (r.preventDefault(), this.handleSkinClick(o));
               }
             }),
-            /* @__PURE__ */ l("button", {
+            /* @__PURE__ */ u("button", {
               "aria-hidden": "true",
               tabindex: "-1",
-              onClick: () => this.handleSkinClick(t),
-              onMouseEnter: () => this.handleSkinMouseOver(t),
+              onClick: () => this.handleSkinClick(o),
+              onMouseEnter: () => this.handleSkinMouseOver(o),
               onMouseLeave: () => this.handleSkinMouseOver(),
               class: "option flex flex-grow flex-middle",
               children: [
-                /* @__PURE__ */ l("span", {
-                  class: `skin-tone skin-tone-${t}`
+                /* @__PURE__ */ u("span", {
+                  class: `skin-tone skin-tone-${o}`
                 }),
-                /* @__PURE__ */ l("span", {
+                /* @__PURE__ */ u("span", {
                   class: "margin-small-lr",
-                  children: M.skins[t]
+                  children: y.skins[o]
                 })
               ]
             })
@@ -42946,7 +42330,7 @@ class Ua extends H {
   }
   render() {
     const e = this.props.perLine * this.props.emojiButtonSize;
-    return /* @__PURE__ */ l("section", {
+    return /* @__PURE__ */ u("section", {
       id: "root",
       class: "flex flex-column",
       dir: this.dir,
@@ -42959,14 +42343,14 @@ class Ua extends H {
       children: [
         this.props.previewPosition == "top" && this.renderPreview(),
         this.props.navPosition == "top" && this.renderNav(),
-        this.props.searchPosition == "sticky" && /* @__PURE__ */ l("div", {
+        this.props.searchPosition == "sticky" && /* @__PURE__ */ u("div", {
           class: "padding-lr",
           children: this.renderSearch()
         }),
-        /* @__PURE__ */ l("div", {
+        /* @__PURE__ */ u("div", {
           ref: this.refs.scroll,
           class: "scroll flex-grow padding-lr",
-          children: /* @__PURE__ */ l("div", {
+          children: /* @__PURE__ */ u("div", {
             style: {
               width: this.props.dynamicWidth ? "100%" : e,
               height: "100%"
@@ -42986,55 +42370,55 @@ class Ua extends H {
     });
   }
   constructor(e) {
-    super(), R(this, "darkMediaCallback", () => {
+    super(), F(this, "darkMediaCallback", () => {
       this.props.theme == "auto" && this.setState({
         theme: this.darkMedia.matches ? "dark" : "light"
       });
-    }), R(this, "handleClickOutside", (n) => {
+    }), F(this, "handleClickOutside", (n) => {
       const { element: a } = this.props;
       n.target != a && (this.state.showSkins && this.closeSkins(), this.props.onClickOutside && this.props.onClickOutside(n));
-    }), R(this, "handleBaseClick", (n) => {
+    }), F(this, "handleBaseClick", (n) => {
       this.state.showSkins && (n.target.closest(".menu") || (n.preventDefault(), n.stopImmediatePropagation(), this.closeSkins()));
-    }), R(this, "handleBaseKeydown", (n) => {
+    }), F(this, "handleBaseKeydown", (n) => {
       this.state.showSkins && n.key == "Escape" && (n.preventDefault(), n.stopImmediatePropagation(), this.closeSkins());
-    }), R(this, "handleSearchClick", () => {
+    }), F(this, "handleSearchClick", () => {
       this.getEmojiByPos(this.state.pos) && this.setState({
         pos: [
           -1,
           -1
         ]
       });
-    }), R(this, "handleSearchInput", async () => {
+    }), F(this, "handleSearchInput", async () => {
       const n = this.refs.searchInput.current;
       if (!n)
         return;
-      const { value: a } = n, o = await Q.search(a), s = () => {
+      const { value: a } = n, f = await M.search(a), s = () => {
         this.refs.scroll.current && (this.refs.scroll.current.scrollTop = 0);
       };
-      if (!o)
+      if (!f)
         return this.setState({
-          searchResults: o,
+          searchResults: f,
           pos: [
             -1,
             -1
           ]
         }, s);
-      const t = n.selectionStart == n.value.length ? [
+      const o = n.selectionStart == n.value.length ? [
         0,
         0
       ] : [
         -1,
         -1
-      ], u = [];
-      u.setsize = o.length;
-      let d = null;
-      for (let c of o)
-        (!u.length || d.length == this.getPerLine()) && (d = [], d.__categoryId = "search", d.__index = u.length, u.push(d)), d.push(c);
+      ], d = [];
+      d.setsize = f.length;
+      let r = null;
+      for (let l of f)
+        (!d.length || r.length == this.getPerLine()) && (r = [], r.__categoryId = "search", r.__index = d.length, d.push(r)), r.push(l);
       this.ignoreMouse(), this.setState({
-        searchResults: u,
-        pos: t
+        searchResults: d,
+        pos: o
       }, s);
-    }), R(this, "handleSearchKeyDown", (n) => {
+    }), F(this, "handleSearchKeyDown", (n) => {
       const a = n.currentTarget;
       switch (n.stopImmediatePropagation(), n.key) {
         case "ArrowLeft":
@@ -43075,21 +42459,21 @@ class Ua extends H {
           n.preventDefault(), this.state.searchResults ? this.clearSearch() : this.unfocusSearch();
           break;
       }
-    }), R(this, "clearSearch", () => {
+    }), F(this, "clearSearch", () => {
       const n = this.refs.searchInput.current;
       n && (n.value = "", n.focus(), this.handleSearchInput());
-    }), R(this, "handleCategoryClick", ({ category: n, i: a }) => {
+    }), F(this, "handleCategoryClick", ({ category: n, i: a }) => {
       this.scrollTo(a == 0 ? {
         row: -1
       } : {
         categoryId: n.id
       });
-    }), R(this, "openSkins", (n) => {
-      const { currentTarget: a } = n, o = a.getBoundingClientRect();
+    }), F(this, "openSkins", (n) => {
+      const { currentTarget: a } = n, f = a.getBoundingClientRect();
       this.setState({
-        showSkins: o
+        showSkins: f
       }, async () => {
-        await Ea(2);
+        await Ui(2);
         const s = this.refs.menu.current;
         s && (s.classList.remove("hidden"), this.refs.skinToneRadio.current.focus(), this.base.addEventListener("click", this.handleBaseClick, !0), this.base.addEventListener("keydown", this.handleBaseKeydown, !0));
       });
@@ -43106,25 +42490,25 @@ class Ua extends H {
     };
   }
 }
-class yn extends Ma {
+class vi extends Yi {
   async connectedCallback() {
-    const e = gn(this.props, L, this);
+    const e = ri(this.props, x, this);
     e.element = this, e.ref = (n) => {
       this.component = n;
-    }, await re(e), !this.disconnected && un(/* @__PURE__ */ l(Ua, {
+    }, await W(e), !this.disconnected && ni(/* @__PURE__ */ u(mn, {
       ...e
     }), this.shadowRoot);
   }
   constructor(e) {
     super(e, {
-      styles: /* @__PURE__ */ Zi(Dn)
+      styles: /* @__PURE__ */ Ge(ki)
     });
   }
 }
-R(yn, "Props", L);
-typeof customElements < "u" && !customElements.get("em-emoji-picker") && customElements.define("em-emoji-picker", yn);
-var Dn = {};
-Dn = `:host {
+F(vi, "Props", x);
+typeof customElements < "u" && !customElements.get("em-emoji-picker") && customElements.define("em-emoji-picker", vi);
+var ki = {};
+ki = `:host {
   width: min-content;
   height: 435px;
   min-height: 230px;
@@ -43840,338 +43224,338 @@ button {
 }
 
 `;
-const Ka = "Smileys/Grinning Face.webp", Ja = "Smileys/Grinning Face With Big Eyes.webp", Ya = "Smileys/Grinning Face With Smiling Eyes.webp", Za = "Smileys/Beaming Face With Smiling Eyes.webp", Qa = "Smileys/Grinning Squinting Face.webp", Xa = "Smileys/Grinning Face With Sweat.webp", es = "Smileys/Rolling On The Floor Laughing.webp", is = "Smileys/Face With Tears Of Joy.webp", ns = "Smileys/Slightly Smiling Face.webp", as = "Smileys/Winking Face.webp", ss = "Smileys/Smiling Face With Smiling Eyes.webp", fs = "Smileys/Smiling Face With Halo.webp", os = "Smileys/Smiling Face With Hearts.webp", rs = "Smileys/Face Blowing A Kiss.webp", ts = "Smileys/Kissing Face.webp", ds = "Smileys/Smiling Face.webp", us = "Smileys/Kissing Face With Closed Eyes.webp", ls = "Smileys/Face Savoring Food.webp", cs = "Smileys/Face With Tongue.webp", ms = "Smileys/Winking Face With Tongue.webp", vs = "Smileys/Zany Face.webp", ks = "Smileys/Squinting Face With Tongue.webp", gs = "Smileys/Hugging Face.webp", bs = "Smileys/Face With Hand Over Mouth.webp", ps = "Smileys/Shushing Face.webp", ws = "Smileys/Thinking Face.webp", hs = "Smileys/Face With Raised Eyebrow.webp", _s = "Smileys/Neutral Face.webp", ys = "Smileys/Expressionless Face.webp", Ds = "Smileys/Face Without Mouth.webp", Fs = "Smileys/Smirking Face.webp", Cs = "Smileys/Unamused Face.webp", Ss = "Smileys/Face With Rolling Eyes.webp", Bs = "Smileys/Grimacing Face.webp", Es = "Smileys/Lying Face.webp", xs = "Smileys/Relieved Face.webp", As = "Smileys/Pensive Face.webp", Ps = "Smileys/Sleepy Face.webp", js = "Smileys/Drooling Face.webp", Ms = "Smileys/Sleeping Face.webp", Ts = "Smileys/Face With Medical Mask.webp", $s = "Smileys/Face With Thermometer.webp", zs = "Smileys/Nauseated Face.webp", Ws = "Smileys/Face Vomiting.webp", Rs = "Smileys/Sneezing Face.webp", Os = "Smileys/Hot Face.webp", Hs = "Smileys/Cold Face.webp", qs = "Smileys/Woozy Face.webp", Ns = "Smileys/Dizzy Face.webp", Ls = "Smileys/Exploding Head.webp", Is = "Smileys/Cowboy Hat Face.webp", Gs = "Smileys/Partying Face.webp", Vs = "Smileys/Smiling Face With Sunglasses.webp", Us = "Smileys/Nerd Face.webp", Ks = "Smileys/Face With Monocle.webp", Js = "Smileys/Confused Face.webp", Ys = "Smileys/Worried Face.webp", Zs = "Smileys/Slightly Frowning Face.webp", Qs = "Smileys/Frowning Face.webp", Xs = "Smileys/Face With Open Mouth.webp", ef = "Smileys/Hushed Face.webp", nf = "Smileys/Astonished Face.webp", af = "Smileys/Flushed Face.webp", sf = "Smileys/Pleading Face.webp", ff = "Smileys/Frowning Face With Open Mouth.webp", of = "Smileys/Anguished Face.webp", rf = "Smileys/Fearful Face.webp", tf = "Smileys/Anxious Face With Sweat.webp", df = "Smileys/Sad But Relieved Face.webp", uf = "Smileys/Crying Face.webp", lf = "Smileys/Loudly Crying Face.webp", cf = "Smileys/Face Screaming In Fear.webp", mf = "Smileys/Confounded Face.webp", vf = "Smileys/Persevering Face.webp", kf = "Smileys/Disappointed Face.webp", gf = "Smileys/Weary Face.webp", bf = "Smileys/Tired Face.webp", pf = "Smileys/Pouting Face.webp", wf = "Smileys/Angry Face.webp", hf = "Smileys/Face With Symbols On Mouth.webp", _f = "Smileys/Smiling Face With Horns.webp", yf = "Smileys/Skull.webp", Df = "Smileys/Skull And Crossbones.webp", Ff = "Smileys/Pile Of Poo.webp", Cf = "Smileys/Clown Face.webp", Sf = "Smileys/Ogre.webp", Bf = "Smileys/Goblin.webp", Ef = "Smileys/Ghost.webp", xf = "Smileys/Alien.webp", Af = "Smileys/Alien Monster.webp", Pf = "Smileys/Robot.webp", jf = "Smileys/Grinning Cat.webp", Mf = "Smileys/Grinning Cat With Smiling Eyes.webp", Tf = "Smileys/Cat With Tears Of Joy.webp", $f = "Smileys/Cat With Wry Smile.webp", zf = "Smileys/Kissing Cat.webp", Wf = "Smileys/Weary Cat.webp", Rf = "Smileys/Crying Cat.webp", Of = "Smileys/Pouting Cat.webp", Hf = "Symbols/Love Letter.webp", qf = "Symbols/Heart With Arrow.webp", Nf = "Symbols/Heart With Ribbon.webp", Lf = "Symbols/Sparkling Heart.webp", If = "Symbols/Growing Heart.webp", Gf = "Symbols/Beating Heart.webp", Vf = "Symbols/Revolving Hearts.webp", Uf = "Symbols/Two Hearts.webp", Kf = "Symbols/Heart Decoration.webp", Jf = "Symbols/Heart Exclamation.webp", Yf = "Symbols/Broken Heart.webp", Zf = "Symbols/Red Heart.webp", Qf = "Symbols/Orange Heart.webp", Xf = "Symbols/Yellow Heart.webp", eo = "Symbols/Green Heart.webp", io = "Symbols/Blue Heart.webp", no = "Symbols/Purple Heart.webp", ao = "Symbols/Black Heart.webp", so = "Symbols/Kiss Mark.webp", fo = "Symbols/Anger Symbol.webp", oo = "Symbols/Collision.webp", ro = "Symbols/Dizzy.webp", to = "Symbols/Speech Balloon.webp", uo = "Symbols/Right Anger Bubble.webp", lo = "Symbols/Thought Balloon.webp", co = "Symbols/Zzz.webp", mo = "People/Waving Hand.webp", vo = "People/Raised Back Of Hand.webp", ko = "People/Hand With Fingers Splayed.webp", go = "People/Raised Hand.webp", bo = "People/Ok Hand.webp", po = "People/Victory Hand.webp", wo = "People/Crossed Fingers.webp", ho = "People/Sign Of The Horns.webp", _o = "People/Call Me Hand.webp", yo = "People/Backhand Index Pointing Left.webp", Do = "People/Backhand Index Pointing Right.webp", Fo = "People/Backhand Index Pointing Up.webp", Co = "People/Middle Finger.webp", So = "People/Backhand Index Pointing Down.webp", Bo = "People/Index Pointing Up.webp", Eo = "People/Raised Fist.webp", xo = "People/Oncoming Fist.webp", Ao = "People/Clapping Hands.webp", Po = "People/Raising Hands.webp", jo = "People/Open Hands.webp", Mo = "People/Palms Up Together.webp", To = "People/Handshake.webp", $o = "People/Folded Hands.webp", zo = "People/Writing Hand.webp", Wo = "People/Nail Polish.webp", Ro = "People/Flexed Biceps.webp", Oo = "People/Leg.webp", Ho = "People/Foot.webp", qo = "People/Ear.webp", No = "People/Nose.webp", Lo = "People/Tooth.webp", Io = "People/Bone.webp", Go = "People/Eyes.webp", Vo = "People/Tongue.webp", Uo = "People/Mouth.webp", Ko = "People/Baby.webp", Jo = "People/Old Woman.webp", Yo = "People/Pregnant Woman.webp", Zo = "People/Santa Claus.webp", Qo = "People/Vampire.webp", Xo = "People/Man Vampire.webp", er = "People/Woman Vampire.webp", ir = "People/Zombie.webp", nr = "People/Man Zombie.webp", ar = "People/Woman Zombie.webp", sr = "People/Man Dancing.webp", fr = "People/Speaking Head.webp", or = "People/Bust In Silhouette.webp", rr = "People/Busts In Silhouette.webp", tr = "People/Footprints.webp", dr = "Animals and Nature/Monkey Face.webp", ur = "Animals and Nature/Gorilla.webp", lr = "Animals and Nature/Dog Face.webp", cr = "Animals and Nature/Fox.webp", mr = "Animals and Nature/Raccoon.webp", vr = "Animals and Nature/Cat Face.webp", kr = "Animals and Nature/Cat.webp", gr = "Animals and Nature/Lion.webp", br = "Animals and Nature/Tiger Face.webp", pr = "Animals and Nature/Tiger.webp", wr = "Animals and Nature/Leopard.webp", hr = "Animals and Nature/Horse Face.webp", _r = "Animals and Nature/Horse.webp", yr = "Animals and Nature/Unicorn.webp", Dr = "Animals and Nature/Zebra.webp", Fr = "Animals and Nature/Deer.webp", Cr = "Animals and Nature/Ox.webp", Sr = "Animals and Nature/Cow.webp", Br = "Animals and Nature/Pig Face.webp", Er = "Animals and Nature/Pig Nose.webp", xr = "Animals and Nature/Llama.webp", Ar = "Animals and Nature/Giraffe.webp", Pr = "Animals and Nature/Mouse Face.webp", jr = "Animals and Nature/Hamster.webp", Mr = "Animals and Nature/Rabbit Face.webp", Tr = "Animals and Nature/Rabbit.webp", $r = "Animals and Nature/Hedgehog.webp", zr = "Animals and Nature/Bat.webp", Wr = "Animals and Nature/Bear.webp", Rr = "Animals and Nature/Koala.webp", Or = "Animals and Nature/Panda.webp", Hr = "Animals and Nature/Kangaroo.webp", qr = "Animals and Nature/Paw Prints.webp", Nr = "Animals and Nature/Turkey.webp", Lr = "Animals and Nature/Chicken.webp", Ir = "Animals and Nature/Hatching Chick.webp", Gr = "Animals and Nature/Baby Chick.webp", Vr = "Animals and Nature/Bird.webp", Ur = "Animals and Nature/Penguin.webp", Kr = "Animals and Nature/Dove.webp", Jr = "Animals and Nature/Duck.webp", Yr = "Animals and Nature/Swan.webp", Zr = "Animals and Nature/Owl.webp", Qr = "Animals and Nature/Parrot.webp", Xr = "Animals and Nature/Frog.webp", et = "Animals and Nature/Turtle.webp", it = "Animals and Nature/Snake.webp", nt = "Animals and Nature/Sauropod.webp", at = "Animals and Nature/Spouting Whale.webp", st = "Animals and Nature/Fish.webp", ft = "Animals and Nature/Tropical Fish.webp", ot = "Animals and Nature/Octopus.webp", rt = "Animals and Nature/Snail.webp", tt = "Animals and Nature/Butterfly.webp", dt = "Animals and Nature/Bug.webp", ut = "Animals and Nature/Ant.webp", lt = "Animals and Nature/Honeybee.webp", ct = "Animals and Nature/Lady Beetle.webp", mt = "Animals and Nature/Cricket.webp", vt = "Animals and Nature/Spider.webp", kt = "Animals and Nature/Spider Web.webp", gt = "Animals and Nature/Mosquito.webp", bt = "Animals and Nature/Microbe.webp", pt = "Animals and Nature/Bouquet.webp", wt = "Animals and Nature/Cherry Blossom.webp", ht = "Animals and Nature/Rosette.webp", _t = "Animals and Nature/Rose.webp", yt = "Animals and Nature/Hibiscus.webp", Dt = "Animals and Nature/Blossom.webp", Ft = "Animals and Nature/Tulip.webp", Ct = "Animals and Nature/Seedling.webp", St = "Animals and Nature/Evergreen Tree.webp", Bt = "Animals and Nature/Deciduous Tree.webp", Et = "Animals and Nature/Palm Tree.webp", xt = "Animals and Nature/Cactus.webp", At = "Animals and Nature/Herb.webp", Pt = "Animals and Nature/Shamrock.webp", jt = "Animals and Nature/Four Leaf Clover.webp", Mt = "Food and Drink/Banana.webp", Tt = "Food and Drink/Strawberry.webp", $t = "Food and Drink/Pretzel.webp", zt = "Food and Drink/Pancakes.webp", Wt = "Food and Drink/Meat On Bone.webp", Rt = "Food and Drink/Poultry Leg.webp", Ot = "Food and Drink/Hamburger.webp", Ht = "Food and Drink/French Fries.webp", qt = "Food and Drink/Pizza.webp", Nt = "Food and Drink/Hot Dog.webp", Lt = "Food and Drink/Sandwich.webp", It = "Food and Drink/Taco.webp", Gt = "Food and Drink/Stuffed Flatbread.webp", Vt = "Food and Drink/Cooking.webp", Ut = "Food and Drink/Popcorn.webp", Kt = "Food and Drink/Canned Food.webp", Jt = "Food and Drink/Bento Box.webp", Yt = "Food and Drink/Rice Cracker.webp", Zt = "Food and Drink/Rice Ball.webp", Qt = "Food and Drink/Oden.webp", Xt = "Food and Drink/Sushi.webp", ed = "Food and Drink/Fish Cake With Swirl.webp", id = "Food and Drink/Dango.webp", nd = "Animals and Nature/Lobster.webp", ad = "Animals and Nature/Shrimp.webp", sd = "Animals and Nature/Squid.webp", fd = "Food and Drink/Soft Ice Cream.webp", od = "Food and Drink/Doughnut.webp", rd = "Food and Drink/Cookie.webp", td = "Food and Drink/Birthday Cake.webp", dd = "Food and Drink/Shortcake.webp", ud = "Food and Drink/Cupcake.webp", ld = "Food and Drink/Pie.webp", cd = "Food and Drink/Chocolate Bar.webp", md = "Food and Drink/Lollipop.webp", vd = "Food and Drink/Custard.webp", kd = "Food and Drink/Baby Bottle.webp", gd = "Food and Drink/Glass Of Milk.webp", bd = "Food and Drink/Hot Beverage.webp", pd = "Food and Drink/Bottle With Popping Cork.webp", wd = "Food and Drink/Wine Glass.webp", hd = "Food and Drink/Cocktail Glass.webp", _d = "Food and Drink/Tropical Drink.webp", yd = "Food and Drink/Clinking Glasses.webp", Dd = "Food and Drink/Tumbler Glass.webp", Fd = "Food and Drink/Cup With Straw.webp", Cd = "Food and Drink/Fork And Knife With Plate.webp", Sd = "Travel and Places/Compass.webp", Bd = "Travel and Places/Camping.webp", Ed = "Travel and Places/Beach With Umbrella.webp", xd = "Travel and Places/Desert Island.webp", Ad = "Travel and Places/Classical Building.webp", Pd = "Travel and Places/House.webp", jd = "Travel and Places/Hot Springs.webp", Md = "Travel and Places/Roller Coaster.webp", Td = "Travel and Places/Locomotive.webp", $d = "Travel and Places/Ambulance.webp", zd = "Travel and Places/Police Car.webp", Wd = "Travel and Places/Taxi.webp", Rd = "Travel and Places/Automobile.webp", Od = "Travel and Places/Motor Boat.webp", Hd = "Travel and Places/Airplane.webp", qd = "Travel and Places/Rocket.webp", Nd = "Objects/Luggage.webp", Ld = "Objects/Hourglass Not Done.webp", Id = "Animals and Nature/New Moon.webp", Gd = "Animals and Nature/Waxing Crescent Moon.webp", Vd = "Animals and Nature/First Quarter Moon.webp", Ud = "Animals and Nature/Waxing Gibbous Moon.webp", Kd = "Animals and Nature/Full Moon.webp", Jd = "Animals and Nature/Last Quarter Moon.webp", Yd = "Animals and Nature/Waning Crescent Moon.webp", Zd = "Animals and Nature/New Moon Face.webp", Qd = "Animals and Nature/First Quarter Moon Face.webp", Xd = "Animals and Nature/Last Quarter Moon Face.webp", eu = "Objects/Thermometer.webp", iu = "Animals and Nature/Sun.webp", nu = "Animals and Nature/Full Moon Face.webp", au = "Animals and Nature/Sun With Face.webp", su = "Animals and Nature/Star.webp", fu = "Animals and Nature/Glowing Star.webp", ou = "Animals and Nature/Cloud.webp", ru = "Animals and Nature/Sun Behind Cloud.webp", tu = "Animals and Nature/Cloud With Lightning And Rain.webp", du = "Animals and Nature/Sun Behind Small Cloud.webp", uu = "Animals and Nature/Sun Behind Large Cloud.webp", lu = "Animals and Nature/Sun Behind Rain Cloud.webp", cu = "Animals and Nature/Cloud With Rain.webp", mu = "Animals and Nature/Cloud With Snow.webp", vu = "Animals and Nature/Cloud With Lightning.webp", ku = "Animals and Nature/Rainbow.webp", gu = "Animals and Nature/High Voltage.webp", bu = "Animals and Nature/Snowflake.webp", pu = "Animals and Nature/Snowman.webp", wu = "Animals and Nature/Snowman Without Snow.webp", hu = "Animals and Nature/Fire.webp", _u = "Activity/Christmas Tree.webp", yu = "Activity/Fireworks.webp", Du = "Activity/Sparkler.webp", Fu = "Activity/Firecracker.webp", Cu = "Activity/Sparkles.webp", Su = "Activity/Balloon.webp", Bu = "Activity/Party Popper.webp", Eu = "Activity/Confetti Ball.webp", xu = "Objects/Reminder Ribbon.webp", Au = "Activity/Admission Tickets.webp", Pu = "Activity/Ticket.webp", ju = "Activity/Military Medal.webp", Mu = "Activity/Trophy.webp", Tu = "Activity/Sports Medal.webp", $u = "Activity/1st Place Medal.webp", zu = "Activity/2nd Place Medal.webp", Wu = "Activity/3rd Place Medal.webp", Ru = "Activity/Soccer Ball.webp", Ou = "Activity/Basketball.webp", Hu = "Activity/Crystal Ball.webp", qu = "Activity/Video Game.webp", Nu = "Activity/Performing Arts.webp", Lu = "Activity/Artist Palette.webp", Iu = "Objects/Purse.webp", Gu = "Objects/Handbag.webp", Vu = "Objects/Shopping Bags.webp", Uu = "Objects/Crown.webp", Ku = "Objects/Top Hat.webp", Ju = "Objects/Graduation Cap.webp", Yu = "Objects/Gem Stone.webp", Zu = "Objects/Megaphone.webp", Qu = "Objects/Musical Note.webp", Xu = "Objects/Musical Notes.webp", el = "Objects/Studio Microphone.webp", il = "Objects/Microphone.webp", nl = "Objects/Mobile Phone.webp", al = "Objects/Mobile Phone With Arrow.webp", sl = "Objects/Telephone.webp", fl = "Objects/Telephone Receiver.webp", ol = "Objects/Laptop.webp", rl = "Objects/Printer.webp", tl = "Objects/Keyboard.webp", dl = "Objects/Abacus.webp", ul = "Objects/Clapper Board.webp", ll = "Objects/Television.webp", cl = "Objects/Magnifying Glass Tilted Left.webp", ml = "Objects/Magnifying Glass Tilted Right.webp", vl = "Objects/Light Bulb.webp", kl = "Objects/Open Book.webp", gl = "Objects/Books.webp", bl = "Objects/Newspaper.webp", pl = "Objects/Money Bag.webp", wl = "Objects/Money With Wings.webp", hl = "Objects/Incoming Envelope.webp", _l = "Objects/Outbox Tray.webp", yl = "Objects/Inbox Tray.webp", Dl = "Objects/Ballot Box With Ballot.webp", Fl = "Objects/Pencil.webp", Cl = "Objects/Memo.webp", Sl = "Objects/Briefcase.webp", Bl = "Objects/File Folder.webp", El = "Objects/Card Index Dividers.webp", xl = "Objects/Chart Increasing.webp", Al = "Objects/Chart Decreasing.webp", Pl = "Objects/Bar Chart.webp", jl = "Objects/Locked With Key.webp", Ml = "Objects/Key.webp", Tl = "Objects/Old Key.webp", $l = "Objects/Bomb.webp", zl = "Objects/Toolbox.webp", Wl = "Objects/Test Tube.webp", Rl = "Objects/Microscope.webp", Ol = "Objects/Telescope.webp", Hl = "Objects/Syringe.webp", ql = "Objects/Pill.webp", Nl = "Objects/Roll Of Paper.webp", Ll = "Objects/Soap.webp", Il = "Objects/Sponge.webp", Gl = "Objects/Shopping Cart.webp", Vl = "Objects/Coffin.webp", Ul = "Travel and Places/Moai.webp", Kl = "Symbols/Baby Symbol.webp", Jl = "Symbols/Passport Control.webp", Yl = "Symbols/Customs.webp", Zl = "Symbols/Baggage Claim.webp", Ql = "Symbols/Left Luggage.webp", Xl = "Symbols/No One Under Eighteen.webp", e1 = "Symbols/Top Arrow.webp", i1 = "Symbols/Aries.webp", n1 = "Symbols/Taurus.webp", a1 = "Symbols/Gemini.webp", s1 = "Symbols/Cancer.webp", f1 = "Symbols/Leo.webp", o1 = "Symbols/Virgo.webp", r1 = "Symbols/Libra.webp", t1 = "Symbols/Scorpio.webp", d1 = "Symbols/Sagittarius.webp", u1 = "Symbols/Capricorn.webp", l1 = "Symbols/Aquarius.webp", c1 = "Symbols/Pisces.webp", m1 = "Symbols/Ophiuchus.webp", v1 = "Symbols/Double Exclamation Mark.webp", k1 = "Symbols/Exclamation Question Mark.webp", g1 = "Symbols/White Question Mark.webp", b1 = "Symbols/White Exclamation Mark.webp", p1 = "Symbols/Currency Exchange.webp", w1 = "Symbols/Check Mark Button.webp", h1 = "Symbols/Check Box With Check.webp", _1 = "Symbols/Check Mark.webp", y1 = "Symbols/Cross Mark.webp", D1 = "Symbols/Cool Button.webp", F1 = "Symbols/Free Button.webp", C1 = "Symbols/Ok Button.webp", S1 = "Flags/Chequered Flag.webp", B1 = "Flags/Triangular Flag.webp", E1 = "Flags/Black Flag.webp", x1 = "Flags/White Flag.webp", A1 = "Flags/Pirate Flag.webp", Fn = {
+const vn = "Smileys/Grinning Face.webp", kn = "Smileys/Grinning Face With Big Eyes.webp", gn = "Smileys/Grinning Face With Smiling Eyes.webp", bn = "Smileys/Beaming Face With Smiling Eyes.webp", pn = "Smileys/Grinning Squinting Face.webp", wn = "Smileys/Grinning Face With Sweat.webp", hn = "Smileys/Rolling On The Floor Laughing.webp", _n = "Smileys/Face With Tears Of Joy.webp", yn = "Smileys/Slightly Smiling Face.webp", Dn = "Smileys/Winking Face.webp", Fn = "Smileys/Smiling Face With Smiling Eyes.webp", Cn = "Smileys/Smiling Face With Halo.webp", Sn = "Smileys/Smiling Face With Hearts.webp", Bn = "Smileys/Face Blowing A Kiss.webp", En = "Smileys/Kissing Face.webp", xn = "Smileys/Smiling Face.webp", An = "Smileys/Kissing Face With Closed Eyes.webp", Pn = "Smileys/Face Savoring Food.webp", Mn = "Smileys/Face With Tongue.webp", jn = "Smileys/Winking Face With Tongue.webp", $n = "Smileys/Zany Face.webp", zn = "Smileys/Squinting Face With Tongue.webp", Wn = "Smileys/Hugging Face.webp", Tn = "Smileys/Face With Hand Over Mouth.webp", Hn = "Smileys/Shushing Face.webp", qn = "Smileys/Thinking Face.webp", Nn = "Smileys/Face With Raised Eyebrow.webp", On = "Smileys/Neutral Face.webp", Rn = "Smileys/Expressionless Face.webp", Ln = "Smileys/Face Without Mouth.webp", Gn = "Smileys/Smirking Face.webp", In = "Smileys/Unamused Face.webp", Vn = "Smileys/Face With Rolling Eyes.webp", Un = "Smileys/Grimacing Face.webp", Kn = "Smileys/Lying Face.webp", Jn = "Smileys/Relieved Face.webp", Zn = "Smileys/Pensive Face.webp", Qn = "Smileys/Sleepy Face.webp", Yn = "Smileys/Drooling Face.webp", Xn = "Smileys/Sleeping Face.webp", ea = "Smileys/Face With Medical Mask.webp", ia = "Smileys/Face With Thermometer.webp", na = "Smileys/Nauseated Face.webp", aa = "Smileys/Face Vomiting.webp", sa = "Smileys/Sneezing Face.webp", fa = "Smileys/Hot Face.webp", oa = "Smileys/Cold Face.webp", ta = "Smileys/Woozy Face.webp", ra = "Smileys/Dizzy Face.webp", da = "Smileys/Exploding Head.webp", ua = "Smileys/Cowboy Hat Face.webp", la = "Smileys/Partying Face.webp", ca = "Smileys/Smiling Face With Sunglasses.webp", ma = "Smileys/Nerd Face.webp", va = "Smileys/Face With Monocle.webp", ka = "Smileys/Confused Face.webp", ga = "Smileys/Worried Face.webp", ba = "Smileys/Slightly Frowning Face.webp", pa = "Smileys/Frowning Face.webp", wa = "Smileys/Face With Open Mouth.webp", ha = "Smileys/Hushed Face.webp", _a = "Smileys/Astonished Face.webp", ya = "Smileys/Flushed Face.webp", Da = "Smileys/Pleading Face.webp", Fa = "Smileys/Frowning Face With Open Mouth.webp", Ca = "Smileys/Anguished Face.webp", Sa = "Smileys/Fearful Face.webp", Ba = "Smileys/Anxious Face With Sweat.webp", Ea = "Smileys/Sad But Relieved Face.webp", xa = "Smileys/Crying Face.webp", Aa = "Smileys/Loudly Crying Face.webp", Pa = "Smileys/Face Screaming In Fear.webp", Ma = "Smileys/Confounded Face.webp", ja = "Smileys/Persevering Face.webp", $a = "Smileys/Disappointed Face.webp", za = "Smileys/Weary Face.webp", Wa = "Smileys/Tired Face.webp", Ta = "Smileys/Pouting Face.webp", Ha = "Smileys/Angry Face.webp", qa = "Smileys/Face With Symbols On Mouth.webp", Na = "Smileys/Smiling Face With Horns.webp", Oa = "Smileys/Skull.webp", Ra = "Smileys/Skull And Crossbones.webp", La = "Smileys/Pile Of Poo.webp", Ga = "Smileys/Clown Face.webp", Ia = "Smileys/Ogre.webp", Va = "Smileys/Goblin.webp", Ua = "Smileys/Ghost.webp", Ka = "Smileys/Alien.webp", Ja = "Smileys/Alien Monster.webp", Za = "Smileys/Robot.webp", Qa = "Smileys/Grinning Cat.webp", Ya = "Smileys/Grinning Cat With Smiling Eyes.webp", Xa = "Smileys/Cat With Tears Of Joy.webp", es = "Smileys/Cat With Wry Smile.webp", is = "Smileys/Kissing Cat.webp", ns = "Smileys/Weary Cat.webp", as = "Smileys/Crying Cat.webp", ss = "Smileys/Pouting Cat.webp", fs = "Symbols/Love Letter.webp", os = "Symbols/Heart With Arrow.webp", ts = "Symbols/Heart With Ribbon.webp", rs = "Symbols/Sparkling Heart.webp", ds = "Symbols/Growing Heart.webp", us = "Symbols/Beating Heart.webp", ls = "Symbols/Revolving Hearts.webp", cs = "Symbols/Two Hearts.webp", ms = "Symbols/Heart Decoration.webp", vs = "Symbols/Heart Exclamation.webp", ks = "Symbols/Broken Heart.webp", gs = "Symbols/Red Heart.webp", bs = "Symbols/Orange Heart.webp", ps = "Symbols/Yellow Heart.webp", ws = "Symbols/Green Heart.webp", hs = "Symbols/Blue Heart.webp", _s = "Symbols/Purple Heart.webp", ys = "Symbols/Black Heart.webp", Ds = "Symbols/Kiss Mark.webp", Fs = "Symbols/Anger Symbol.webp", Cs = "Symbols/Collision.webp", Ss = "Symbols/Dizzy.webp", Bs = "Symbols/Speech Balloon.webp", Es = "Symbols/Right Anger Bubble.webp", xs = "Symbols/Thought Balloon.webp", As = "Symbols/Zzz.webp", Ps = "People/Waving Hand.webp", Ms = "People/Raised Back Of Hand.webp", js = "People/Hand With Fingers Splayed.webp", $s = "People/Raised Hand.webp", zs = "People/Ok Hand.webp", Ws = "People/Victory Hand.webp", Ts = "People/Crossed Fingers.webp", Hs = "People/Sign Of The Horns.webp", qs = "People/Call Me Hand.webp", Ns = "People/Backhand Index Pointing Left.webp", Os = "People/Backhand Index Pointing Right.webp", Rs = "People/Backhand Index Pointing Up.webp", Ls = "People/Middle Finger.webp", Gs = "People/Backhand Index Pointing Down.webp", Is = "People/Index Pointing Up.webp", Vs = "People/Raised Fist.webp", Us = "People/Oncoming Fist.webp", Ks = "People/Clapping Hands.webp", Js = "People/Raising Hands.webp", Zs = "People/Open Hands.webp", Qs = "People/Palms Up Together.webp", Ys = "People/Handshake.webp", Xs = "People/Folded Hands.webp", ef = "People/Writing Hand.webp", nf = "People/Nail Polish.webp", af = "People/Flexed Biceps.webp", sf = "People/Leg.webp", ff = "People/Foot.webp", of = "People/Ear.webp", tf = "People/Nose.webp", rf = "People/Tooth.webp", df = "People/Bone.webp", uf = "People/Eyes.webp", lf = "People/Tongue.webp", cf = "People/Mouth.webp", mf = "People/Baby.webp", vf = "People/Old Woman.webp", kf = "People/Pregnant Woman.webp", gf = "People/Santa Claus.webp", bf = "People/Vampire.webp", pf = "People/Man Vampire.webp", wf = "People/Woman Vampire.webp", hf = "People/Zombie.webp", _f = "People/Man Zombie.webp", yf = "People/Woman Zombie.webp", Df = "People/Man Dancing.webp", Ff = "People/Speaking Head.webp", Cf = "People/Bust In Silhouette.webp", Sf = "People/Busts In Silhouette.webp", Bf = "People/Footprints.webp", Ef = "Animals and Nature/Monkey Face.webp", xf = "Animals and Nature/Gorilla.webp", Af = "Animals and Nature/Dog Face.webp", Pf = "Animals and Nature/Fox.webp", Mf = "Animals and Nature/Raccoon.webp", jf = "Animals and Nature/Cat Face.webp", $f = "Animals and Nature/Cat.webp", zf = "Animals and Nature/Lion.webp", Wf = "Animals and Nature/Tiger Face.webp", Tf = "Animals and Nature/Tiger.webp", Hf = "Animals and Nature/Leopard.webp", qf = "Animals and Nature/Horse Face.webp", Nf = "Animals and Nature/Horse.webp", Of = "Animals and Nature/Unicorn.webp", Rf = "Animals and Nature/Zebra.webp", Lf = "Animals and Nature/Deer.webp", Gf = "Animals and Nature/Ox.webp", If = "Animals and Nature/Cow.webp", Vf = "Animals and Nature/Pig Face.webp", Uf = "Animals and Nature/Pig Nose.webp", Kf = "Animals and Nature/Llama.webp", Jf = "Animals and Nature/Giraffe.webp", Zf = "Animals and Nature/Mouse Face.webp", Qf = "Animals and Nature/Hamster.webp", Yf = "Animals and Nature/Rabbit Face.webp", Xf = "Animals and Nature/Rabbit.webp", eo = "Animals and Nature/Hedgehog.webp", io = "Animals and Nature/Bat.webp", no = "Animals and Nature/Bear.webp", ao = "Animals and Nature/Koala.webp", so = "Animals and Nature/Panda.webp", fo = "Animals and Nature/Kangaroo.webp", oo = "Animals and Nature/Paw Prints.webp", to = "Animals and Nature/Turkey.webp", ro = "Animals and Nature/Chicken.webp", uo = "Animals and Nature/Hatching Chick.webp", lo = "Animals and Nature/Baby Chick.webp", co = "Animals and Nature/Bird.webp", mo = "Animals and Nature/Penguin.webp", vo = "Animals and Nature/Dove.webp", ko = "Animals and Nature/Duck.webp", go = "Animals and Nature/Swan.webp", bo = "Animals and Nature/Owl.webp", po = "Animals and Nature/Parrot.webp", wo = "Animals and Nature/Frog.webp", ho = "Animals and Nature/Turtle.webp", _o = "Animals and Nature/Snake.webp", yo = "Animals and Nature/Sauropod.webp", Do = "Animals and Nature/Spouting Whale.webp", Fo = "Animals and Nature/Fish.webp", Co = "Animals and Nature/Tropical Fish.webp", So = "Animals and Nature/Octopus.webp", Bo = "Animals and Nature/Snail.webp", Eo = "Animals and Nature/Butterfly.webp", xo = "Animals and Nature/Bug.webp", Ao = "Animals and Nature/Ant.webp", Po = "Animals and Nature/Honeybee.webp", Mo = "Animals and Nature/Lady Beetle.webp", jo = "Animals and Nature/Cricket.webp", $o = "Animals and Nature/Spider.webp", zo = "Animals and Nature/Spider Web.webp", Wo = "Animals and Nature/Mosquito.webp", To = "Animals and Nature/Microbe.webp", Ho = "Animals and Nature/Bouquet.webp", qo = "Animals and Nature/Cherry Blossom.webp", No = "Animals and Nature/Rosette.webp", Oo = "Animals and Nature/Rose.webp", Ro = "Animals and Nature/Hibiscus.webp", Lo = "Animals and Nature/Blossom.webp", Go = "Animals and Nature/Tulip.webp", Io = "Animals and Nature/Seedling.webp", Vo = "Animals and Nature/Evergreen Tree.webp", Uo = "Animals and Nature/Deciduous Tree.webp", Ko = "Animals and Nature/Palm Tree.webp", Jo = "Animals and Nature/Cactus.webp", Zo = "Animals and Nature/Herb.webp", Qo = "Animals and Nature/Shamrock.webp", Yo = "Animals and Nature/Four Leaf Clover.webp", Xo = "Food and Drink/Banana.webp", et = "Food and Drink/Strawberry.webp", it = "Food and Drink/Pretzel.webp", nt = "Food and Drink/Pancakes.webp", at = "Food and Drink/Meat On Bone.webp", st = "Food and Drink/Poultry Leg.webp", ft = "Food and Drink/Hamburger.webp", ot = "Food and Drink/French Fries.webp", tt = "Food and Drink/Pizza.webp", rt = "Food and Drink/Hot Dog.webp", dt = "Food and Drink/Sandwich.webp", ut = "Food and Drink/Taco.webp", lt = "Food and Drink/Stuffed Flatbread.webp", ct = "Food and Drink/Cooking.webp", mt = "Food and Drink/Popcorn.webp", vt = "Food and Drink/Canned Food.webp", kt = "Food and Drink/Bento Box.webp", gt = "Food and Drink/Rice Cracker.webp", bt = "Food and Drink/Rice Ball.webp", pt = "Food and Drink/Oden.webp", wt = "Food and Drink/Sushi.webp", ht = "Food and Drink/Fish Cake With Swirl.webp", _t = "Food and Drink/Dango.webp", yt = "Animals and Nature/Lobster.webp", Dt = "Animals and Nature/Shrimp.webp", Ft = "Animals and Nature/Squid.webp", Ct = "Food and Drink/Soft Ice Cream.webp", St = "Food and Drink/Doughnut.webp", Bt = "Food and Drink/Cookie.webp", Et = "Food and Drink/Birthday Cake.webp", xt = "Food and Drink/Shortcake.webp", At = "Food and Drink/Cupcake.webp", Pt = "Food and Drink/Pie.webp", Mt = "Food and Drink/Chocolate Bar.webp", jt = "Food and Drink/Lollipop.webp", $t = "Food and Drink/Custard.webp", zt = "Food and Drink/Baby Bottle.webp", Wt = "Food and Drink/Glass Of Milk.webp", Tt = "Food and Drink/Hot Beverage.webp", Ht = "Food and Drink/Bottle With Popping Cork.webp", qt = "Food and Drink/Wine Glass.webp", Nt = "Food and Drink/Cocktail Glass.webp", Ot = "Food and Drink/Tropical Drink.webp", Rt = "Food and Drink/Clinking Glasses.webp", Lt = "Food and Drink/Tumbler Glass.webp", Gt = "Food and Drink/Cup With Straw.webp", It = "Food and Drink/Fork And Knife With Plate.webp", Vt = "Travel and Places/Compass.webp", Ut = "Travel and Places/Camping.webp", Kt = "Travel and Places/Beach With Umbrella.webp", Jt = "Travel and Places/Desert Island.webp", Zt = "Travel and Places/Classical Building.webp", Qt = "Travel and Places/House.webp", Yt = "Travel and Places/Hot Springs.webp", Xt = "Travel and Places/Roller Coaster.webp", er = "Travel and Places/Locomotive.webp", ir = "Travel and Places/Ambulance.webp", nr = "Travel and Places/Police Car.webp", ar = "Travel and Places/Taxi.webp", sr = "Travel and Places/Automobile.webp", fr = "Travel and Places/Motor Boat.webp", or = "Travel and Places/Airplane.webp", tr = "Travel and Places/Rocket.webp", rr = "Objects/Luggage.webp", dr = "Objects/Hourglass Not Done.webp", ur = "Animals and Nature/New Moon.webp", lr = "Animals and Nature/Waxing Crescent Moon.webp", cr = "Animals and Nature/First Quarter Moon.webp", mr = "Animals and Nature/Waxing Gibbous Moon.webp", vr = "Animals and Nature/Full Moon.webp", kr = "Animals and Nature/Last Quarter Moon.webp", gr = "Animals and Nature/Waning Crescent Moon.webp", br = "Animals and Nature/New Moon Face.webp", pr = "Animals and Nature/First Quarter Moon Face.webp", wr = "Animals and Nature/Last Quarter Moon Face.webp", hr = "Objects/Thermometer.webp", _r = "Animals and Nature/Sun.webp", yr = "Animals and Nature/Full Moon Face.webp", Dr = "Animals and Nature/Sun With Face.webp", Fr = "Animals and Nature/Star.webp", Cr = "Animals and Nature/Glowing Star.webp", Sr = "Animals and Nature/Cloud.webp", Br = "Animals and Nature/Sun Behind Cloud.webp", Er = "Animals and Nature/Cloud With Lightning And Rain.webp", xr = "Animals and Nature/Sun Behind Small Cloud.webp", Ar = "Animals and Nature/Sun Behind Large Cloud.webp", Pr = "Animals and Nature/Sun Behind Rain Cloud.webp", Mr = "Animals and Nature/Cloud With Rain.webp", jr = "Animals and Nature/Cloud With Snow.webp", $r = "Animals and Nature/Cloud With Lightning.webp", zr = "Animals and Nature/Rainbow.webp", Wr = "Animals and Nature/High Voltage.webp", Tr = "Animals and Nature/Snowflake.webp", Hr = "Animals and Nature/Snowman.webp", qr = "Animals and Nature/Snowman Without Snow.webp", Nr = "Animals and Nature/Fire.webp", Or = "Activity/Christmas Tree.webp", Rr = "Activity/Fireworks.webp", Lr = "Activity/Sparkler.webp", Gr = "Activity/Firecracker.webp", Ir = "Activity/Sparkles.webp", Vr = "Activity/Balloon.webp", Ur = "Activity/Party Popper.webp", Kr = "Activity/Confetti Ball.webp", Jr = "Objects/Reminder Ribbon.webp", Zr = "Activity/Admission Tickets.webp", Qr = "Activity/Ticket.webp", Yr = "Activity/Military Medal.webp", Xr = "Activity/Trophy.webp", ed = "Activity/Sports Medal.webp", id = "Activity/1st Place Medal.webp", nd = "Activity/2nd Place Medal.webp", ad = "Activity/3rd Place Medal.webp", sd = "Activity/Soccer Ball.webp", fd = "Activity/Basketball.webp", od = "Activity/Crystal Ball.webp", td = "Activity/Video Game.webp", rd = "Activity/Performing Arts.webp", dd = "Activity/Artist Palette.webp", ud = "Objects/Purse.webp", ld = "Objects/Handbag.webp", cd = "Objects/Shopping Bags.webp", md = "Objects/Crown.webp", vd = "Objects/Top Hat.webp", kd = "Objects/Graduation Cap.webp", gd = "Objects/Gem Stone.webp", bd = "Objects/Megaphone.webp", pd = "Objects/Musical Note.webp", wd = "Objects/Musical Notes.webp", hd = "Objects/Studio Microphone.webp", _d = "Objects/Microphone.webp", yd = "Objects/Mobile Phone.webp", Dd = "Objects/Mobile Phone With Arrow.webp", Fd = "Objects/Telephone.webp", Cd = "Objects/Telephone Receiver.webp", Sd = "Objects/Laptop.webp", Bd = "Objects/Printer.webp", Ed = "Objects/Keyboard.webp", xd = "Objects/Abacus.webp", Ad = "Objects/Clapper Board.webp", Pd = "Objects/Television.webp", Md = "Objects/Magnifying Glass Tilted Left.webp", jd = "Objects/Magnifying Glass Tilted Right.webp", $d = "Objects/Light Bulb.webp", zd = "Objects/Open Book.webp", Wd = "Objects/Books.webp", Td = "Objects/Newspaper.webp", Hd = "Objects/Money Bag.webp", qd = "Objects/Money With Wings.webp", Nd = "Objects/Incoming Envelope.webp", Od = "Objects/Outbox Tray.webp", Rd = "Objects/Inbox Tray.webp", Ld = "Objects/Ballot Box With Ballot.webp", Gd = "Objects/Pencil.webp", Id = "Objects/Memo.webp", Vd = "Objects/Briefcase.webp", Ud = "Objects/File Folder.webp", Kd = "Objects/Card Index Dividers.webp", Jd = "Objects/Chart Increasing.webp", Zd = "Objects/Chart Decreasing.webp", Qd = "Objects/Bar Chart.webp", Yd = "Objects/Locked With Key.webp", Xd = "Objects/Key.webp", eu = "Objects/Old Key.webp", iu = "Objects/Bomb.webp", nu = "Objects/Toolbox.webp", au = "Objects/Test Tube.webp", su = "Objects/Microscope.webp", fu = "Objects/Telescope.webp", ou = "Objects/Syringe.webp", tu = "Objects/Pill.webp", ru = "Objects/Roll Of Paper.webp", du = "Objects/Soap.webp", uu = "Objects/Sponge.webp", lu = "Objects/Shopping Cart.webp", cu = "Objects/Coffin.webp", mu = "Travel and Places/Moai.webp", vu = "Symbols/Baby Symbol.webp", ku = "Symbols/Passport Control.webp", gu = "Symbols/Customs.webp", bu = "Symbols/Baggage Claim.webp", pu = "Symbols/Left Luggage.webp", wu = "Symbols/No One Under Eighteen.webp", hu = "Symbols/Top Arrow.webp", _u = "Symbols/Aries.webp", yu = "Symbols/Taurus.webp", Du = "Symbols/Gemini.webp", Fu = "Symbols/Cancer.webp", Cu = "Symbols/Leo.webp", Su = "Symbols/Virgo.webp", Bu = "Symbols/Libra.webp", Eu = "Symbols/Scorpio.webp", xu = "Symbols/Sagittarius.webp", Au = "Symbols/Capricorn.webp", Pu = "Symbols/Aquarius.webp", Mu = "Symbols/Pisces.webp", ju = "Symbols/Ophiuchus.webp", $u = "Symbols/Double Exclamation Mark.webp", zu = "Symbols/Exclamation Question Mark.webp", Wu = "Symbols/White Question Mark.webp", Tu = "Symbols/White Exclamation Mark.webp", Hu = "Symbols/Currency Exchange.webp", qu = "Symbols/Check Mark Button.webp", Nu = "Symbols/Check Box With Check.webp", Ou = "Symbols/Check Mark.webp", Ru = "Symbols/Cross Mark.webp", Lu = "Symbols/Cool Button.webp", Gu = "Symbols/Free Button.webp", Iu = "Symbols/Ok Button.webp", Vu = "Flags/Chequered Flag.webp", Uu = "Flags/Triangular Flag.webp", Ku = "Flags/Black Flag.webp", Ju = "Flags/White Flag.webp", Zu = "Flags/Pirate Flag.webp", gi = {
   100: "Symbols/Hundred Points.webp",
   "💯": "Symbols/Hundred Points.webp",
-  grinning: Ka,
+  grinning: vn,
   "😀": "Smileys/Grinning Face.webp",
-  smiley: Ja,
+  smiley: kn,
   "😃": "Smileys/Grinning Face With Big Eyes.webp",
-  smile: Ya,
+  smile: gn,
   "😄": "Smileys/Grinning Face With Smiling Eyes.webp",
-  grin: Za,
+  grin: bn,
   "😁": "Smileys/Beaming Face With Smiling Eyes.webp",
-  laughing: Qa,
+  laughing: pn,
   "😆": "Smileys/Grinning Squinting Face.webp",
-  sweat_smile: Xa,
+  sweat_smile: wn,
   "😅": "Smileys/Grinning Face With Sweat.webp",
-  rolling_on_the_floor_laughing: es,
+  rolling_on_the_floor_laughing: hn,
   "🤣": "Smileys/Rolling On The Floor Laughing.webp",
-  joy: is,
+  joy: _n,
   "😂": "Smileys/Face With Tears Of Joy.webp",
-  slightly_smiling_face: ns,
+  slightly_smiling_face: yn,
   "🙂": "Smileys/Slightly Smiling Face.webp",
-  wink: as,
+  wink: Dn,
   "😉": "Smileys/Winking Face.webp",
-  blush: ss,
+  blush: Fn,
   "😊": "Smileys/Smiling Face With Smiling Eyes.webp",
-  innocent: fs,
+  innocent: Cn,
   "😇": "Smileys/Smiling Face With Halo.webp",
-  smiling_face_with_3_hearts: os,
+  smiling_face_with_3_hearts: Sn,
   "🥰": "Smileys/Smiling Face With Hearts.webp",
-  kissing_heart: rs,
+  kissing_heart: Bn,
   "😘": "Smileys/Face Blowing A Kiss.webp",
-  kissing: ts,
+  kissing: En,
   "😗": "Smileys/Kissing Face.webp",
-  relaxed: ds,
+  relaxed: xn,
   "☺️": "Smileys/Smiling Face.webp",
-  kissing_closed_eyes: us,
+  kissing_closed_eyes: An,
   "😚": "Smileys/Kissing Face With Closed Eyes.webp",
-  yum: ls,
+  yum: Pn,
   "😋": "Smileys/Face Savoring Food.webp",
-  stuck_out_tongue: cs,
+  stuck_out_tongue: Mn,
   "😛": "Smileys/Face With Tongue.webp",
-  stuck_out_tongue_winking_eye: ms,
+  stuck_out_tongue_winking_eye: jn,
   "😜": "Smileys/Winking Face With Tongue.webp",
-  zany_face: vs,
+  zany_face: $n,
   "🤪": "Smileys/Zany Face.webp",
-  stuck_out_tongue_closed_eyes: ks,
+  stuck_out_tongue_closed_eyes: zn,
   "😝": "Smileys/Squinting Face With Tongue.webp",
-  hugging_face: gs,
+  hugging_face: Wn,
   "🤗": "Smileys/Hugging Face.webp",
-  face_with_hand_over_mouth: bs,
+  face_with_hand_over_mouth: Tn,
   "🤭": "Smileys/Face With Hand Over Mouth.webp",
-  shushing_face: ps,
+  shushing_face: Hn,
   "🤫": "Smileys/Shushing Face.webp",
-  thinking_face: ws,
+  thinking_face: qn,
   "🤔": "Smileys/Thinking Face.webp",
-  face_with_raised_eyebrow: hs,
+  face_with_raised_eyebrow: Nn,
   "🤨": "Smileys/Face With Raised Eyebrow.webp",
-  neutral_face: _s,
+  neutral_face: On,
   "😐": "Smileys/Neutral Face.webp",
-  expressionless: ys,
+  expressionless: Rn,
   "😑": "Smileys/Expressionless Face.webp",
-  no_mouth: Ds,
+  no_mouth: Ln,
   "😶": "Smileys/Face Without Mouth.webp",
-  smirk: Fs,
+  smirk: Gn,
   "😏": "Smileys/Smirking Face.webp",
-  unamused: Cs,
+  unamused: In,
   "😒": "Smileys/Unamused Face.webp",
-  face_with_rolling_eyes: Ss,
+  face_with_rolling_eyes: Vn,
   "🙄": "Smileys/Face With Rolling Eyes.webp",
-  grimacing: Bs,
+  grimacing: Un,
   "😬": "Smileys/Grimacing Face.webp",
-  lying_face: Es,
+  lying_face: Kn,
   "🤥": "Smileys/Lying Face.webp",
-  relieved: xs,
+  relieved: Jn,
   "😌": "Smileys/Relieved Face.webp",
-  pensive: As,
+  pensive: Zn,
   "😔": "Smileys/Pensive Face.webp",
-  sleepy: Ps,
+  sleepy: Qn,
   "😪": "Smileys/Sleepy Face.webp",
-  drooling_face: js,
+  drooling_face: Yn,
   "🤤": "Smileys/Drooling Face.webp",
-  sleeping: Ms,
+  sleeping: Xn,
   "😴": "Smileys/Sleeping Face.webp",
-  mask: Ts,
+  mask: ea,
   "😷": "Smileys/Face With Medical Mask.webp",
-  face_with_thermometer: $s,
+  face_with_thermometer: ia,
   "🤒": "Smileys/Face With Thermometer.webp",
-  nauseated_face: zs,
+  nauseated_face: na,
   "🤢": "Smileys/Nauseated Face.webp",
-  face_vomiting: Ws,
+  face_vomiting: aa,
   "🤮": "Smileys/Face Vomiting.webp",
-  sneezing_face: Rs,
+  sneezing_face: sa,
   "🤧": "Smileys/Sneezing Face.webp",
-  hot_face: Os,
+  hot_face: fa,
   "🥵": "Smileys/Hot Face.webp",
-  cold_face: Hs,
+  cold_face: oa,
   "🥶": "Smileys/Cold Face.webp",
-  woozy_face: qs,
+  woozy_face: ta,
   "🥴": "Smileys/Woozy Face.webp",
-  dizzy_face: Ns,
+  dizzy_face: ra,
   "😵": "Smileys/Dizzy Face.webp",
-  exploding_head: Ls,
+  exploding_head: da,
   "🤯": "Smileys/Exploding Head.webp",
-  face_with_cowboy_hat: Is,
+  face_with_cowboy_hat: ua,
   "🤠": "Smileys/Cowboy Hat Face.webp",
-  partying_face: Gs,
+  partying_face: la,
   "🥳": "Smileys/Partying Face.webp",
-  sunglasses: Vs,
+  sunglasses: ca,
   "😎": "Smileys/Smiling Face With Sunglasses.webp",
-  nerd_face: Us,
+  nerd_face: ma,
   "🤓": "Smileys/Nerd Face.webp",
-  face_with_monocle: Ks,
+  face_with_monocle: va,
   "🧐": "Smileys/Face With Monocle.webp",
-  confused: Js,
+  confused: ka,
   "😕": "Smileys/Confused Face.webp",
-  worried: Ys,
+  worried: ga,
   "😟": "Smileys/Worried Face.webp",
-  slightly_frowning_face: Zs,
+  slightly_frowning_face: ba,
   "🙁": "Smileys/Slightly Frowning Face.webp",
-  white_frowning_face: Qs,
+  white_frowning_face: pa,
   "☹️": "Smileys/Frowning Face.webp",
-  open_mouth: Xs,
+  open_mouth: wa,
   "😮": "Smileys/Face With Open Mouth.webp",
-  hushed: ef,
+  hushed: ha,
   "😯": "Smileys/Hushed Face.webp",
-  astonished: nf,
+  astonished: _a,
   "😲": "Smileys/Astonished Face.webp",
-  flushed: af,
+  flushed: ya,
   "😳": "Smileys/Flushed Face.webp",
-  pleading_face: sf,
+  pleading_face: Da,
   "🥺": "Smileys/Pleading Face.webp",
-  frowning: ff,
+  frowning: Fa,
   "😦": "Smileys/Frowning Face With Open Mouth.webp",
-  anguished: of,
+  anguished: Ca,
   "😧": "Smileys/Anguished Face.webp",
-  fearful: rf,
+  fearful: Sa,
   "😨": "Smileys/Fearful Face.webp",
-  cold_sweat: tf,
+  cold_sweat: Ba,
   "😰": "Smileys/Anxious Face With Sweat.webp",
-  disappointed_relieved: df,
+  disappointed_relieved: Ea,
   "😥": "Smileys/Sad But Relieved Face.webp",
-  cry: uf,
+  cry: xa,
   "😢": "Smileys/Crying Face.webp",
-  sob: lf,
+  sob: Aa,
   "😭": "Smileys/Loudly Crying Face.webp",
-  scream: cf,
+  scream: Pa,
   "😱": "Smileys/Face Screaming In Fear.webp",
-  confounded: mf,
+  confounded: Ma,
   "😖": "Smileys/Confounded Face.webp",
-  persevere: vf,
+  persevere: ja,
   "😣": "Smileys/Persevering Face.webp",
-  disappointed: kf,
+  disappointed: $a,
   "😞": "Smileys/Disappointed Face.webp",
-  weary: gf,
+  weary: za,
   "😩": "Smileys/Weary Face.webp",
-  tired_face: bf,
+  tired_face: Wa,
   "😫": "Smileys/Tired Face.webp",
-  rage: pf,
+  rage: Ta,
   "😡": "Smileys/Pouting Face.webp",
-  angry: wf,
+  angry: Ha,
   "😠": "Smileys/Angry Face.webp",
-  face_with_symbols_on_mouth: hf,
+  face_with_symbols_on_mouth: qa,
   "🤬": "Smileys/Face With Symbols On Mouth.webp",
-  smiling_imp: _f,
+  smiling_imp: Na,
   "😈": "Smileys/Smiling Face With Horns.webp",
-  skull: yf,
+  skull: Oa,
   "💀": "Smileys/Skull.webp",
-  skull_and_crossbones: Df,
+  skull_and_crossbones: Ra,
   "☠️": "Smileys/Skull And Crossbones.webp",
-  hankey: Ff,
+  hankey: La,
   "💩": "Smileys/Pile Of Poo.webp",
-  clown_face: Cf,
+  clown_face: Ga,
   "🤡": "Smileys/Clown Face.webp",
-  japanese_ogre: Sf,
+  japanese_ogre: Ia,
   "👹": "Smileys/Ogre.webp",
-  japanese_goblin: Bf,
+  japanese_goblin: Va,
   "👺": "Smileys/Goblin.webp",
-  ghost: Ef,
+  ghost: Ua,
   "👻": "Smileys/Ghost.webp",
-  alien: xf,
+  alien: Ka,
   "👽": "Smileys/Alien.webp",
-  space_invader: Af,
+  space_invader: Ja,
   "👾": "Smileys/Alien Monster.webp",
-  robot_face: Pf,
+  robot_face: Za,
   "🤖": "Smileys/Robot.webp",
-  smiley_cat: jf,
+  smiley_cat: Qa,
   "😺": "Smileys/Grinning Cat.webp",
-  smile_cat: Mf,
+  smile_cat: Ya,
   "😸": "Smileys/Grinning Cat With Smiling Eyes.webp",
-  joy_cat: Tf,
+  joy_cat: Xa,
   "😹": "Smileys/Cat With Tears Of Joy.webp",
-  smirk_cat: $f,
+  smirk_cat: es,
   "😼": "Smileys/Cat With Wry Smile.webp",
-  kissing_cat: zf,
+  kissing_cat: is,
   "😽": "Smileys/Kissing Cat.webp",
-  scream_cat: Wf,
+  scream_cat: ns,
   "🙀": "Smileys/Weary Cat.webp",
-  crying_cat_face: Rf,
+  crying_cat_face: as,
   "😿": "Smileys/Crying Cat.webp",
-  pouting_cat: Of,
+  pouting_cat: ss,
   "😾": "Smileys/Pouting Cat.webp",
-  love_letter: Hf,
+  love_letter: fs,
   "💌": "Symbols/Love Letter.webp",
-  cupid: qf,
+  cupid: os,
   "💘": "Symbols/Heart With Arrow.webp",
-  gift_heart: Nf,
+  gift_heart: ts,
   "💝": "Symbols/Heart With Ribbon.webp",
-  sparkling_heart: Lf,
+  sparkling_heart: rs,
   "💖": "Symbols/Sparkling Heart.webp",
-  heartpulse: If,
+  heartpulse: ds,
   "💗": "Symbols/Growing Heart.webp",
-  heartbeat: Gf,
+  heartbeat: us,
   "💓": "Symbols/Beating Heart.webp",
-  revolving_hearts: Vf,
+  revolving_hearts: ls,
   "💞": "Symbols/Revolving Hearts.webp",
-  two_hearts: Uf,
+  two_hearts: cs,
   "💕": "Symbols/Two Hearts.webp",
-  heart_decoration: Kf,
+  heart_decoration: ms,
   "💟": "Symbols/Heart Decoration.webp",
-  heavy_heart_exclamation_mark_ornament: Jf,
+  heavy_heart_exclamation_mark_ornament: vs,
   "❣️": "Symbols/Heart Exclamation.webp",
-  broken_heart: Yf,
+  broken_heart: ks,
   "💔": "Symbols/Broken Heart.webp",
-  heart: Zf,
+  heart: gs,
   "❤️": "Symbols/Red Heart.webp",
-  orange_heart: Qf,
+  orange_heart: bs,
   "🧡": "Symbols/Orange Heart.webp",
-  yellow_heart: Xf,
+  yellow_heart: ps,
   "💛": "Symbols/Yellow Heart.webp",
-  green_heart: eo,
+  green_heart: ws,
   "💚": "Symbols/Green Heart.webp",
-  blue_heart: io,
+  blue_heart: hs,
   "💙": "Symbols/Blue Heart.webp",
-  purple_heart: no,
+  purple_heart: _s,
   "💜": "Symbols/Purple Heart.webp",
-  black_heart: ao,
+  black_heart: ys,
   "🖤": "Symbols/Black Heart.webp",
-  kiss: so,
+  kiss: Ds,
   "💋": "Symbols/Kiss Mark.webp",
-  anger: fo,
+  anger: Fs,
   "💢": "Symbols/Anger Symbol.webp",
-  boom: oo,
+  boom: Cs,
   "💥": "Symbols/Collision.webp",
-  dizzy: ro,
+  dizzy: Ss,
   "💫": "Symbols/Dizzy.webp",
-  speech_balloon: to,
+  speech_balloon: Bs,
   "💬": "Symbols/Speech Balloon.webp",
-  right_anger_bubble: uo,
+  right_anger_bubble: Es,
   "🗯️": "Symbols/Right Anger Bubble.webp",
-  thought_balloon: lo,
+  thought_balloon: xs,
   "💭": "Symbols/Thought Balloon.webp",
-  zzz: co,
+  zzz: As,
   "💤": "Symbols/Zzz.webp",
-  wave: mo,
+  wave: Ps,
   "👋": "People/Waving Hand.webp",
-  raised_back_of_hand: vo,
+  raised_back_of_hand: Ms,
   "🤚": "People/Raised Back Of Hand.webp",
-  raised_hand_with_fingers_splayed: ko,
+  raised_hand_with_fingers_splayed: js,
   "🖐️": "People/Hand With Fingers Splayed.webp",
-  hand: go,
+  hand: $s,
   "✋": "People/Raised Hand.webp",
   "spock-hand": "People/Vulcan Salute.webp",
   "🖖": "People/Vulcan Salute.webp",
-  ok_hand: bo,
+  ok_hand: zs,
   "👌": "People/Ok Hand.webp",
-  v: po,
+  v: Ws,
   "✌️": "People/Victory Hand.webp",
-  crossed_fingers: wo,
+  crossed_fingers: Ts,
   "🤞": "People/Crossed Fingers.webp",
-  the_horns: ho,
+  the_horns: Hs,
   "🤘": "People/Sign Of The Horns.webp",
-  call_me_hand: _o,
+  call_me_hand: qs,
   "🤙": "People/Call Me Hand.webp",
-  point_left: yo,
+  point_left: Ns,
   "👈": "People/Backhand Index Pointing Left.webp",
-  point_right: Do,
+  point_right: Os,
   "👉": "People/Backhand Index Pointing Right.webp",
-  point_up_2: Fo,
+  point_up_2: Rs,
   "👆": "People/Backhand Index Pointing Up.webp",
-  middle_finger: Co,
+  middle_finger: Ls,
   "🖕": "People/Middle Finger.webp",
-  point_down: So,
+  point_down: Gs,
   "👇": "People/Backhand Index Pointing Down.webp",
-  point_up: Bo,
+  point_up: Is,
   "☝️": "People/Index Pointing Up.webp",
   "+1": "People/Thumbs Up.webp",
   "👍": "People/Thumbs Up.webp",
   "-1": "People/Thumbs Down.webp",
   "👎": "People/Thumbs Down.webp",
-  fist: Eo,
+  fist: Vs,
   "✊": "People/Raised Fist.webp",
-  facepunch: xo,
+  facepunch: Us,
   "👊": "People/Oncoming Fist.webp",
-  clap: Ao,
+  clap: Ks,
   "👏": "People/Clapping Hands.webp",
-  raised_hands: Po,
+  raised_hands: Js,
   "🙌": "People/Raising Hands.webp",
-  open_hands: jo,
+  open_hands: Zs,
   "👐": "People/Open Hands.webp",
-  palms_up_together: Mo,
+  palms_up_together: Qs,
   "🤲": "People/Palms Up Together.webp",
-  handshake: To,
+  handshake: Ys,
   "🤝": "People/Handshake.webp",
-  pray: $o,
+  pray: Xs,
   "🙏": "People/Folded Hands.webp",
-  writing_hand: zo,
+  writing_hand: ef,
   "✍️": "People/Writing Hand.webp",
-  nail_care: Wo,
+  nail_care: nf,
   "💅": "People/Nail Polish.webp",
-  muscle: Ro,
+  muscle: af,
   "💪": "People/Flexed Biceps.webp",
-  leg: Oo,
+  leg: sf,
   "🦵": "People/Leg.webp",
-  foot: Ho,
+  foot: ff,
   "🦶": "People/Foot.webp",
-  ear: qo,
+  ear: of,
   "👂": "People/Ear.webp",
-  nose: No,
+  nose: tf,
   "👃": "People/Nose.webp",
-  tooth: Lo,
+  tooth: rf,
   "🦷": "People/Tooth.webp",
-  bone: Io,
+  bone: df,
   "🦴": "People/Bone.webp",
-  eyes: Go,
+  eyes: uf,
   "👀": "People/Eyes.webp",
-  tongue: Vo,
+  tongue: lf,
   "👅": "People/Tongue.webp",
-  lips: Uo,
+  lips: cf,
   "👄": "People/Mouth.webp",
-  baby: Ko,
+  baby: mf,
   "👶": "People/Baby.webp",
-  older_woman: Jo,
+  older_woman: vf,
   "👵": "People/Old Woman.webp",
   "man-facepalming": "People/Man Facepalming.webp",
   "🤦‍♂️": "People/Man Facepalming.webp",
@@ -44195,652 +43579,652 @@ const Ka = "Smileys/Grinning Face.webp", Ja = "Smileys/Grinning Face With Big Ey
   "👮‍♂️": "People/Man Police Officer.webp",
   "female-police-officer": "People/Woman Police Officer.webp",
   "👮‍♀️": "People/Woman Police Officer.webp",
-  pregnant_woman: Yo,
+  pregnant_woman: kf,
   "🤰": "People/Pregnant Woman.webp",
-  santa: Zo,
+  santa: gf,
   "🎅": "People/Santa Claus.webp",
-  vampire: Qo,
+  vampire: bf,
   "🧛": "People/Vampire.webp",
-  male_vampire: Xo,
+  male_vampire: pf,
   "🧛‍♂️": "People/Man Vampire.webp",
-  female_vampire: er,
+  female_vampire: wf,
   "🧛‍♀️": "People/Woman Vampire.webp",
-  zombie: ir,
+  zombie: hf,
   "🧟": "People/Zombie.webp",
-  male_zombie: nr,
+  male_zombie: _f,
   "🧟‍♂️": "People/Man Zombie.webp",
-  female_zombie: ar,
+  female_zombie: yf,
   "🧟‍♀️": "People/Woman Zombie.webp",
-  man_dancing: sr,
+  man_dancing: Df,
   "🕺": "People/Man Dancing.webp",
-  speaking_head_in_silhouette: fr,
+  speaking_head_in_silhouette: Ff,
   "🗣️": "People/Speaking Head.webp",
-  bust_in_silhouette: or,
+  bust_in_silhouette: Cf,
   "👤": "People/Bust In Silhouette.webp",
-  busts_in_silhouette: rr,
+  busts_in_silhouette: Sf,
   "👥": "People/Busts In Silhouette.webp",
-  footprints: tr,
+  footprints: Bf,
   "👣": "People/Footprints.webp",
-  monkey_face: dr,
+  monkey_face: Ef,
   "🐵": "Animals and Nature/Monkey Face.webp",
-  gorilla: ur,
+  gorilla: xf,
   "🦍": "Animals and Nature/Gorilla.webp",
-  dog: lr,
+  dog: Af,
   "🐶": "Animals and Nature/Dog Face.webp",
-  fox_face: cr,
+  fox_face: Pf,
   "🦊": "Animals and Nature/Fox.webp",
-  raccoon: mr,
+  raccoon: Mf,
   "🦝": "Animals and Nature/Raccoon.webp",
-  cat: vr,
+  cat: jf,
   "🐱": "Animals and Nature/Cat Face.webp",
-  cat2: kr,
+  cat2: $f,
   "🐈": "Animals and Nature/Cat.webp",
-  lion_face: gr,
+  lion_face: zf,
   "🦁": "Animals and Nature/Lion.webp",
-  tiger: br,
+  tiger: Wf,
   "🐯": "Animals and Nature/Tiger Face.webp",
-  tiger2: pr,
+  tiger2: Tf,
   "🐅": "Animals and Nature/Tiger.webp",
-  leopard: wr,
+  leopard: Hf,
   "🐆": "Animals and Nature/Leopard.webp",
-  horse: hr,
+  horse: qf,
   "🐴": "Animals and Nature/Horse Face.webp",
-  racehorse: _r,
+  racehorse: Nf,
   "🐎": "Animals and Nature/Horse.webp",
-  unicorn_face: yr,
+  unicorn_face: Of,
   "🦄": "Animals and Nature/Unicorn.webp",
-  zebra_face: Dr,
+  zebra_face: Rf,
   "🦓": "Animals and Nature/Zebra.webp",
-  deer: Fr,
+  deer: Lf,
   "🦌": "Animals and Nature/Deer.webp",
-  ox: Cr,
+  ox: Gf,
   "🐂": "Animals and Nature/Ox.webp",
-  cow2: Sr,
+  cow2: If,
   "🐄": "Animals and Nature/Cow.webp",
-  pig: Br,
+  pig: Vf,
   "🐷": "Animals and Nature/Pig Face.webp",
-  pig_nose: Er,
+  pig_nose: Uf,
   "🐽": "Animals and Nature/Pig Nose.webp",
-  llama: xr,
+  llama: Kf,
   "🦙": "Animals and Nature/Llama.webp",
-  giraffe_face: Ar,
+  giraffe_face: Jf,
   "🦒": "Animals and Nature/Giraffe.webp",
-  mouse: Pr,
+  mouse: Zf,
   "🐭": "Animals and Nature/Mouse Face.webp",
-  hamster: jr,
+  hamster: Qf,
   "🐹": "Animals and Nature/Hamster.webp",
-  rabbit: Mr,
+  rabbit: Yf,
   "🐰": "Animals and Nature/Rabbit Face.webp",
-  rabbit2: Tr,
+  rabbit2: Xf,
   "🐇": "Animals and Nature/Rabbit.webp",
-  hedgehog: $r,
+  hedgehog: eo,
   "🦔": "Animals and Nature/Hedgehog.webp",
-  bat: zr,
+  bat: io,
   "🦇": "Animals and Nature/Bat.webp",
-  bear: Wr,
+  bear: no,
   "🐻": "Animals and Nature/Bear.webp",
-  koala: Rr,
+  koala: ao,
   "🐨": "Animals and Nature/Koala.webp",
-  panda_face: Or,
+  panda_face: so,
   "🐼": "Animals and Nature/Panda.webp",
-  kangaroo: Hr,
+  kangaroo: fo,
   "🦘": "Animals and Nature/Kangaroo.webp",
-  feet: qr,
+  feet: oo,
   "🐾": "Animals and Nature/Paw Prints.webp",
-  turkey: Nr,
+  turkey: to,
   "🦃": "Animals and Nature/Turkey.webp",
-  chicken: Lr,
+  chicken: ro,
   "🐔": "Animals and Nature/Chicken.webp",
-  hatching_chick: Ir,
+  hatching_chick: uo,
   "🐣": "Animals and Nature/Hatching Chick.webp",
-  baby_chick: Gr,
+  baby_chick: lo,
   "🐤": "Animals and Nature/Baby Chick.webp",
-  bird: Vr,
+  bird: co,
   "🐦": "Animals and Nature/Bird.webp",
-  penguin: Ur,
+  penguin: mo,
   "🐧": "Animals and Nature/Penguin.webp",
-  dove_of_peace: Kr,
+  dove_of_peace: vo,
   "🕊️": "Animals and Nature/Dove.webp",
-  duck: Jr,
+  duck: ko,
   "🦆": "Animals and Nature/Duck.webp",
-  swan: Yr,
+  swan: go,
   "🦢": "Animals and Nature/Swan.webp",
-  owl: Zr,
+  owl: bo,
   "🦉": "Animals and Nature/Owl.webp",
-  parrot: Qr,
+  parrot: po,
   "🦜": "Animals and Nature/Parrot.webp",
-  frog: Xr,
+  frog: wo,
   "🐸": "Animals and Nature/Frog.webp",
-  turtle: et,
+  turtle: ho,
   "🐢": "Animals and Nature/Turtle.webp",
-  snake: it,
+  snake: _o,
   "🐍": "Animals and Nature/Snake.webp",
-  sauropod: nt,
+  sauropod: yo,
   "🦕": "Animals and Nature/Sauropod.webp",
-  whale: at,
+  whale: Do,
   "🐳": "Animals and Nature/Spouting Whale.webp",
-  fish: st,
+  fish: Fo,
   "🐟": "Animals and Nature/Fish.webp",
-  tropical_fish: ft,
+  tropical_fish: Co,
   "🐠": "Animals and Nature/Tropical Fish.webp",
-  octopus: ot,
+  octopus: So,
   "🐙": "Animals and Nature/Octopus.webp",
-  snail: rt,
+  snail: Bo,
   "🐌": "Animals and Nature/Snail.webp",
-  butterfly: tt,
+  butterfly: Eo,
   "🦋": "Animals and Nature/Butterfly.webp",
-  bug: dt,
+  bug: xo,
   "🐛": "Animals and Nature/Bug.webp",
-  ant: ut,
+  ant: Ao,
   "🐜": "Animals and Nature/Ant.webp",
-  bee: lt,
+  bee: Po,
   "🐝": "Animals and Nature/Honeybee.webp",
-  ladybug: ct,
+  ladybug: Mo,
   "🐞": "Animals and Nature/Lady Beetle.webp",
-  cricket: mt,
+  cricket: jo,
   "🦗": "Animals and Nature/Cricket.webp",
-  spider: vt,
+  spider: $o,
   "🕷️": "Animals and Nature/Spider.webp",
-  spider_web: kt,
+  spider_web: zo,
   "🕸️": "Animals and Nature/Spider Web.webp",
-  mosquito: gt,
+  mosquito: Wo,
   "🦟": "Animals and Nature/Mosquito.webp",
-  microbe: bt,
+  microbe: To,
   "🦠": "Animals and Nature/Microbe.webp",
-  bouquet: pt,
+  bouquet: Ho,
   "💐": "Animals and Nature/Bouquet.webp",
-  cherry_blossom: wt,
+  cherry_blossom: qo,
   "🌸": "Animals and Nature/Cherry Blossom.webp",
-  rosette: ht,
+  rosette: No,
   "🏵️": "Animals and Nature/Rosette.webp",
-  rose: _t,
+  rose: Oo,
   "🌹": "Animals and Nature/Rose.webp",
-  hibiscus: yt,
+  hibiscus: Ro,
   "🌺": "Animals and Nature/Hibiscus.webp",
-  blossom: Dt,
+  blossom: Lo,
   "🌼": "Animals and Nature/Blossom.webp",
-  tulip: Ft,
+  tulip: Go,
   "🌷": "Animals and Nature/Tulip.webp",
-  seedling: Ct,
+  seedling: Io,
   "🌱": "Animals and Nature/Seedling.webp",
-  evergreen_tree: St,
+  evergreen_tree: Vo,
   "🌲": "Animals and Nature/Evergreen Tree.webp",
-  deciduous_tree: Bt,
+  deciduous_tree: Uo,
   "🌳": "Animals and Nature/Deciduous Tree.webp",
-  palm_tree: Et,
+  palm_tree: Ko,
   "🌴": "Animals and Nature/Palm Tree.webp",
-  cactus: xt,
+  cactus: Jo,
   "🌵": "Animals and Nature/Cactus.webp",
-  herb: At,
+  herb: Zo,
   "🌿": "Animals and Nature/Herb.webp",
-  shamrock: Pt,
+  shamrock: Qo,
   "☘️": "Animals and Nature/Shamrock.webp",
-  four_leaf_clover: jt,
+  four_leaf_clover: Yo,
   "🍀": "Animals and Nature/Four Leaf Clover.webp",
-  banana: Mt,
+  banana: Xo,
   "🍌": "Food and Drink/Banana.webp",
-  strawberry: Tt,
+  strawberry: et,
   "🍓": "Food and Drink/Strawberry.webp",
-  pretzel: $t,
+  pretzel: it,
   "🥨": "Food and Drink/Pretzel.webp",
-  pancakes: zt,
+  pancakes: nt,
   "🥞": "Food and Drink/Pancakes.webp",
-  meat_on_bone: Wt,
+  meat_on_bone: at,
   "🍖": "Food and Drink/Meat On Bone.webp",
-  poultry_leg: Rt,
+  poultry_leg: st,
   "🍗": "Food and Drink/Poultry Leg.webp",
-  hamburger: Ot,
+  hamburger: ft,
   "🍔": "Food and Drink/Hamburger.webp",
-  fries: Ht,
+  fries: ot,
   "🍟": "Food and Drink/French Fries.webp",
-  pizza: qt,
+  pizza: tt,
   "🍕": "Food and Drink/Pizza.webp",
-  hotdog: Nt,
+  hotdog: rt,
   "🌭": "Food and Drink/Hot Dog.webp",
-  sandwich: Lt,
+  sandwich: dt,
   "🥪": "Food and Drink/Sandwich.webp",
-  taco: It,
+  taco: ut,
   "🌮": "Food and Drink/Taco.webp",
-  stuffed_flatbread: Gt,
+  stuffed_flatbread: lt,
   "🥙": "Food and Drink/Stuffed Flatbread.webp",
-  fried_egg: Vt,
+  fried_egg: ct,
   "🍳": "Food and Drink/Cooking.webp",
-  popcorn: Ut,
+  popcorn: mt,
   "🍿": "Food and Drink/Popcorn.webp",
-  canned_food: Kt,
+  canned_food: vt,
   "🥫": "Food and Drink/Canned Food.webp",
-  bento: Jt,
+  bento: kt,
   "🍱": "Food and Drink/Bento Box.webp",
-  rice_cracker: Yt,
+  rice_cracker: gt,
   "🍘": "Food and Drink/Rice Cracker.webp",
-  rice_ball: Zt,
+  rice_ball: bt,
   "🍙": "Food and Drink/Rice Ball.webp",
-  oden: Qt,
+  oden: pt,
   "🍢": "Food and Drink/Oden.webp",
-  sushi: Xt,
+  sushi: wt,
   "🍣": "Food and Drink/Sushi.webp",
-  fish_cake: ed,
+  fish_cake: ht,
   "🍥": "Food and Drink/Fish Cake With Swirl.webp",
-  dango: id,
+  dango: _t,
   "🍡": "Food and Drink/Dango.webp",
-  lobster: nd,
+  lobster: yt,
   "🦞": "Animals and Nature/Lobster.webp",
-  shrimp: ad,
+  shrimp: Dt,
   "🦐": "Animals and Nature/Shrimp.webp",
-  squid: sd,
+  squid: Ft,
   "🦑": "Animals and Nature/Squid.webp",
-  icecream: fd,
+  icecream: Ct,
   "🍦": "Food and Drink/Soft Ice Cream.webp",
-  doughnut: od,
+  doughnut: St,
   "🍩": "Food and Drink/Doughnut.webp",
-  cookie: rd,
+  cookie: Bt,
   "🍪": "Food and Drink/Cookie.webp",
-  birthday: td,
+  birthday: Et,
   "🎂": "Food and Drink/Birthday Cake.webp",
-  cake: dd,
+  cake: xt,
   "🍰": "Food and Drink/Shortcake.webp",
-  cupcake: ud,
+  cupcake: At,
   "🧁": "Food and Drink/Cupcake.webp",
-  pie: ld,
+  pie: Pt,
   "🥧": "Food and Drink/Pie.webp",
-  chocolate_bar: cd,
+  chocolate_bar: Mt,
   "🍫": "Food and Drink/Chocolate Bar.webp",
-  lollipop: md,
+  lollipop: jt,
   "🍭": "Food and Drink/Lollipop.webp",
-  custard: vd,
+  custard: $t,
   "🍮": "Food and Drink/Custard.webp",
-  baby_bottle: kd,
+  baby_bottle: zt,
   "🍼": "Food and Drink/Baby Bottle.webp",
-  glass_of_milk: gd,
+  glass_of_milk: Wt,
   "🥛": "Food and Drink/Glass Of Milk.webp",
-  coffee: bd,
+  coffee: Tt,
   "☕": "Food and Drink/Hot Beverage.webp",
-  champagne: pd,
+  champagne: Ht,
   "🍾": "Food and Drink/Bottle With Popping Cork.webp",
-  wine_glass: wd,
+  wine_glass: qt,
   "🍷": "Food and Drink/Wine Glass.webp",
-  cocktail: hd,
+  cocktail: Nt,
   "🍸": "Food and Drink/Cocktail Glass.webp",
-  tropical_drink: _d,
+  tropical_drink: Ot,
   "🍹": "Food and Drink/Tropical Drink.webp",
-  clinking_glasses: yd,
+  clinking_glasses: Rt,
   "🥂": "Food and Drink/Clinking Glasses.webp",
-  tumbler_glass: Dd,
+  tumbler_glass: Lt,
   "🥃": "Food and Drink/Tumbler Glass.webp",
-  cup_with_straw: Fd,
+  cup_with_straw: Gt,
   "🥤": "Food and Drink/Cup With Straw.webp",
-  knife_fork_plate: Cd,
+  knife_fork_plate: It,
   "🍽️": "Food and Drink/Fork And Knife With Plate.webp",
-  compass: Sd,
+  compass: Vt,
   "🧭": "Travel and Places/Compass.webp",
-  camping: Bd,
+  camping: Ut,
   "🏕️": "Travel and Places/Camping.webp",
-  beach_with_umbrella: Ed,
+  beach_with_umbrella: Kt,
   "🏖️": "Travel and Places/Beach With Umbrella.webp",
-  desert_island: xd,
+  desert_island: Jt,
   "🏝️": "Travel and Places/Desert Island.webp",
-  classical_building: Ad,
+  classical_building: Zt,
   "🏛️": "Travel and Places/Classical Building.webp",
-  house: Pd,
+  house: Qt,
   "🏠": "Travel and Places/House.webp",
-  hotsprings: jd,
+  hotsprings: Yt,
   "♨️": "Travel and Places/Hot Springs.webp",
-  roller_coaster: Md,
+  roller_coaster: Xt,
   "🎢": "Travel and Places/Roller Coaster.webp",
-  steam_locomotive: Td,
+  steam_locomotive: er,
   "🚂": "Travel and Places/Locomotive.webp",
-  ambulance: $d,
+  ambulance: ir,
   "🚑": "Travel and Places/Ambulance.webp",
-  police_car: zd,
+  police_car: nr,
   "🚓": "Travel and Places/Police Car.webp",
-  taxi: Wd,
+  taxi: ar,
   "🚕": "Travel and Places/Taxi.webp",
-  car: Rd,
+  car: sr,
   "🚗": "Travel and Places/Automobile.webp",
-  motor_boat: Od,
+  motor_boat: fr,
   "🛥️": "Travel and Places/Motor Boat.webp",
-  airplane: Hd,
+  airplane: or,
   "✈️": "Travel and Places/Airplane.webp",
-  rocket: qd,
+  rocket: tr,
   "🚀": "Travel and Places/Rocket.webp",
-  luggage: Nd,
+  luggage: rr,
   "🧳": "Objects/Luggage.webp",
-  hourglass_flowing_sand: Ld,
+  hourglass_flowing_sand: dr,
   "⏳": "Objects/Hourglass Not Done.webp",
-  new_moon: Id,
+  new_moon: ur,
   "🌑": "Animals and Nature/New Moon.webp",
-  waxing_crescent_moon: Gd,
+  waxing_crescent_moon: lr,
   "🌒": "Animals and Nature/Waxing Crescent Moon.webp",
-  first_quarter_moon: Vd,
+  first_quarter_moon: cr,
   "🌓": "Animals and Nature/First Quarter Moon.webp",
-  moon: Ud,
+  moon: mr,
   "🌔": "Animals and Nature/Waxing Gibbous Moon.webp",
-  full_moon: Kd,
+  full_moon: vr,
   "🌕": "Animals and Nature/Full Moon.webp",
-  last_quarter_moon: Jd,
+  last_quarter_moon: kr,
   "🌗": "Animals and Nature/Last Quarter Moon.webp",
-  waning_crescent_moon: Yd,
+  waning_crescent_moon: gr,
   "🌘": "Animals and Nature/Waning Crescent Moon.webp",
-  new_moon_with_face: Zd,
+  new_moon_with_face: br,
   "🌚": "Animals and Nature/New Moon Face.webp",
-  first_quarter_moon_with_face: Qd,
+  first_quarter_moon_with_face: pr,
   "🌛": "Animals and Nature/First Quarter Moon Face.webp",
-  last_quarter_moon_with_face: Xd,
+  last_quarter_moon_with_face: wr,
   "🌜": "Animals and Nature/Last Quarter Moon Face.webp",
-  thermometer: eu,
+  thermometer: hr,
   "🌡️": "Objects/Thermometer.webp",
-  sunny: iu,
+  sunny: _r,
   "☀️": "Animals and Nature/Sun.webp",
-  full_moon_with_face: nu,
+  full_moon_with_face: yr,
   "🌝": "Animals and Nature/Full Moon Face.webp",
-  sun_with_face: au,
+  sun_with_face: Dr,
   "🌞": "Animals and Nature/Sun With Face.webp",
-  star: su,
+  star: Fr,
   "⭐": "Animals and Nature/Star.webp",
-  star2: fu,
+  star2: Cr,
   "🌟": "Animals and Nature/Glowing Star.webp",
-  cloud: ou,
+  cloud: Sr,
   "☁️": "Animals and Nature/Cloud.webp",
-  partly_sunny: ru,
+  partly_sunny: Br,
   "⛅": "Animals and Nature/Sun Behind Cloud.webp",
-  thunder_cloud_and_rain: tu,
+  thunder_cloud_and_rain: Er,
   "⛈️": "Animals and Nature/Cloud With Lightning And Rain.webp",
-  mostly_sunny: du,
+  mostly_sunny: xr,
   "🌤️": "Animals and Nature/Sun Behind Small Cloud.webp",
-  barely_sunny: uu,
+  barely_sunny: Ar,
   "🌥️": "Animals and Nature/Sun Behind Large Cloud.webp",
-  partly_sunny_rain: lu,
+  partly_sunny_rain: Pr,
   "🌦️": "Animals and Nature/Sun Behind Rain Cloud.webp",
-  rain_cloud: cu,
+  rain_cloud: Mr,
   "🌧️": "Animals and Nature/Cloud With Rain.webp",
-  snow_cloud: mu,
+  snow_cloud: jr,
   "🌨️": "Animals and Nature/Cloud With Snow.webp",
-  lightning: vu,
+  lightning: $r,
   "🌩️": "Animals and Nature/Cloud With Lightning.webp",
-  rainbow: ku,
+  rainbow: zr,
   "🌈": "Animals and Nature/Rainbow.webp",
-  zap: gu,
+  zap: Wr,
   "⚡": "Animals and Nature/High Voltage.webp",
-  snowflake: bu,
+  snowflake: Tr,
   "❄️": "Animals and Nature/Snowflake.webp",
-  snowman: pu,
+  snowman: Hr,
   "☃️": "Animals and Nature/Snowman.webp",
-  snowman_without_snow: wu,
+  snowman_without_snow: qr,
   "⛄": "Animals and Nature/Snowman Without Snow.webp",
-  fire: hu,
+  fire: Nr,
   "🔥": "Animals and Nature/Fire.webp",
-  christmas_tree: _u,
+  christmas_tree: Or,
   "🎄": "Activity/Christmas Tree.webp",
-  fireworks: yu,
+  fireworks: Rr,
   "🎆": "Activity/Fireworks.webp",
-  sparkler: Du,
+  sparkler: Lr,
   "🎇": "Activity/Sparkler.webp",
-  firecracker: Fu,
+  firecracker: Gr,
   "🧨": "Activity/Firecracker.webp",
-  sparkles: Cu,
+  sparkles: Ir,
   "✨": "Activity/Sparkles.webp",
-  balloon: Su,
+  balloon: Vr,
   "🎈": "Activity/Balloon.webp",
-  tada: Bu,
+  tada: Ur,
   "🎉": "Activity/Party Popper.webp",
-  confetti_ball: Eu,
+  confetti_ball: Kr,
   "🎊": "Activity/Confetti Ball.webp",
-  reminder_ribbon: xu,
+  reminder_ribbon: Jr,
   "🎗️": "Objects/Reminder Ribbon.webp",
-  admission_tickets: Au,
+  admission_tickets: Zr,
   "🎟️": "Activity/Admission Tickets.webp",
-  ticket: Pu,
+  ticket: Qr,
   "🎫": "Activity/Ticket.webp",
-  medal: ju,
+  medal: Yr,
   "🎖️": "Activity/Military Medal.webp",
-  trophy: Mu,
+  trophy: Xr,
   "🏆": "Activity/Trophy.webp",
-  sports_medal: Tu,
+  sports_medal: ed,
   "🏅": "Activity/Sports Medal.webp",
-  first_place_medal: $u,
+  first_place_medal: id,
   "🥇": "Activity/1st Place Medal.webp",
-  second_place_medal: zu,
+  second_place_medal: nd,
   "🥈": "Activity/2nd Place Medal.webp",
-  third_place_medal: Wu,
+  third_place_medal: ad,
   "🥉": "Activity/3rd Place Medal.webp",
-  soccer: Ru,
+  soccer: sd,
   "⚽": "Activity/Soccer Ball.webp",
-  basketball: Ou,
+  basketball: fd,
   "🏀": "Activity/Basketball.webp",
-  crystal_ball: Hu,
+  crystal_ball: od,
   "🔮": "Activity/Crystal Ball.webp",
-  video_game: qu,
+  video_game: td,
   "🎮": "Activity/Video Game.webp",
-  performing_arts: Nu,
+  performing_arts: rd,
   "🎭": "Activity/Performing Arts.webp",
-  art: Lu,
+  art: dd,
   "🎨": "Activity/Artist Palette.webp",
-  purse: Iu,
+  purse: ud,
   "👛": "Objects/Purse.webp",
-  handbag: Gu,
+  handbag: ld,
   "👜": "Objects/Handbag.webp",
-  shopping_bags: Vu,
+  shopping_bags: cd,
   "🛍️": "Objects/Shopping Bags.webp",
-  crown: Uu,
+  crown: md,
   "👑": "Objects/Crown.webp",
-  tophat: Ku,
+  tophat: vd,
   "🎩": "Objects/Top Hat.webp",
-  mortar_board: Ju,
+  mortar_board: kd,
   "🎓": "Objects/Graduation Cap.webp",
-  gem: Yu,
+  gem: gd,
   "💎": "Objects/Gem Stone.webp",
-  mega: Zu,
+  mega: bd,
   "📣": "Objects/Megaphone.webp",
-  musical_note: Qu,
+  musical_note: pd,
   "🎵": "Objects/Musical Note.webp",
-  notes: Xu,
+  notes: wd,
   "🎶": "Objects/Musical Notes.webp",
-  studio_microphone: el,
+  studio_microphone: hd,
   "🎙️": "Objects/Studio Microphone.webp",
-  microphone: il,
+  microphone: _d,
   "🎤": "Objects/Microphone.webp",
-  iphone: nl,
+  iphone: yd,
   "📱": "Objects/Mobile Phone.webp",
-  calling: al,
+  calling: Dd,
   "📲": "Objects/Mobile Phone With Arrow.webp",
-  phone: sl,
+  phone: Fd,
   "☎️": "Objects/Telephone.webp",
-  telephone_receiver: fl,
+  telephone_receiver: Cd,
   "📞": "Objects/Telephone Receiver.webp",
-  computer: ol,
+  computer: Sd,
   "💻": "Objects/Laptop.webp",
-  printer: rl,
+  printer: Bd,
   "🖨️": "Objects/Printer.webp",
-  keyboard: tl,
+  keyboard: Ed,
   "⌨️": "Objects/Keyboard.webp",
-  abacus: dl,
+  abacus: xd,
   "🧮": "Objects/Abacus.webp",
-  clapper: ul,
+  clapper: Ad,
   "🎬": "Objects/Clapper Board.webp",
-  tv: ll,
+  tv: Pd,
   "📺": "Objects/Television.webp",
-  mag: cl,
+  mag: Md,
   "🔍": "Objects/Magnifying Glass Tilted Left.webp",
-  mag_right: ml,
+  mag_right: jd,
   "🔎": "Objects/Magnifying Glass Tilted Right.webp",
-  bulb: vl,
+  bulb: $d,
   "💡": "Objects/Light Bulb.webp",
-  book: kl,
+  book: zd,
   "📖": "Objects/Open Book.webp",
-  books: gl,
+  books: Wd,
   "📚": "Objects/Books.webp",
-  newspaper: bl,
+  newspaper: Td,
   "📰": "Objects/Newspaper.webp",
-  moneybag: pl,
+  moneybag: Hd,
   "💰": "Objects/Money Bag.webp",
-  money_with_wings: wl,
+  money_with_wings: qd,
   "💸": "Objects/Money With Wings.webp",
-  incoming_envelope: hl,
+  incoming_envelope: Nd,
   "📨": "Objects/Incoming Envelope.webp",
-  outbox_tray: _l,
+  outbox_tray: Od,
   "📤": "Objects/Outbox Tray.webp",
-  inbox_tray: yl,
+  inbox_tray: Rd,
   "📥": "Objects/Inbox Tray.webp",
   package: "web/package.webp",
   "📦": "web/package.webp",
-  ballot_box_with_ballot: Dl,
+  ballot_box_with_ballot: Ld,
   "🗳️": "Objects/Ballot Box With Ballot.webp",
-  pencil2: Fl,
+  pencil2: Gd,
   "✏️": "Objects/Pencil.webp",
-  memo: Cl,
+  memo: Id,
   "📝": "Objects/Memo.webp",
-  briefcase: Sl,
+  briefcase: Vd,
   "💼": "Objects/Briefcase.webp",
-  file_folder: Bl,
+  file_folder: Ud,
   "📁": "Objects/File Folder.webp",
-  card_index_dividers: El,
+  card_index_dividers: Kd,
   "🗂️": "Objects/Card Index Dividers.webp",
-  chart_with_upwards_trend: xl,
+  chart_with_upwards_trend: Jd,
   "📈": "Objects/Chart Increasing.webp",
-  chart_with_downwards_trend: Al,
+  chart_with_downwards_trend: Zd,
   "📉": "Objects/Chart Decreasing.webp",
-  bar_chart: Pl,
+  bar_chart: Qd,
   "📊": "Objects/Bar Chart.webp",
-  closed_lock_with_key: jl,
+  closed_lock_with_key: Yd,
   "🔐": "Objects/Locked With Key.webp",
-  key: Ml,
+  key: Xd,
   "🔑": "Objects/Key.webp",
-  old_key: Tl,
+  old_key: eu,
   "🗝️": "Objects/Old Key.webp",
-  bomb: $l,
+  bomb: iu,
   "💣": "Objects/Bomb.webp",
-  toolbox: zl,
+  toolbox: nu,
   "🧰": "Objects/Toolbox.webp",
-  test_tube: Wl,
+  test_tube: au,
   "🧪": "Objects/Test Tube.webp",
-  microscope: Rl,
+  microscope: su,
   "🔬": "Objects/Microscope.webp",
-  telescope: Ol,
+  telescope: fu,
   "🔭": "Objects/Telescope.webp",
-  syringe: Hl,
+  syringe: ou,
   "💉": "Objects/Syringe.webp",
-  pill: ql,
+  pill: tu,
   "💊": "Objects/Pill.webp",
-  roll_of_paper: Nl,
+  roll_of_paper: ru,
   "🧻": "Objects/Roll Of Paper.webp",
-  soap: Ll,
+  soap: du,
   "🧼": "Objects/Soap.webp",
-  sponge: Il,
+  sponge: uu,
   "🧽": "Objects/Sponge.webp",
-  shopping_trolley: Gl,
+  shopping_trolley: lu,
   "🛒": "Objects/Shopping Cart.webp",
-  coffin: Vl,
+  coffin: cu,
   "⚰️": "Objects/Coffin.webp",
-  moyai: Ul,
+  moyai: mu,
   "🗿": "Travel and Places/Moai.webp",
-  baby_symbol: Kl,
+  baby_symbol: vu,
   "🚼": "Symbols/Baby Symbol.webp",
-  passport_control: Jl,
+  passport_control: ku,
   "🛂": "Symbols/Passport Control.webp",
-  customs: Yl,
+  customs: gu,
   "🛃": "Symbols/Customs.webp",
-  baggage_claim: Zl,
+  baggage_claim: bu,
   "🛄": "Symbols/Baggage Claim.webp",
-  left_luggage: Ql,
+  left_luggage: pu,
   "🛅": "Symbols/Left Luggage.webp",
-  underage: Xl,
+  underage: wu,
   "🔞": "Symbols/No One Under Eighteen.webp",
-  top: e1,
+  top: hu,
   "🔝": "Symbols/Top Arrow.webp",
-  aries: i1,
+  aries: _u,
   "♈": "Symbols/Aries.webp",
-  taurus: n1,
+  taurus: yu,
   "♉": "Symbols/Taurus.webp",
-  gemini: a1,
+  gemini: Du,
   "♊": "Symbols/Gemini.webp",
-  cancer: s1,
+  cancer: Fu,
   "♋": "Symbols/Cancer.webp",
-  leo: f1,
+  leo: Cu,
   "♌": "Symbols/Leo.webp",
-  virgo: o1,
+  virgo: Su,
   "♍": "Symbols/Virgo.webp",
-  libra: r1,
+  libra: Bu,
   "♎": "Symbols/Libra.webp",
-  scorpius: t1,
+  scorpius: Eu,
   "♏": "Symbols/Scorpio.webp",
-  sagittarius: d1,
+  sagittarius: xu,
   "♐": "Symbols/Sagittarius.webp",
-  capricorn: u1,
+  capricorn: Au,
   "♑": "Symbols/Capricorn.webp",
-  aquarius: l1,
+  aquarius: Pu,
   "♒": "Symbols/Aquarius.webp",
-  pisces: c1,
+  pisces: Mu,
   "♓": "Symbols/Pisces.webp",
-  ophiuchus: m1,
+  ophiuchus: ju,
   "⛎": "Symbols/Ophiuchus.webp",
-  bangbang: v1,
+  bangbang: $u,
   "‼️": "Symbols/Double Exclamation Mark.webp",
-  interrobang: k1,
+  interrobang: zu,
   "⁉️": "Symbols/Exclamation Question Mark.webp",
-  grey_question: g1,
+  grey_question: Wu,
   "❔": "Symbols/White Question Mark.webp",
-  grey_exclamation: b1,
+  grey_exclamation: Tu,
   "❕": "Symbols/White Exclamation Mark.webp",
-  currency_exchange: p1,
+  currency_exchange: Hu,
   "💱": "Symbols/Currency Exchange.webp",
-  white_check_mark: w1,
+  white_check_mark: qu,
   "✅": "Symbols/Check Mark Button.webp",
-  ballot_box_with_check: h1,
+  ballot_box_with_check: Nu,
   "☑️": "Symbols/Check Box With Check.webp",
-  heavy_check_mark: _1,
+  heavy_check_mark: Ou,
   "✔️": "Symbols/Check Mark.webp",
-  x: y1,
+  x: Ru,
   "❌": "Symbols/Cross Mark.webp",
-  cool: D1,
+  cool: Lu,
   "🆒": "Symbols/Cool Button.webp",
-  free: F1,
+  free: Gu,
   "🆓": "Symbols/Free Button.webp",
   new: "Symbols/New Button.webp",
   "🆕": "Symbols/New Button.webp",
-  ok: C1,
+  ok: Iu,
   "🆗": "Symbols/Ok Button.webp",
-  checkered_flag: S1,
+  checkered_flag: Vu,
   "🏁": "Flags/Chequered Flag.webp",
-  triangular_flag_on_post: B1,
+  triangular_flag_on_post: Uu,
   "🚩": "Flags/Triangular Flag.webp",
-  waving_black_flag: E1,
+  waving_black_flag: Ku,
   "🏴": "Flags/Black Flag.webp",
-  waving_white_flag: x1,
+  waving_white_flag: Ju,
   "🏳️": "Flags/White Flag.webp",
-  pirate_flag: A1,
+  pirate_flag: Zu,
   "🏴‍☠️": "Flags/Pirate Flag.webp"
-}, We = Fn, P1 = "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main", j1 = Yi || ra;
-re({ data: j1 });
-const Re = ({
+}, ne = gi, Qu = "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main", Yu = Le || Si;
+W({ data: Yu });
+const ae = ({
   id: i,
   size: e = 50,
   className: n
 }) => {
-  const [a, o] = je(!1), [s, t] = je(!1), [u, d] = je(!1), c = aa(null);
-  pi(() => {
-    if (!c.current)
+  const [a, f] = Q(!1), [s, o] = Q(!1), [d, r] = Q(!1), l = pi(null);
+  ce(() => {
+    if (!l.current)
       return;
-    const _ = new IntersectionObserver(
-      (y) => {
-        y[0].isIntersecting && (t(!0), _.disconnect());
+    const b = new IntersectionObserver(
+      (w) => {
+        w[0].isIntersecting && (o(!0), b.disconnect());
       },
       { threshold: 0.1 }
     );
-    return _.observe(c.current), () => {
-      _.disconnect();
+    return b.observe(l.current), () => {
+      b.disconnect();
     };
-  }, []), pi(() => {
+  }, []), ce(() => {
     if (typeof document < "u" && !document.getElementById("emoji-text-shimmer")) {
-      const _ = document.createElement("style");
-      _.id = "emoji-text-shimmer", _.textContent = `
+      const b = document.createElement("style");
+      b.id = "emoji-text-shimmer", b.textContent = `
                 @keyframes emojiTextShimmer {
                     0% { background-position: 200% center; }
                     100% { background-position: -200% center; }
                 }
-            `, document.head.appendChild(_);
+            `, document.head.appendChild(b);
     }
   }, []);
-  const r = {
+  const t = {
     position: "absolute",
     top: 0,
     left: 0,
@@ -44864,7 +44248,7 @@ const Re = ({
     // Fallback
     animation: "emojiTextShimmer 2.5s linear infinite",
     filter: "grayscale(100%) brightness(1.2)"
-  }, g = {
+  }, v = {
     width: "100%",
     height: "100%",
     objectFit: "contain",
@@ -44872,12 +44256,12 @@ const Re = ({
     transition: "opacity 0.2s ease-in",
     position: "relative",
     zIndex: 1
-  }, v = !!We[i];
-  if (console.log(`[AnimatedEmoji] id="${i}" | inMap=${v} | isVisible=${s}`), !We[i] || u)
-    return console.log(u ? `[AnimatedEmoji FALLBACK] Error loading animated, using em-emoji for "${i}"` : `[AnimatedEmoji FALLBACK] Not in map, using em-emoji for "${i}"`), /* @__PURE__ */ _i(
+  }, c = !!ne[i];
+  if (console.log(`[AnimatedEmoji] id="${i}" | inMap=${c} | isVisible=${s}`), !ne[i] || d)
+    return console.log(d ? `[AnimatedEmoji FALLBACK] Error loading animated, using em-emoji for "${i}"` : `[AnimatedEmoji FALLBACK] Not in map, using em-emoji for "${i}"`), /* @__PURE__ */ me(
       "div",
       {
-        ref: c,
+        ref: l,
         className: n,
         style: {
           width: e,
@@ -44890,8 +44274,8 @@ const Re = ({
           position: "relative"
         },
         children: [
-          /* @__PURE__ */ N("div", { style: r, children: i }),
-          s && /* @__PURE__ */ N(
+          /* @__PURE__ */ E("div", { style: t, children: i }),
+          s && /* @__PURE__ */ E(
             "em-emoji",
             {
               native: i,
@@ -44901,13 +44285,13 @@ const Re = ({
                 opacity: a ? 1 : 0,
                 transition: "opacity 0.2s ease-in"
               },
-              ref: (_) => {
-                if (_ && !a) {
-                  const y = () => {
-                    var C;
-                    (C = _.shadowRoot) != null && C.querySelector("span") || _.querySelector("span") ? o(!0) : requestAnimationFrame(y);
+              ref: (b) => {
+                if (b && !a) {
+                  const w = () => {
+                    var h;
+                    (h = b.shadowRoot) != null && h.querySelector("span") || b.querySelector("span") ? f(!0) : requestAnimationFrame(w);
                   };
-                  requestAnimationFrame(y);
+                  requestAnimationFrame(w);
                 }
               }
             }
@@ -44915,11 +44299,11 @@ const Re = ({
         ]
       }
     );
-  const b = We[i], p = `${P1}/${b}`;
-  return /* @__PURE__ */ _i(
+  const m = ne[i], g = `${Qu}/${m}`;
+  return /* @__PURE__ */ me(
     "div",
     {
-      ref: c,
+      ref: l,
       className: n,
       style: {
         width: e,
@@ -44930,63 +44314,62 @@ const Re = ({
         position: "relative"
       },
       children: [
-        /* @__PURE__ */ N("div", { style: r, children: i }),
-        s && /* @__PURE__ */ N(
+        /* @__PURE__ */ E("div", { style: t, children: i }),
+        s && /* @__PURE__ */ E(
           "img",
           {
-            src: p,
+            src: g,
             alt: i,
-            style: g,
+            style: v,
             loading: "lazy",
-            onLoad: () => o(!0),
+            onLoad: () => f(!0),
             onError: () => {
-              console.error(`Animated emoji failed to load: ${p}`), d(!0), o(!1);
+              console.error(`Animated emoji failed to load: ${g}`), r(!0), f(!1);
             }
           }
         )
       ]
     }
   );
-}, M1 = () => /[#*0-9]\uFE0F?\u20E3|[\xA9\xAE\u203C\u2049\u2122\u2139\u2194-\u2199\u21A9\u21AA\u231A\u231B\u2328\u23CF\u23ED-\u23EF\u23F1\u23F2\u23F8-\u23FA\u24C2\u25AA\u25AB\u25B6\u25C0\u25FB\u25FC\u25FE\u2600-\u2604\u260E\u2611\u2614\u2615\u2618\u2620\u2622\u2623\u2626\u262A\u262E\u262F\u2638-\u263A\u2640\u2642\u2648-\u2653\u265F\u2660\u2663\u2665\u2666\u2668\u267B\u267E\u267F\u2692\u2694-\u2697\u2699\u269B\u269C\u26A0\u26A7\u26AA\u26B0\u26B1\u26BD\u26BE\u26C4\u26C8\u26CF\u26D1\u26E9\u26F0-\u26F5\u26F7\u26F8\u26FA\u2702\u2708\u2709\u270F\u2712\u2714\u2716\u271D\u2721\u2733\u2734\u2744\u2747\u2757\u2763\u27A1\u2934\u2935\u2B05-\u2B07\u2B1B\u2B1C\u2B55\u3030\u303D\u3297\u3299]\uFE0F?|[\u261D\u270C\u270D](?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?|[\u270A\u270B](?:\uD83C[\uDFFB-\uDFFF])?|[\u23E9-\u23EC\u23F0\u23F3\u25FD\u2693\u26A1\u26AB\u26C5\u26CE\u26D4\u26EA\u26FD\u2705\u2728\u274C\u274E\u2753-\u2755\u2795-\u2797\u27B0\u27BF\u2B50]|\u26D3\uFE0F?(?:\u200D\uD83D\uDCA5)?|\u26F9(?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?(?:\u200D[\u2640\u2642]\uFE0F?)?|\u2764\uFE0F?(?:\u200D(?:\uD83D\uDD25|\uD83E\uDE79))?|\uD83C(?:[\uDC04\uDD70\uDD71\uDD7E\uDD7F\uDE02\uDE37\uDF21\uDF24-\uDF2C\uDF36\uDF7D\uDF96\uDF97\uDF99-\uDF9B\uDF9E\uDF9F\uDFCD\uDFCE\uDFD4-\uDFDF\uDFF5\uDFF7]\uFE0F?|[\uDF85\uDFC2\uDFC7](?:\uD83C[\uDFFB-\uDFFF])?|[\uDFC4\uDFCA](?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDFCB\uDFCC](?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDCCF\uDD8E\uDD91-\uDD9A\uDE01\uDE1A\uDE2F\uDE32-\uDE36\uDE38-\uDE3A\uDE50\uDE51\uDF00-\uDF20\uDF2D-\uDF35\uDF37-\uDF43\uDF45-\uDF4A\uDF4C-\uDF7C\uDF7E-\uDF84\uDF86-\uDF93\uDFA0-\uDFC1\uDFC5\uDFC6\uDFC8\uDFC9\uDFCF-\uDFD3\uDFE0-\uDFF0\uDFF8-\uDFFF]|\uDDE6\uD83C[\uDDE8-\uDDEC\uDDEE\uDDF1\uDDF2\uDDF4\uDDF6-\uDDFA\uDDFC\uDDFD\uDDFF]|\uDDE7\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEF\uDDF1-\uDDF4\uDDF6-\uDDF9\uDDFB\uDDFC\uDDFE\uDDFF]|\uDDE8\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDEE\uDDF0-\uDDF7\uDDFA-\uDDFF]|\uDDE9\uD83C[\uDDEA\uDDEC\uDDEF\uDDF0\uDDF2\uDDF4\uDDFF]|\uDDEA\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDED\uDDF7-\uDDFA]|\uDDEB\uD83C[\uDDEE-\uDDF0\uDDF2\uDDF4\uDDF7]|\uDDEC\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEE\uDDF1-\uDDF3\uDDF5-\uDDFA\uDDFC\uDDFE]|\uDDED\uD83C[\uDDF0\uDDF2\uDDF3\uDDF7\uDDF9\uDDFA]|\uDDEE\uD83C[\uDDE8-\uDDEA\uDDF1-\uDDF4\uDDF6-\uDDF9]|\uDDEF\uD83C[\uDDEA\uDDF2\uDDF4\uDDF5]|\uDDF0\uD83C[\uDDEA\uDDEC-\uDDEE\uDDF2\uDDF3\uDDF5\uDDF7\uDDFC\uDDFE\uDDFF]|\uDDF1\uD83C[\uDDE6-\uDDE8\uDDEE\uDDF0\uDDF7-\uDDFB\uDDFE]|\uDDF2\uD83C[\uDDE6\uDDE8-\uDDED\uDDF0-\uDDFF]|\uDDF3\uD83C[\uDDE6\uDDE8\uDDEA-\uDDEC\uDDEE\uDDF1\uDDF4\uDDF5\uDDF7\uDDFA\uDDFF]|\uDDF4\uD83C\uDDF2|\uDDF5\uD83C[\uDDE6\uDDEA-\uDDED\uDDF0-\uDDF3\uDDF7-\uDDF9\uDDFC\uDDFE]|\uDDF6\uD83C\uDDE6|\uDDF7\uD83C[\uDDEA\uDDF4\uDDF8\uDDFA\uDDFC]|\uDDF8\uD83C[\uDDE6-\uDDEA\uDDEC-\uDDF4\uDDF7-\uDDF9\uDDFB\uDDFD-\uDDFF]|\uDDF9\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDED\uDDEF-\uDDF4\uDDF7\uDDF9\uDDFB\uDDFC\uDDFF]|\uDDFA\uD83C[\uDDE6\uDDEC\uDDF2\uDDF3\uDDF8\uDDFE\uDDFF]|\uDDFB\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDEE\uDDF3\uDDFA]|\uDDFC\uD83C[\uDDEB\uDDF8]|\uDDFD\uD83C\uDDF0|\uDDFE\uD83C[\uDDEA\uDDF9]|\uDDFF\uD83C[\uDDE6\uDDF2\uDDFC]|\uDF44(?:\u200D\uD83D\uDFEB)?|\uDF4B(?:\u200D\uD83D\uDFE9)?|\uDFC3(?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D(?:[\u2640\u2642]\uFE0F?(?:\u200D\u27A1\uFE0F?)?|\u27A1\uFE0F?))?|\uDFF3\uFE0F?(?:\u200D(?:\u26A7\uFE0F?|\uD83C\uDF08))?|\uDFF4(?:\u200D\u2620\uFE0F?|\uDB40\uDC67\uDB40\uDC62\uDB40(?:\uDC65\uDB40\uDC6E\uDB40\uDC67|\uDC73\uDB40\uDC63\uDB40\uDC74|\uDC77\uDB40\uDC6C\uDB40\uDC73)\uDB40\uDC7F)?)|\uD83D(?:[\uDC3F\uDCFD\uDD49\uDD4A\uDD6F\uDD70\uDD73\uDD76-\uDD79\uDD87\uDD8A-\uDD8D\uDDA5\uDDA8\uDDB1\uDDB2\uDDBC\uDDC2-\uDDC4\uDDD1-\uDDD3\uDDDC-\uDDDE\uDDE1\uDDE3\uDDE8\uDDEF\uDDF3\uDDFA\uDECB\uDECD-\uDECF\uDEE0-\uDEE5\uDEE9\uDEF0\uDEF3]\uFE0F?|[\uDC42\uDC43\uDC46-\uDC50\uDC66\uDC67\uDC6B-\uDC6D\uDC72\uDC74-\uDC76\uDC78\uDC7C\uDC83\uDC85\uDC8F\uDC91\uDCAA\uDD7A\uDD95\uDD96\uDE4C\uDE4F\uDEC0\uDECC](?:\uD83C[\uDFFB-\uDFFF])?|[\uDC6E-\uDC71\uDC73\uDC77\uDC81\uDC82\uDC86\uDC87\uDE45-\uDE47\uDE4B\uDE4D\uDE4E\uDEA3\uDEB4\uDEB5](?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDD74\uDD90](?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?|[\uDC00-\uDC07\uDC09-\uDC14\uDC16-\uDC25\uDC27-\uDC3A\uDC3C-\uDC3E\uDC40\uDC44\uDC45\uDC51-\uDC65\uDC6A\uDC79-\uDC7B\uDC7D-\uDC80\uDC84\uDC88-\uDC8E\uDC90\uDC92-\uDCA9\uDCAB-\uDCFC\uDCFF-\uDD3D\uDD4B-\uDD4E\uDD50-\uDD67\uDDA4\uDDFB-\uDE2D\uDE2F-\uDE34\uDE37-\uDE41\uDE43\uDE44\uDE48-\uDE4A\uDE80-\uDEA2\uDEA4-\uDEB3\uDEB7-\uDEBF\uDEC1-\uDEC5\uDED0-\uDED2\uDED5-\uDED8\uDEDC-\uDEDF\uDEEB\uDEEC\uDEF4-\uDEFC\uDFE0-\uDFEB\uDFF0]|\uDC08(?:\u200D\u2B1B)?|\uDC15(?:\u200D\uD83E\uDDBA)?|\uDC26(?:\u200D(?:\u2B1B|\uD83D\uDD25))?|\uDC3B(?:\u200D\u2744\uFE0F?)?|\uDC41\uFE0F?(?:\u200D\uD83D\uDDE8\uFE0F?)?|\uDC68(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDC68\uDC69]\u200D\uD83D(?:\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?)|[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?)|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]))|\uD83C(?:\uDFFB(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC68\uD83C[\uDFFC-\uDFFF])|\uD83E(?:[\uDD1D\uDEEF]\u200D\uD83D\uDC68\uD83C[\uDFFC-\uDFFF]|[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3])))?|\uDFFC(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC68\uD83C[\uDFFB\uDFFD-\uDFFF])|\uD83E(?:[\uDD1D\uDEEF]\u200D\uD83D\uDC68\uD83C[\uDFFB\uDFFD-\uDFFF]|[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3])))?|\uDFFD(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC68\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])|\uD83E(?:[\uDD1D\uDEEF]\u200D\uD83D\uDC68\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF]|[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3])))?|\uDFFE(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC68\uD83C[\uDFFB-\uDFFD\uDFFF])|\uD83E(?:[\uDD1D\uDEEF]\u200D\uD83D\uDC68\uD83C[\uDFFB-\uDFFD\uDFFF]|[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3])))?|\uDFFF(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC68\uD83C[\uDFFB-\uDFFE])|\uD83E(?:[\uDD1D\uDEEF]\u200D\uD83D\uDC68\uD83C[\uDFFB-\uDFFE]|[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3])))?))?|\uDC69(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?[\uDC68\uDC69]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?|\uDC69\u200D\uD83D(?:\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?))|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]))|\uD83C(?:\uDFFB(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC69\uD83C[\uDFFC-\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFC-\uDFFF]|\uDEEF\u200D\uD83D\uDC69\uD83C[\uDFFC-\uDFFF])))?|\uDFFC(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC69\uD83C[\uDFFB\uDFFD-\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB\uDFFD-\uDFFF]|\uDEEF\u200D\uD83D\uDC69\uD83C[\uDFFB\uDFFD-\uDFFF])))?|\uDFFD(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC69\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF]|\uDEEF\u200D\uD83D\uDC69\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])))?|\uDFFE(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC69\uD83C[\uDFFB-\uDFFD\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB-\uDFFD\uDFFF]|\uDEEF\u200D\uD83D\uDC69\uD83C[\uDFFB-\uDFFD\uDFFF])))?|\uDFFF(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC69\uD83C[\uDFFB-\uDFFE])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB-\uDFFE]|\uDEEF\u200D\uD83D\uDC69\uD83C[\uDFFB-\uDFFE])))?))?|\uDD75(?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?(?:\u200D[\u2640\u2642]\uFE0F?)?|\uDE2E(?:\u200D\uD83D\uDCA8)?|\uDE35(?:\u200D\uD83D\uDCAB)?|\uDE36(?:\u200D\uD83C\uDF2B\uFE0F?)?|\uDE42(?:\u200D[\u2194\u2195]\uFE0F?)?|\uDEB6(?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D(?:[\u2640\u2642]\uFE0F?(?:\u200D\u27A1\uFE0F?)?|\u27A1\uFE0F?))?)|\uD83E(?:[\uDD0C\uDD0F\uDD18-\uDD1F\uDD30-\uDD34\uDD36\uDD77\uDDB5\uDDB6\uDDBB\uDDD2\uDDD3\uDDD5\uDEC3-\uDEC5\uDEF0\uDEF2-\uDEF8](?:\uD83C[\uDFFB-\uDFFF])?|[\uDD26\uDD35\uDD37-\uDD39\uDD3C-\uDD3E\uDDB8\uDDB9\uDDCD\uDDCF\uDDD4\uDDD6-\uDDDD](?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDDDE\uDDDF](?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDD0D\uDD0E\uDD10-\uDD17\uDD20-\uDD25\uDD27-\uDD2F\uDD3A\uDD3F-\uDD45\uDD47-\uDD76\uDD78-\uDDB4\uDDB7\uDDBA\uDDBC-\uDDCC\uDDD0\uDDE0-\uDDFF\uDE70-\uDE7C\uDE80-\uDE8A\uDE8E-\uDEC2\uDEC6\uDEC8\uDECD-\uDEDC\uDEDF-\uDEEA\uDEEF]|\uDDCE(?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D(?:[\u2640\u2642]\uFE0F?(?:\u200D\u27A1\uFE0F?)?|\u27A1\uFE0F?))?|\uDDD1(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3\uDE70]|\uDD1D\u200D\uD83E\uDDD1|\uDDD1\u200D\uD83E\uDDD2(?:\u200D\uD83E\uDDD2)?|\uDDD2(?:\u200D\uD83E\uDDD2)?))|\uD83C(?:\uDFFB(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFC-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83E\uDDD1\uD83C[\uDFFC-\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3\uDE70]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF]|\uDEEF\u200D\uD83E\uDDD1\uD83C[\uDFFC-\uDFFF])))?|\uDFFC(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB\uDFFD-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83E\uDDD1\uD83C[\uDFFB\uDFFD-\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3\uDE70]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF]|\uDEEF\u200D\uD83E\uDDD1\uD83C[\uDFFB\uDFFD-\uDFFF])))?|\uDFFD(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83E\uDDD1\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3\uDE70]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF]|\uDEEF\u200D\uD83E\uDDD1\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])))?|\uDFFE(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB-\uDFFD\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFD\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3\uDE70]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF]|\uDEEF\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFD\uDFFF])))?|\uDFFF(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB-\uDFFE]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFE])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3\uDE70]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF]|\uDEEF\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFE])))?))?|\uDEF1(?:\uD83C(?:\uDFFB(?:\u200D\uD83E\uDEF2\uD83C[\uDFFC-\uDFFF])?|\uDFFC(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB\uDFFD-\uDFFF])?|\uDFFD(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])?|\uDFFE(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB-\uDFFD\uDFFF])?|\uDFFF(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB-\uDFFE])?))?)/g, Ii = Fn, T1 = M1().source, $1 = `(:[a-zA-Z0-9_+-]+:|${T1})`, z1 = new RegExp($1, "g"), R1 = ({ text: i, size: e = 24, className: n }) => {
+}, Xu = () => /[#*0-9]\uFE0F?\u20E3|[\xA9\xAE\u203C\u2049\u2122\u2139\u2194-\u2199\u21A9\u21AA\u231A\u231B\u2328\u23CF\u23ED-\u23EF\u23F1\u23F2\u23F8-\u23FA\u24C2\u25AA\u25AB\u25B6\u25C0\u25FB\u25FC\u25FE\u2600-\u2604\u260E\u2611\u2614\u2615\u2618\u2620\u2622\u2623\u2626\u262A\u262E\u262F\u2638-\u263A\u2640\u2642\u2648-\u2653\u265F\u2660\u2663\u2665\u2666\u2668\u267B\u267E\u267F\u2692\u2694-\u2697\u2699\u269B\u269C\u26A0\u26A7\u26AA\u26B0\u26B1\u26BD\u26BE\u26C4\u26C8\u26CF\u26D1\u26E9\u26F0-\u26F5\u26F7\u26F8\u26FA\u2702\u2708\u2709\u270F\u2712\u2714\u2716\u271D\u2721\u2733\u2734\u2744\u2747\u2757\u2763\u27A1\u2934\u2935\u2B05-\u2B07\u2B1B\u2B1C\u2B55\u3030\u303D\u3297\u3299]\uFE0F?|[\u261D\u270C\u270D](?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?|[\u270A\u270B](?:\uD83C[\uDFFB-\uDFFF])?|[\u23E9-\u23EC\u23F0\u23F3\u25FD\u2693\u26A1\u26AB\u26C5\u26CE\u26D4\u26EA\u26FD\u2705\u2728\u274C\u274E\u2753-\u2755\u2795-\u2797\u27B0\u27BF\u2B50]|\u26D3\uFE0F?(?:\u200D\uD83D\uDCA5)?|\u26F9(?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?(?:\u200D[\u2640\u2642]\uFE0F?)?|\u2764\uFE0F?(?:\u200D(?:\uD83D\uDD25|\uD83E\uDE79))?|\uD83C(?:[\uDC04\uDD70\uDD71\uDD7E\uDD7F\uDE02\uDE37\uDF21\uDF24-\uDF2C\uDF36\uDF7D\uDF96\uDF97\uDF99-\uDF9B\uDF9E\uDF9F\uDFCD\uDFCE\uDFD4-\uDFDF\uDFF5\uDFF7]\uFE0F?|[\uDF85\uDFC2\uDFC7](?:\uD83C[\uDFFB-\uDFFF])?|[\uDFC4\uDFCA](?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDFCB\uDFCC](?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDCCF\uDD8E\uDD91-\uDD9A\uDE01\uDE1A\uDE2F\uDE32-\uDE36\uDE38-\uDE3A\uDE50\uDE51\uDF00-\uDF20\uDF2D-\uDF35\uDF37-\uDF43\uDF45-\uDF4A\uDF4C-\uDF7C\uDF7E-\uDF84\uDF86-\uDF93\uDFA0-\uDFC1\uDFC5\uDFC6\uDFC8\uDFC9\uDFCF-\uDFD3\uDFE0-\uDFF0\uDFF8-\uDFFF]|\uDDE6\uD83C[\uDDE8-\uDDEC\uDDEE\uDDF1\uDDF2\uDDF4\uDDF6-\uDDFA\uDDFC\uDDFD\uDDFF]|\uDDE7\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEF\uDDF1-\uDDF4\uDDF6-\uDDF9\uDDFB\uDDFC\uDDFE\uDDFF]|\uDDE8\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDEE\uDDF0-\uDDF7\uDDFA-\uDDFF]|\uDDE9\uD83C[\uDDEA\uDDEC\uDDEF\uDDF0\uDDF2\uDDF4\uDDFF]|\uDDEA\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDED\uDDF7-\uDDFA]|\uDDEB\uD83C[\uDDEE-\uDDF0\uDDF2\uDDF4\uDDF7]|\uDDEC\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEE\uDDF1-\uDDF3\uDDF5-\uDDFA\uDDFC\uDDFE]|\uDDED\uD83C[\uDDF0\uDDF2\uDDF3\uDDF7\uDDF9\uDDFA]|\uDDEE\uD83C[\uDDE8-\uDDEA\uDDF1-\uDDF4\uDDF6-\uDDF9]|\uDDEF\uD83C[\uDDEA\uDDF2\uDDF4\uDDF5]|\uDDF0\uD83C[\uDDEA\uDDEC-\uDDEE\uDDF2\uDDF3\uDDF5\uDDF7\uDDFC\uDDFE\uDDFF]|\uDDF1\uD83C[\uDDE6-\uDDE8\uDDEE\uDDF0\uDDF7-\uDDFB\uDDFE]|\uDDF2\uD83C[\uDDE6\uDDE8-\uDDED\uDDF0-\uDDFF]|\uDDF3\uD83C[\uDDE6\uDDE8\uDDEA-\uDDEC\uDDEE\uDDF1\uDDF4\uDDF5\uDDF7\uDDFA\uDDFF]|\uDDF4\uD83C\uDDF2|\uDDF5\uD83C[\uDDE6\uDDEA-\uDDED\uDDF0-\uDDF3\uDDF7-\uDDF9\uDDFC\uDDFE]|\uDDF6\uD83C\uDDE6|\uDDF7\uD83C[\uDDEA\uDDF4\uDDF8\uDDFA\uDDFC]|\uDDF8\uD83C[\uDDE6-\uDDEA\uDDEC-\uDDF4\uDDF7-\uDDF9\uDDFB\uDDFD-\uDDFF]|\uDDF9\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDED\uDDEF-\uDDF4\uDDF7\uDDF9\uDDFB\uDDFC\uDDFF]|\uDDFA\uD83C[\uDDE6\uDDEC\uDDF2\uDDF3\uDDF8\uDDFE\uDDFF]|\uDDFB\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDEE\uDDF3\uDDFA]|\uDDFC\uD83C[\uDDEB\uDDF8]|\uDDFD\uD83C\uDDF0|\uDDFE\uD83C[\uDDEA\uDDF9]|\uDDFF\uD83C[\uDDE6\uDDF2\uDDFC]|\uDF44(?:\u200D\uD83D\uDFEB)?|\uDF4B(?:\u200D\uD83D\uDFE9)?|\uDFC3(?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D(?:[\u2640\u2642]\uFE0F?(?:\u200D\u27A1\uFE0F?)?|\u27A1\uFE0F?))?|\uDFF3\uFE0F?(?:\u200D(?:\u26A7\uFE0F?|\uD83C\uDF08))?|\uDFF4(?:\u200D\u2620\uFE0F?|\uDB40\uDC67\uDB40\uDC62\uDB40(?:\uDC65\uDB40\uDC6E\uDB40\uDC67|\uDC73\uDB40\uDC63\uDB40\uDC74|\uDC77\uDB40\uDC6C\uDB40\uDC73)\uDB40\uDC7F)?)|\uD83D(?:[\uDC3F\uDCFD\uDD49\uDD4A\uDD6F\uDD70\uDD73\uDD76-\uDD79\uDD87\uDD8A-\uDD8D\uDDA5\uDDA8\uDDB1\uDDB2\uDDBC\uDDC2-\uDDC4\uDDD1-\uDDD3\uDDDC-\uDDDE\uDDE1\uDDE3\uDDE8\uDDEF\uDDF3\uDDFA\uDECB\uDECD-\uDECF\uDEE0-\uDEE5\uDEE9\uDEF0\uDEF3]\uFE0F?|[\uDC42\uDC43\uDC46-\uDC50\uDC66\uDC67\uDC6B-\uDC6D\uDC72\uDC74-\uDC76\uDC78\uDC7C\uDC83\uDC85\uDC8F\uDC91\uDCAA\uDD7A\uDD95\uDD96\uDE4C\uDE4F\uDEC0\uDECC](?:\uD83C[\uDFFB-\uDFFF])?|[\uDC6E-\uDC71\uDC73\uDC77\uDC81\uDC82\uDC86\uDC87\uDE45-\uDE47\uDE4B\uDE4D\uDE4E\uDEA3\uDEB4\uDEB5](?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDD74\uDD90](?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?|[\uDC00-\uDC07\uDC09-\uDC14\uDC16-\uDC25\uDC27-\uDC3A\uDC3C-\uDC3E\uDC40\uDC44\uDC45\uDC51-\uDC65\uDC6A\uDC79-\uDC7B\uDC7D-\uDC80\uDC84\uDC88-\uDC8E\uDC90\uDC92-\uDCA9\uDCAB-\uDCFC\uDCFF-\uDD3D\uDD4B-\uDD4E\uDD50-\uDD67\uDDA4\uDDFB-\uDE2D\uDE2F-\uDE34\uDE37-\uDE41\uDE43\uDE44\uDE48-\uDE4A\uDE80-\uDEA2\uDEA4-\uDEB3\uDEB7-\uDEBF\uDEC1-\uDEC5\uDED0-\uDED2\uDED5-\uDED8\uDEDC-\uDEDF\uDEEB\uDEEC\uDEF4-\uDEFC\uDFE0-\uDFEB\uDFF0]|\uDC08(?:\u200D\u2B1B)?|\uDC15(?:\u200D\uD83E\uDDBA)?|\uDC26(?:\u200D(?:\u2B1B|\uD83D\uDD25))?|\uDC3B(?:\u200D\u2744\uFE0F?)?|\uDC41\uFE0F?(?:\u200D\uD83D\uDDE8\uFE0F?)?|\uDC68(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDC68\uDC69]\u200D\uD83D(?:\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?)|[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?)|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]))|\uD83C(?:\uDFFB(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC68\uD83C[\uDFFC-\uDFFF])|\uD83E(?:[\uDD1D\uDEEF]\u200D\uD83D\uDC68\uD83C[\uDFFC-\uDFFF]|[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3])))?|\uDFFC(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC68\uD83C[\uDFFB\uDFFD-\uDFFF])|\uD83E(?:[\uDD1D\uDEEF]\u200D\uD83D\uDC68\uD83C[\uDFFB\uDFFD-\uDFFF]|[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3])))?|\uDFFD(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC68\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])|\uD83E(?:[\uDD1D\uDEEF]\u200D\uD83D\uDC68\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF]|[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3])))?|\uDFFE(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC68\uD83C[\uDFFB-\uDFFD\uDFFF])|\uD83E(?:[\uDD1D\uDEEF]\u200D\uD83D\uDC68\uD83C[\uDFFB-\uDFFD\uDFFF]|[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3])))?|\uDFFF(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC68\uD83C[\uDFFB-\uDFFE])|\uD83E(?:[\uDD1D\uDEEF]\u200D\uD83D\uDC68\uD83C[\uDFFB-\uDFFE]|[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3])))?))?|\uDC69(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?[\uDC68\uDC69]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?|\uDC69\u200D\uD83D(?:\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?))|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]))|\uD83C(?:\uDFFB(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC69\uD83C[\uDFFC-\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFC-\uDFFF]|\uDEEF\u200D\uD83D\uDC69\uD83C[\uDFFC-\uDFFF])))?|\uDFFC(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC69\uD83C[\uDFFB\uDFFD-\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB\uDFFD-\uDFFF]|\uDEEF\u200D\uD83D\uDC69\uD83C[\uDFFB\uDFFD-\uDFFF])))?|\uDFFD(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC69\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF]|\uDEEF\u200D\uD83D\uDC69\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])))?|\uDFFE(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC69\uD83C[\uDFFB-\uDFFD\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB-\uDFFD\uDFFF]|\uDEEF\u200D\uD83D\uDC69\uD83C[\uDFFB-\uDFFD\uDFFF])))?|\uDFFF(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83D\uDC69\uD83C[\uDFFB-\uDFFE])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB-\uDFFE]|\uDEEF\u200D\uD83D\uDC69\uD83C[\uDFFB-\uDFFE])))?))?|\uDD75(?:\uD83C[\uDFFB-\uDFFF]|\uFE0F)?(?:\u200D[\u2640\u2642]\uFE0F?)?|\uDE2E(?:\u200D\uD83D\uDCA8)?|\uDE35(?:\u200D\uD83D\uDCAB)?|\uDE36(?:\u200D\uD83C\uDF2B\uFE0F?)?|\uDE42(?:\u200D[\u2194\u2195]\uFE0F?)?|\uDEB6(?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D(?:[\u2640\u2642]\uFE0F?(?:\u200D\u27A1\uFE0F?)?|\u27A1\uFE0F?))?)|\uD83E(?:[\uDD0C\uDD0F\uDD18-\uDD1F\uDD30-\uDD34\uDD36\uDD77\uDDB5\uDDB6\uDDBB\uDDD2\uDDD3\uDDD5\uDEC3-\uDEC5\uDEF0\uDEF2-\uDEF8](?:\uD83C[\uDFFB-\uDFFF])?|[\uDD26\uDD35\uDD37-\uDD39\uDD3C-\uDD3E\uDDB8\uDDB9\uDDCD\uDDCF\uDDD4\uDDD6-\uDDDD](?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDDDE\uDDDF](?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDD0D\uDD0E\uDD10-\uDD17\uDD20-\uDD25\uDD27-\uDD2F\uDD3A\uDD3F-\uDD45\uDD47-\uDD76\uDD78-\uDDB4\uDDB7\uDDBA\uDDBC-\uDDCC\uDDD0\uDDE0-\uDDFF\uDE70-\uDE7C\uDE80-\uDE8A\uDE8E-\uDEC2\uDEC6\uDEC8\uDECD-\uDEDC\uDEDF-\uDEEA\uDEEF]|\uDDCE(?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D(?:[\u2640\u2642]\uFE0F?(?:\u200D\u27A1\uFE0F?)?|\u27A1\uFE0F?))?|\uDDD1(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3\uDE70]|\uDD1D\u200D\uD83E\uDDD1|\uDDD1\u200D\uD83E\uDDD2(?:\u200D\uD83E\uDDD2)?|\uDDD2(?:\u200D\uD83E\uDDD2)?))|\uD83C(?:\uDFFB(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFC-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83E\uDDD1\uD83C[\uDFFC-\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3\uDE70]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF]|\uDEEF\u200D\uD83E\uDDD1\uD83C[\uDFFC-\uDFFF])))?|\uDFFC(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB\uDFFD-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83E\uDDD1\uD83C[\uDFFB\uDFFD-\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3\uDE70]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF]|\uDEEF\u200D\uD83E\uDDD1\uD83C[\uDFFB\uDFFD-\uDFFF])))?|\uDFFD(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83E\uDDD1\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3\uDE70]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF]|\uDEEF\u200D\uD83E\uDDD1\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])))?|\uDFFE(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB-\uDFFD\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFD\uDFFF])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3\uDE70]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF]|\uDEEF\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFD\uDFFF])))?|\uDFFF(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB-\uDFFE]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC30\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFE])|\uD83E(?:[\uDDAF\uDDBC\uDDBD](?:\u200D\u27A1\uFE0F?)?|[\uDDB0-\uDDB3\uDE70]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF]|\uDEEF\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFE])))?))?|\uDEF1(?:\uD83C(?:\uDFFB(?:\u200D\uD83E\uDEF2\uD83C[\uDFFC-\uDFFF])?|\uDFFC(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB\uDFFD-\uDFFF])?|\uDFFD(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])?|\uDFFE(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB-\uDFFD\uDFFF])?|\uDFFF(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB-\uDFFE])?))?)/g, We = gi, el = Xu().source, il = `(:[a-zA-Z0-9_+-]+:|${el})`, nl = new RegExp(il, "g"), sl = ({ text: i, size: e = 24, className: n }) => {
   if (!i)
     return null;
-  const a = i.split(z1);
-  return /* @__PURE__ */ N(oa, { children: a.map((o, s) => {
-    if (Ii[o])
-      return /* @__PURE__ */ N(
-        Re,
+  const a = i.split(nl);
+  return /* @__PURE__ */ E(Ci, { children: a.map((f, s) => {
+    if (We[f])
+      return /* @__PURE__ */ E(
+        ae,
+        {
+          id: f,
+          size: e,
+          className: n
+        },
+        `${f}-${s}`
+      );
+    if (f.startsWith(":") && f.endsWith(":")) {
+      const o = f.slice(1, -1);
+      return We[o] ? /* @__PURE__ */ E(
+        ae,
         {
           id: o,
           size: e,
           className: n
         },
         `${o}-${s}`
-      );
-    if (o.startsWith(":") && o.endsWith(":")) {
-      const t = o.slice(1, -1);
-      return Ii[t] ? /* @__PURE__ */ N(
-        Re,
-        {
-          id: t,
-          size: e,
-          className: n
-        },
-        `${t}-${s}`
-      ) : /* @__PURE__ */ N("span", { children: o }, s);
+      ) : /* @__PURE__ */ E("span", { children: f }, s);
     }
-    return /* @__PURE__ */ N(
-      Re,
+    return /* @__PURE__ */ E(
+      ae,
       {
-        id: o,
+        id: f,
         size: e,
         className: n
       },
       `unicode-${s}`
     );
   }) });
-}, O1 = (i) => [];
+};
 export {
-  Re as AnimatedEmoji,
-  R1 as EmojiRenderer,
-  O1 as parseTextToIncludeEmojis
+  ae as AnimatedEmoji,
+  sl as EmojiRenderer
 };
