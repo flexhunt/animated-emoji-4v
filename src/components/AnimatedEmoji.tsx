@@ -43,23 +43,25 @@ export const AnimatedEmoji: React.FC<AnimatedEmojiProps> = ({
         };
     }, []);
 
-    // --------------------------------------------------------
-    // STYLES
-    // --------------------------------------------------------
-    // --------------------------------------------------------
-    // STYLES & ANIMATION
-    // --------------------------------------------------------
-    // Inject keyframes for shimmer effect
+    // Inject keyframes strictly on client side
     useEffect(() => {
-        if (typeof document === 'undefined') return;
-        const styleId = 'animated-emoji-styles';
-        if (!document.getElementById(styleId)) {
+        if (typeof document !== 'undefined' && !document.getElementById('telegram-emoji-shimmer')) {
             const style = document.createElement('style');
-            style.id = styleId;
-            style.innerHTML = `
+            style.id = 'telegram-emoji-shimmer';
+            style.textContent = `
                 @keyframes telegramEmojiShimmer {
-                    0% { background-position: -200px 0; }
-                    100% { background-position: calc(200px + 100%) 0; }
+                    0% { transform: translateX(-100%); }
+                    100% { transform: translateX(100%); }
+                }
+                .emoji-skeleton::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+                    animation: telegramEmojiShimmer 1.5s infinite;
                 }
             `;
             document.head.appendChild(style);
@@ -72,16 +74,13 @@ export const AnimatedEmoji: React.FC<AnimatedEmojiProps> = ({
         left: 0,
         width: '100%',
         height: '100%',
-        backgroundColor: '#f6f7f8',
-        backgroundImage: 'linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%)',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: '200% 100%', // Larger than container for movement
-        animation: 'telegramEmojiShimmer 1.5s infinite linear',
-        borderRadius: '5px',
+        backgroundColor: '#e0e0e0', // Slightly darker base
+        borderRadius: '8px', // Softer corners
         opacity: isVisible && !isLoaded ? 1 : 0,
         transition: 'opacity 0.2s ease-out',
         pointerEvents: 'none',
-        zIndex: 0 // Behind image
+        overflow: 'hidden', // Contain shimmer
+        zIndex: 0
     };
 
     const imgStyle: React.CSSProperties = {
@@ -90,75 +89,40 @@ export const AnimatedEmoji: React.FC<AnimatedEmojiProps> = ({
         objectFit: 'contain',
         opacity: isLoaded ? 1 : 0,
         transition: 'opacity 0.2s ease-in',
-        position: 'relative', // Ensure Z-index works if needed
+        position: 'relative',
         zIndex: 1
     };
 
-    // --------------------------------------------------------
-    // RENDER LOGIC
-    // --------------------------------------------------------
-
-    // 1. If it's a known animated emoji
-    if (emojiMap[id]) {
-        const filename = emojiMap[id];
-        const url = `${BASE_URL}/${filename}`;
-
-        return (
-            <div
-                ref={containerRef}
-                className={className}
-                style={{ width: size, height: size, display: 'inline-block', verticalAlign: 'middle', lineHeight: 0, position: 'relative' }}
-            >
-                {/* Skeleton Overlay */}
-                <div style={skeletonStyle} />
-
-                {isVisible && (
-                    <img
-                        src={url}
-                        alt={id}
-                        width="100%"
-                        height="100%"
-                        style={imgStyle}
-                        loading="lazy"
-                        onLoad={() => setIsLoaded(true)}
-                    />
-                )}
-            </div>
-        );
-    }
-
-    // 2. Fallback: If it's NOT in the map, but it IS a unicode character (not a shortcode)
-    // We render the iOS version from CDN.
-    // Note: 'id' here might be the raw unicode char if passed from EmojiRenderer.
-    const isRawEmoji = !id.startsWith(':');
-
-    if (isRawEmoji) {
+    // 1. Fallback / Raw Emoji
+    if (!emojiMap[id]) {
         const hex = toEmojiHex(id);
-        const fallbackUrl = `https://cdn.jsdelivr.net/npm/emoji-datasource-apple/img/apple/64/${hex}.png`;
+        const appleUrl = `https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.0.0/img/apple/64/${hex}.png`;
 
         return (
             <div
                 ref={containerRef}
-                className={className}
+                className={`emoji-skeleton ${className || ''}`}
                 style={{ width: size, height: size, display: 'inline-block', verticalAlign: 'middle', lineHeight: 0, position: 'relative' }}
             >
-                {/* Skeleton Overlay */}
                 <div style={skeletonStyle} />
 
                 {isVisible && (
                     <img
-                        src={fallbackUrl}
+                        src={appleUrl}
                         alt={id}
-                        width="100%"
-                        height="100%"
                         style={imgStyle}
                         loading="lazy"
                         onLoad={() => setIsLoaded(true)}
                         onError={(e) => {
-                            // If even fallback fails, hide image and show native char
+                            // If fallback fails, just show text, hide image container specific tweaks
                             e.currentTarget.style.display = 'none';
-                            setIsLoaded(true); // Hide skeleton so we see text
-                            e.currentTarget.parentElement!.innerText = id;
+                            setIsLoaded(true); // Stop skeleton
+                            const parent = e.currentTarget.parentElement;
+                            if (parent) {
+                                parent.innerText = id;
+                                parent.style.lineHeight = 'normal';
+                                parent.style.fontSize = typeof size === 'number' ? `${size}px` : size;
+                            }
                         }}
                     />
                 )}
@@ -166,6 +130,27 @@ export const AnimatedEmoji: React.FC<AnimatedEmojiProps> = ({
         );
     }
 
-    // 3. Unknown shortcode
-    return <span title={`Unknown emoji: ${id}`}>:{id}:</span>;
+    // 2. Animated Emoji
+    const filename = emojiMap[id];
+    const url = `${BASE_URL}/${filename}`;
+
+    return (
+        <div
+            ref={containerRef}
+            className={`emoji-skeleton ${className || ''}`}
+            style={{ width: size, height: size, display: 'inline-block', verticalAlign: 'middle', lineHeight: 0, position: 'relative' }}
+        >
+            <div style={skeletonStyle} />
+
+            {isVisible && (
+                <img
+                    src={url}
+                    alt={id}
+                    style={imgStyle}
+                    loading="lazy"
+                    onLoad={() => setIsLoaded(true)}
+                />
+            )}
+        </div>
+    );
 };

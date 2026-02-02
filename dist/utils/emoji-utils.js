@@ -1,18 +1,18 @@
-/**
- * Converts a unicode emoji character to its hex codepoint string.
- * This format matches the jsDelivr/emoji-datasource-apple filenames.
- * Example: 😭 -> 1f62d
- * Example: 🏳️‍🌈 -> 1f3f3-fe0f-200d-1f308
- */
-export function toEmojiHex(emoji) {
-    return Array.from(emoji)
-        .map(c => c.codePointAt(0)?.toString(16))
-        .filter(Boolean)
-        // emoji-datasource-apple strips VS16 (fe0f) unless it's the only char (unlikely for proper emojis)
-        // We filter out 'fe0f'
-        .filter(hex => hex !== 'fe0f')
-        .join('-');
-}
+// User-provided hex conversion logic (handles surrogate pairs explicitly)
+export const toEmojiHex = (str) => {
+    let output = [];
+    for (let i = 0; i < str.length; i++) {
+        let code = str.codePointAt(i);
+        if (code) {
+            output.push(code.toString(16));
+            // Handle surrogate pairs by skipping next char if needed
+            if (code > 0xffff) {
+                i++;
+            }
+        }
+    }
+    return output.join("-");
+};
 export function isShortcode(text) {
     return /^:[a-zA-Z0-9_+-]+:$/.test(text);
 }
