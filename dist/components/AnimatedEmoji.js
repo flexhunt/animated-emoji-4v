@@ -1,12 +1,18 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useEffect, useState, useRef } from 'react';
+import * as emojiMartData from '@emoji-mart/data';
+import { init } from 'emoji-mart';
 import emojiMapRaw from '../data/emoji-map.json';
 import { toEmojiHex } from '../utils/emoji-utils';
 const emojiMap = emojiMapRaw;
 const BASE_URL = 'https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main';
+// Initialize emoji-mart with handle for potential default export in CJS
+const dataObj = emojiMartData.default || emojiMartData;
+init({ data: dataObj });
 export const AnimatedEmoji = ({ id, size = 50, className }) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
+    const [fallbackSrc, setFallbackSrc] = useState(null);
     const containerRef = useRef(null);
     // Intersection Observer for Lazy Loading
     useEffect(() => {
@@ -15,7 +21,7 @@ export const AnimatedEmoji = ({ id, size = 50, className }) => {
         const observer = new IntersectionObserver((entries) => {
             if (entries[0].isIntersecting) {
                 setIsVisible(true);
-                observer.disconnect(); // Only load once
+                observer.disconnect();
             }
         }, { threshold: 0.1 });
         observer.observe(containerRef.current);
@@ -47,6 +53,18 @@ export const AnimatedEmoji = ({ id, size = 50, className }) => {
             document.head.appendChild(style);
         }
     }, []);
+    // Get emoji-mart URL for fallback
+    const getEmojiMartUrl = async (emojiChar) => {
+        try {
+            const hex = toEmojiHex(emojiChar);
+            // emoji-mart uses Apple emoji set by default from jsDelivr CDN
+            return `https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.1.2/img/apple/64/${hex}.png`;
+        }
+        catch (error) {
+            console.error('Error getting emoji-mart URL:', error);
+            return null;
+        }
+    };
     const skeletonStyle = {
         position: 'absolute',
         top: 0,
@@ -70,38 +88,72 @@ export const AnimatedEmoji = ({ id, size = 50, className }) => {
         position: 'relative',
         zIndex: 1
     };
-    // 1. Fallback / Raw Emoji
+    // Load emoji-mart fallback URL when needed
+    useEffect(() => {
+        if (!emojiMap[id] && isVisible) {
+            getEmojiMartUrl(id).then(url => {
+                if (url)
+                    setFallbackSrc(url);
+            });
+        }
+    }, [id, isVisible]);
+    // 1. Fallback to emoji-mart (instead of native emoji)
     if (!emojiMap[id]) {
         const hex = toEmojiHex(id);
-        // Try a more modern version of the datasource
-        const [currentUrl, setCurrentUrl] = useState(`https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.1.1/img/apple/64/${hex}.png`);
+        const [currentUrl, setCurrentUrl] = useState(fallbackSrc || `https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.1.2/img/apple/64/${hex}.png`);
         const [hasRetried, setHasRetried] = useState(false);
-        return (_jsxs("div", { ref: containerRef, className: `emoji-skeleton ${className || ''}`, style: { width: size, height: size, display: 'inline-block', verticalAlign: 'middle', lineHeight: 0, position: 'relative' }, children: [_jsx("div", { style: skeletonStyle }), isVisible && (_jsx("img", { src: currentUrl, alt: id, style: imgStyle, loading: "lazy", onLoad: () => setIsLoaded(true), onError: (e) => {
-                        // If it failed and we haven't retried without fe0f, try that
+        return (_jsxs("div", { ref: containerRef, className: `emoji-skeleton ${className || ''}`, style: {
+                width: size,
+                height: size,
+                display: 'inline-block',
+                verticalAlign: 'middle',
+                lineHeight: 0,
+                position: 'relative'
+            }, children: [_jsx("div", { style: skeletonStyle }), isVisible && (_jsx("img", { src: currentUrl, alt: id, style: imgStyle, loading: "lazy", onLoad: () => setIsLoaded(true), onError: (e) => {
+                        // Try without -fe0f variant first
                         if (!hasRetried && hex.includes('fe0f')) {
                             const minimalHex = hex.replace(/-fe0f/g, '');
                             console.log(`Retrying minimalist hex for ${id}: ${minimalHex}`);
                             setHasRetried(true);
-                            setCurrentUrl(`https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.1.1/img/apple/64/${minimalHex}.png`);
+                            setCurrentUrl(`https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.1.2/img/apple/64/${minimalHex}.png`);
                             return;
                         }
-                        // Debug logging as requested
-                        console.error(`Final fallback failed for id: "${id}" at ${currentUrl}`);
-                        // Total failure: show native character
+                        // If emoji-mart CDN also fails, show the emoji character with better styling
+                        console.warn(`emoji-mart fallback failed for: "${id}"`);
                         e.currentTarget.style.display = 'none';
-                        setIsLoaded(true); // Stop skeleton
+                        setIsLoaded(true);
                         const parent = e.currentTarget.parentElement;
                         if (parent) {
-                            parent.innerText = id;
-                            parent.style.lineHeight = '1';
-                            parent.style.fontSize = typeof size === 'number' ? `${size}px` : size;
+                            // Create a span with the emoji character
+                            const emojiSpan = document.createElement('span');
+                            emojiSpan.innerText = id;
+                            emojiSpan.style.fontSize = typeof size === 'number' ? `${size * 0.8}px` : size;
+                            emojiSpan.style.lineHeight = '1';
+                            emojiSpan.style.display = 'inline-block';
+                            emojiSpan.style.verticalAlign = 'middle';
+                            emojiSpan.style.fontFamily = '"Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif';
+                            parent.appendChild(emojiSpan);
                             parent.style.display = 'inline-block';
-                            parent.style.verticalAlign = 'middle';
                         }
                     } }))] }));
     }
-    // 2. Animated Emoji
+    // 2. Animated Emoji from Telegram
     const filename = emojiMap[id];
     const url = `${BASE_URL}/${filename}`;
-    return (_jsxs("div", { ref: containerRef, className: `emoji-skeleton ${className || ''}`, style: { width: size, height: size, display: 'inline-block', verticalAlign: 'middle', lineHeight: 0, position: 'relative' }, children: [_jsx("div", { style: skeletonStyle }), isVisible && (_jsx("img", { src: url, alt: id, style: imgStyle, loading: "lazy", onLoad: () => setIsLoaded(true) }))] }));
+    return (_jsxs("div", { ref: containerRef, className: `emoji-skeleton ${className || ''}`, style: {
+            width: size,
+            height: size,
+            display: 'inline-block',
+            verticalAlign: 'middle',
+            lineHeight: 0,
+            position: 'relative'
+        }, children: [_jsx("div", { style: skeletonStyle }), isVisible && (_jsx("img", { src: url, alt: id, style: imgStyle, loading: "lazy", onLoad: () => setIsLoaded(true), onError: () => {
+                    console.error(`Animated emoji failed to load: ${url}`);
+                    // Fallback to emoji-mart if animated version fails
+                    getEmojiMartUrl(id).then(fallbackUrl => {
+                        if (fallbackUrl) {
+                            setFallbackSrc(fallbackUrl);
+                        }
+                    });
+                } }))] }));
 };
