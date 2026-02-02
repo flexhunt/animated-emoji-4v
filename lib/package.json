@@ -1,5 +1,5 @@
 {
-    "name": "telegram-animated-emojis-react",
+    "name": "animated-emoji-4v",
     "version": "1.0.1",
     "description": "A lightweight React library to render Telegram animated emojis using high-performance WebP assets.",
     "main": "dist/index.js",
