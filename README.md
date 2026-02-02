@@ -30,7 +30,7 @@ npm install github:flexhunt/animated-emoji-4v
 Use `AnimatedEmoji` to render a specific emoji by its shortcode.
 
 ```tsx
-import { AnimatedEmoji } from 'telegram-animated-emojis-react';
+import { AnimatedEmoji } from 'animated-emoji-4v';
 
 const MyComponent = () => (
   <div>
@@ -43,7 +43,7 @@ const MyComponent = () => (
 Use `EmojiRenderer` to automatically find and replace emojis in a text string. It supports both **Unicode** and **Shortcodes**.
 
 ```tsx
-import { EmojiRenderer } from 'telegram-animated-emojis-react';
+import { EmojiRenderer } from 'animated-emoji-4v';
 
 const ChatMessage = () => (
   <p className="message">
