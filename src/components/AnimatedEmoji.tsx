@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import * as emojiMartData from '@emoji-mart/data';
 import { init } from 'emoji-mart';
 import emojiMapRaw from '../data/emoji-map.json';
-import { toEmojiHex } from '../utils/emoji-utils';
 
 const emojiMap = emojiMapRaw as Record<string, string>;
 
@@ -26,7 +25,7 @@ export const AnimatedEmoji: React.FC<AnimatedEmojiProps> = ({
 }) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
-    const [fallbackSrc, setFallbackSrc] = useState<string | null>(null);
+    const [hasError, setHasError] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
 
     // Intersection Observer for Lazy Loading
@@ -52,54 +51,43 @@ export const AnimatedEmoji: React.FC<AnimatedEmojiProps> = ({
 
     // Inject keyframes strictly on client side
     useEffect(() => {
-        if (typeof document !== 'undefined' && !document.getElementById('telegram-emoji-shimmer')) {
+        if (typeof document !== 'undefined' && !document.getElementById('emoji-text-shimmer')) {
             const style = document.createElement('style');
-            style.id = 'telegram-emoji-shimmer';
+            style.id = 'emoji-text-shimmer';
             style.textContent = `
-                @keyframes telegramEmojiShimmer {
-                    0% { transform: translateX(-100%); }
-                    100% { transform: translateX(100%); }
-                }
-                .emoji-skeleton::after {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-                    animation: telegramEmojiShimmer 1.5s infinite;
+                @keyframes emojiTextShimmer {
+                    0% { background-position: 200% center; }
+                    100% { background-position: -200% center; }
                 }
             `;
             document.head.appendChild(style);
         }
     }, []);
 
-    // Get emoji-mart URL for fallback
-    const getEmojiMartUrl = async (emojiChar: string): Promise<string | null> => {
-        try {
-            const hex = toEmojiHex(emojiChar);
-            // emoji-mart uses Apple emoji set by default from jsDelivr CDN
-            return `https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.1.2/img/apple/64/${hex}.png`;
-        } catch (error) {
-            console.error('Error getting emoji-mart URL:', error);
-            return null;
-        }
-    };
-
-    const skeletonStyle: React.CSSProperties = {
+    // Native emoji placeholder style (shows emoji shape with shimmer)
+    const placeholderStyle: React.CSSProperties = {
         position: 'absolute',
         top: 0,
         left: 0,
         width: '100%',
         height: '100%',
-        backgroundColor: '#e0e0e0',
-        borderRadius: '8px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: typeof size === 'number' ? `${size * 0.85}px` : size,
         opacity: isVisible && !isLoaded ? 1 : 0,
         transition: 'opacity 0.2s ease-out',
         pointerEvents: 'none',
-        overflow: 'hidden',
-        zIndex: 0
+        zIndex: 0,
+        // Text shimmer effect
+        background: 'linear-gradient(90deg, #777 0%, #ffffff 50%, #777 100%)',
+        backgroundSize: '200% auto',
+        WebkitBackgroundClip: 'text',
+        backgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        color: 'transparent', // Fallback
+        animation: 'emojiTextShimmer 2.5s linear infinite',
+        filter: 'grayscale(100%) brightness(1.2)'
     };
 
     const imgStyle: React.CSSProperties = {
@@ -112,70 +100,53 @@ export const AnimatedEmoji: React.FC<AnimatedEmojiProps> = ({
         zIndex: 1
     };
 
-    // Load emoji-mart fallback URL when needed
-    useEffect(() => {
-        if (!emojiMap[id] && isVisible) {
-            getEmojiMartUrl(id).then(url => {
-                if (url) setFallbackSrc(url);
-            });
-        }
-    }, [id, isVisible]);
+    // DEBUG: Log emoji lookup
+    const isInMap = !!emojiMap[id];
+    console.log(`[AnimatedEmoji] id="${id}" | inMap=${isInMap} | isVisible=${isVisible}`);
 
-    // 1. Fallback to emoji-mart (instead of native emoji)
-    if (!emojiMap[id]) {
-        const hex = toEmojiHex(id);
-        const [currentUrl, setCurrentUrl] = useState(fallbackSrc || `https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.1.2/img/apple/64/${hex}.png`);
-        const [hasRetried, setHasRetried] = useState(false);
+    // If not in map OR if we encountered an error loading the animated version, use fallback
+    if (!emojiMap[id] || hasError) {
+        if (hasError) console.log(`[AnimatedEmoji FALLBACK] Error loading animated, using em-emoji for "${id}"`);
+        else console.log(`[AnimatedEmoji FALLBACK] Not in map, using em-emoji for "${id}"`);
 
         return (
             <div
                 ref={containerRef}
-                className={`emoji-skeleton ${className || ''}`}
+                className={className}
                 style={{
                     width: size,
                     height: size,
-                    display: 'inline-block',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     verticalAlign: 'middle',
                     lineHeight: 0,
                     position: 'relative'
                 }}
             >
-                <div style={skeletonStyle} />
+                <div style={placeholderStyle}>{id}</div>
 
                 {isVisible && (
-                    <img
-                        src={currentUrl}
-                        alt={id}
-                        style={imgStyle}
-                        loading="lazy"
-                        onLoad={() => setIsLoaded(true)}
-                        onError={(e) => {
-                            // Try without -fe0f variant first
-                            if (!hasRetried && hex.includes('fe0f')) {
-                                const minimalHex = hex.replace(/-fe0f/g, '');
-                                console.log(`Retrying minimalist hex for ${id}: ${minimalHex}`);
-                                setHasRetried(true);
-                                setCurrentUrl(`https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.1.2/img/apple/64/${minimalHex}.png`);
-                                return;
-                            }
-
-                            // If emoji-mart CDN also fails, show the emoji character with better styling
-                            console.warn(`emoji-mart fallback failed for: "${id}"`);
-                            e.currentTarget.style.display = 'none';
-                            setIsLoaded(true);
-
-                            const parent = e.currentTarget.parentElement;
-                            if (parent) {
-                                // Create a span with the emoji character
-                                const emojiSpan = document.createElement('span');
-                                emojiSpan.innerText = id;
-                                emojiSpan.style.fontSize = typeof size === 'number' ? `${size * 0.8}px` : size;
-                                emojiSpan.style.lineHeight = '1';
-                                emojiSpan.style.display = 'inline-block';
-                                emojiSpan.style.verticalAlign = 'middle';
-                                emojiSpan.style.fontFamily = '"Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif';
-                                parent.appendChild(emojiSpan);
-                                parent.style.display = 'inline-block';
+                    <em-emoji
+                        native={id}
+                        set="apple"
+                        size={typeof size === 'number' ? `${size}px` : size}
+                        style={{
+                            opacity: isLoaded ? 1 : 0,
+                            transition: 'opacity 0.2s ease-in'
+                        }}
+                        // @ts-ignore - em-emoji is a web component
+                        ref={(el: HTMLElement | null) => {
+                            if (el && !isLoaded) {
+                                // Check when the emoji-mart component has rendered
+                                const checkLoaded = () => {
+                                    if (el.shadowRoot?.querySelector('span') || el.querySelector('span')) {
+                                        setIsLoaded(true);
+                                    } else {
+                                        requestAnimationFrame(checkLoaded);
+                                    }
+                                };
+                                requestAnimationFrame(checkLoaded);
                             }
                         }}
                     />
@@ -191,7 +162,7 @@ export const AnimatedEmoji: React.FC<AnimatedEmojiProps> = ({
     return (
         <div
             ref={containerRef}
-            className={`emoji-skeleton ${className || ''}`}
+            className={className}
             style={{
                 width: size,
                 height: size,
@@ -201,7 +172,7 @@ export const AnimatedEmoji: React.FC<AnimatedEmojiProps> = ({
                 position: 'relative'
             }}
         >
-            <div style={skeletonStyle} />
+            <div style={placeholderStyle}>{id}</div>
 
             {isVisible && (
                 <img
@@ -212,12 +183,8 @@ export const AnimatedEmoji: React.FC<AnimatedEmojiProps> = ({
                     onLoad={() => setIsLoaded(true)}
                     onError={() => {
                         console.error(`Animated emoji failed to load: ${url}`);
-                        // Fallback to emoji-mart if animated version fails
-                        getEmojiMartUrl(id).then(fallbackUrl => {
-                            if (fallbackUrl) {
-                                setFallbackSrc(fallbackUrl);
-                            }
-                        });
+                        setHasError(true);
+                        setIsLoaded(false); // Reset loaded state for fallback
                     }}
                 />
             )}

@@ -97,43 +97,34 @@ export const AnimatedEmoji = ({ id, size = 50, className }) => {
             });
         }
     }, [id, isVisible]);
-    // 1. Fallback to emoji-mart (instead of native emoji)
+    // 1. Fallback to emoji-mart Apple emoji component (instead of native emoji)
     if (!emojiMap[id]) {
-        const hex = toEmojiHex(id);
-        const [currentUrl, setCurrentUrl] = useState(fallbackSrc || `https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.1.2/img/apple/64/${hex}.png`);
-        const [hasRetried, setHasRetried] = useState(false);
         return (_jsxs("div", { ref: containerRef, className: `emoji-skeleton ${className || ''}`, style: {
                 width: size,
                 height: size,
-                display: 'inline-block',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
                 verticalAlign: 'middle',
                 lineHeight: 0,
                 position: 'relative'
-            }, children: [_jsx("div", { style: skeletonStyle }), isVisible && (_jsx("img", { src: currentUrl, alt: id, style: imgStyle, loading: "lazy", onLoad: () => setIsLoaded(true), onError: (e) => {
-                        // Try without -fe0f variant first
-                        if (!hasRetried && hex.includes('fe0f')) {
-                            const minimalHex = hex.replace(/-fe0f/g, '');
-                            console.log(`Retrying minimalist hex for ${id}: ${minimalHex}`);
-                            setHasRetried(true);
-                            setCurrentUrl(`https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.1.2/img/apple/64/${minimalHex}.png`);
-                            return;
-                        }
-                        // If emoji-mart CDN also fails, show the emoji character with better styling
-                        console.warn(`emoji-mart fallback failed for: "${id}"`);
-                        e.currentTarget.style.display = 'none';
-                        setIsLoaded(true);
-                        const parent = e.currentTarget.parentElement;
-                        if (parent) {
-                            // Create a span with the emoji character
-                            const emojiSpan = document.createElement('span');
-                            emojiSpan.innerText = id;
-                            emojiSpan.style.fontSize = typeof size === 'number' ? `${size * 0.8}px` : size;
-                            emojiSpan.style.lineHeight = '1';
-                            emojiSpan.style.display = 'inline-block';
-                            emojiSpan.style.verticalAlign = 'middle';
-                            emojiSpan.style.fontFamily = '"Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif';
-                            parent.appendChild(emojiSpan);
-                            parent.style.display = 'inline-block';
+            }, children: [_jsx("div", { style: skeletonStyle }), isVisible && (_jsx("em-emoji", { native: id, set: "apple", size: typeof size === 'number' ? `${size}px` : size, style: {
+                        opacity: isLoaded ? 1 : 0,
+                        transition: 'opacity 0.2s ease-in'
+                    }, 
+                    // @ts-ignore - em-emoji is a web component
+                    ref: (el) => {
+                        if (el && !isLoaded) {
+                            // Check when the emoji-mart component has rendered
+                            const checkLoaded = () => {
+                                if (el.shadowRoot?.querySelector('span') || el.querySelector('span')) {
+                                    setIsLoaded(true);
+                                }
+                                else {
+                                    requestAnimationFrame(checkLoaded);
+                                }
+                            };
+                            requestAnimationFrame(checkLoaded);
                         }
                     } }))] }));
     }
