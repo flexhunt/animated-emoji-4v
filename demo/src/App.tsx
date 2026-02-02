@@ -1,4 +1,4 @@
-import { EmojiRenderer } from './lib/src'
+import { EmojiRenderer } from 'animated-emoji-4v'
 import './App.css'
 
 // Comprehensive emoji list organized by category

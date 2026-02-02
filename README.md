@@ -66,7 +66,24 @@ const ChatBubble = () => (
     <EmojiRenderer text="Omg this is fiery! 🔥🚀 :scream:" />
   </div>
 );
+
+### 4. Using in HTML (Script Tag) 🌐
+
+You can also use it directly in plain HTML without any build step!
+
+```html
+<!-- Import via UNPKG -->
+<script src="https://unpkg.com/animated-emoji-4v"></script>
+
+<!-- Use the global variable -->
+<script>
+  // The library exposes 'AnimatedEmoji' global
+  console.log(window.AnimatedEmoji); // Check console
+</script>
+
+<!-- Note: For React components in raw HTML, you generally need ReactDOM.render -->
 ```
+
 
 ---
 
