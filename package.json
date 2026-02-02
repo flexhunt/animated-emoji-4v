@@ -2,18 +2,23 @@
     "name": "animated-emoji-4v",
     "version": "1.0.1",
     "description": "A lightweight React library to render Telegram animated emojis using high-performance WebP assets.",
-    "main": "dist/index.js",
+    "main": "dist/animated-emoji.umd.js",
+    "module": "dist/animated-emoji.es.js",
     "types": "dist/index.d.ts",
     "unpkg": "dist/animated-emoji.umd.js",
     "jsdelivr": "dist/animated-emoji.umd.js",
+    "exports": {
+        ".": {
+            "import": "./dist/animated-emoji.es.js",
+            "require": "./dist/animated-emoji.umd.js"
+        }
+    },
     "files": [
         "dist",
         "README.md"
     ],
     "scripts": {
-        "build": "tsc",
-        "build:bundle": "vite build",
-        "prepare": "npm run build",
+        "build": "tsc && vite build",
         "generate-map": "node scripts/generate-map.js"
     },
     "peerDependencies": {
